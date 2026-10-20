@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<!-- SAMPLE DATA: early mockup, not real deals except the sourced Google AI Pro example -->
+<style>
+.hero{text-align:center;padding:72px 0 0}
+h1{font-size:54px;font-weight:700;letter-spacing:-1.6px;line-height:1.1}
+.sub{margin:18px auto 0;font-size:19px;color:#4B5563;width:760px;line-height:1.5}
+.form{margin:36px auto 0;width:780px;background:#fff;border:1px solid #E5E7EB;border-radius:20px;padding:14px;box-shadow:0 8px 24px rgba(17,24,39,.06)}
+.input{background:#F1F5F4;border-radius:12px;padding:0 18px;display:flex;align-items:center;color:#6B7280;font-size:17px;height:56px;text-align:left}
+.frow{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.toggle{display:flex;background:#F1F5F4;border-radius:12px;padding:4px}
+.toggle div{padding:10px 18px;font-size:15px;color:#4B5563;border-radius:9px}
+.toggle .on{background:#fff;color:#111827;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.form .btn{padding:14px 26px;font-size:17px}
+.trust{display:flex;justify-content:center;gap:18px;margin:40px auto 0;width:1000px}
+.trust div{flex:1;border:1px solid #E5E7EB;border-radius:18px;padding:22px 20px;display:flex;align-items:center;gap:14px;font-size:16px;text-align:left}
+.trust b{width:40px;height:40px;border-radius:50%;background:#E6F4F1;color:#3A9282;display:inline-flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.example{margin:40px auto 0;width:780px;background:#FFF5F5;border:1.5px solid #F5B5B5;border-radius:20px;padding:24px 28px;text-align:left}
+.example .lbl{display:flex;justify-content:space-between;align-items:center;font-size:13px;letter-spacing:.6px;color:#4B5563}
+.example h3{font-size:22px;font-weight:700;margin-top:12px}
+.example p{margin-top:6px;color:#4B5563;font-size:16px}
+.example small{display:block;margin-top:10px;color:#6B7280;font-size:13px}
+.badge.no{font-size:13px;padding:5px 12px;font-weight:500}
+.feat{width:1000px;margin:56px auto 0;text-align:left;padding-bottom:40px}
+.feat h2{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.feat .fs{color:#6B7280;font-size:15px;margin-top:6px}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.fc{border:1px solid #E5E7EB;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.fc .brand{font-size:12px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.5px}
+.fc h3{font-size:17px;font-weight:700;line-height:1.3}
+.fc .row{display:flex;gap:6px;flex-wrap:wrap}
+.disc{background:#EEF2FF;color:#3730A3}
+.fc .foot{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:10px}
+.fc .btn{padding:9px 14px;font-size:14px}
+.paid{font-size:11px;font-weight:600;color:#92400E;background:#FEF3C7;padding:3px 7px;border-radius:6px}
+.foot2{text-align:center;color:#6B7280;font-size:13px;margin-top:22px}
+</style></head><body>
+<div class="nav"><div class="logo"><i>✓</i>PerkCheck</div><div class="links"><span class="sample">Early mockup · sample data</span><span>Perks</span><span>Graduating?</span><span>About</span><span class="mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></div></div>
+<div class="hero">
+<h1>Find out what your school<br>email actually gets you.</h1>
+<p class="sub">Student perks checked for Canada and the US, with the date we last verified each one.</p>
+<div class="form"><div class="input">Enter your school email (e.g. name@brocku.ca)</div>
+<div class="frow"><div class="toggle"><div class="on">Canada</div><div>United States</div></div><button class="btn">Check my perks</button></div></div>
+<div class="trust"><div><b>◎</b>Country-checked</div><div><b>▦</b>Last verified date on every deal</div><div><b>⌥</b>Open source on GitHub</div></div>
+<div class="example"><div class="lbl"><span>EXAMPLE CHECK</span><span class="badge no">Not in Canada</span></div>
+<h3>Google AI Pro free for students?</h3><p>Not available in Canada. Many sites still list it.</p><small>Source: support.google.com/googleone/answer/17422238</small></div>
+<div class="feat"><h2>Featured student discounts</h2><p class="fs">Sample data. Discounts, not free plans. Paid links are labeled.</p>
+<div class="fgrid">
+<div class="fc"><div class="brand">Sample brand E</div><h3>Writing assistant Premium, 40% off for students</h3><div class="row"><span class="badge ok">CA</span><span class="badge ok">US</span><span class="badge disc">Discount</span></div><div class="row"><span class="badge chip">✓ Verified Oct 19, 2026</span></div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+<div class="fc"><div class="brand">Sample brand F</div><h3>Design suite, 60% off the student plan</h3><div class="row"><span class="badge ok">CA</span><span class="badge ok">US</span><span class="badge disc">Discount</span></div><div class="row"><span class="badge chip">✓ Verified Oct 18, 2026</span></div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+<div class="fc"><div class="brand">Sample brand G</div><h3>VPN, student price for 2 years</h3><div class="row"><span class="badge ok">CA</span><span class="badge ok">US</span><span class="badge disc">Discount</span></div><div class="row"><span class="badge chip">✓ Verified Oct 16, 2026</span></div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+<div class="fc"><div class="brand">Sample brand H</div><h3>Shipping membership, 50% off for young adults</h3><div class="row"><span class="badge ok">CA</span><span class="badge ok">US</span><span class="badge disc">Discount</span></div><div class="row"><span class="badge chip">✓ Verified Oct 15, 2026</span></div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+</div><p class="foot2">Some links are paid links. We label every one.</p></div>
+</div></body></html>

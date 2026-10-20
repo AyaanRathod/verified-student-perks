@@ -1,0 +1,62 @@
+# SAMPLE ENTRIES showing the format.
+# Only the two entries marked "sourced" use real, checked facts.
+# Everything marked "EXAMPLE, VERIFY" is placeholder data: check the official page before publishing.
+
+- id: github-student-pack
+  brand: GitHub
+  title: Student Developer Pack, free developer tools while you're a student
+  category: dev-tools
+  price_type: free
+  free_months: null            # lasts while you're a verified student
+  countries: [CA, US]
+  verification: school-email   # school email or proof of enrollment
+  email_rules: School-issued email or proof of enrollment
+  how_to_claim:
+    - Go to the GitHub Education page and click "Join GitHub Education"
+    - Sign in to GitHub
+    - Add your school email or upload proof of enrollment
+    - Wait for approval
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: "sourced: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student"
+  last_verified: 2026-10-20
+  watch_text: "Student Developer Pack"
+  status: active
+
+- id: google-ai-pro-students
+  brand: Google
+  title: Free Google AI Pro plan for students
+  category: ai-tools
+  price_type: free
+  free_months: 12
+  countries: [US]              # EXAMPLE, VERIFY the full country list on the source page
+  not_available_in:
+    - country: CA
+      source: https://support.google.com/googleone/answer/17422238
+  verification: sheerid        # EXAMPLE, VERIFY
+  how_to_claim:
+    - EXAMPLE, VERIFY steps on the official page
+  official_url: https://support.google.com/googleone/answer/17422238
+  affiliate_url: null
+  source_note: "sourced: Canada exclusion listed on Google's support page"
+  last_verified: 2026-10-20
+  status: active
+
+- id: example-music-discount
+  brand: ExampleMusic          # EXAMPLE, VERIFY
+  title: 50% off premium for students
+  category: music-video
+  price_type: discount
+  discount: 50% off
+  countries: [CA, US]
+  verification: sheerid
+  how_to_claim:
+    - Open the student plan page
+    - Verify with SheerID
+    - Pick the student plan
+  official_url: https://example.com/student
+  affiliate_url: https://example.com/aff?id=YOURID   # shows "Paid link" on the site
+  source_note: EXAMPLE, VERIFY
+  last_verified: 2026-10-20
+  watch_text: "Student"
+  status: needs-review

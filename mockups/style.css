@@ -1,0 +1,12 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;background:#fff;color:#111827;width:1280px;min-height:800px;overflow:hidden}
+.nav{height:64px;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:20px;color:#111827}
+.logo i{width:34px;height:34px;border-radius:10px;background:#3A9282;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:17px}
+.links{display:flex;align-items:center;gap:24px;font-size:16px;color:#4B5563}
+.mode{width:38px;height:38px;border:1px solid #E5E7EB;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px}
+.sample{background:#FEF3C7;color:#92400E;border:1px solid #FCD34D;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
+.ok{background:#DCFCE7;color:#166534}.no{background:#FEE2E2;color:#991B1B}
+.chip{background:#E6F4F1;color:#2B6F63}.tag{background:#F1F5F9;color:#334155}
+.btn{background:#3A9282;color:#fff;border:none;border-radius:12px;font-weight:600;font-family:inherit}

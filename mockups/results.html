@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+.wrap{display:flex;gap:24px;padding:20px 40px}
+.banner{margin:20px 40px 0;background:#F0F7F5;border:1px solid #CFE6E0;border-radius:12px;padding:14px 18px;font-size:15px;color:#2B6F63}
+.banner b{color:#3A9282}
+aside{width:230px;flex:none;background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:18px;font-size:13px;height:610px}
+aside h4{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:#64748B;margin:14px 0 8px}
+aside h4:first-child{margin-top:0}
+.opt{display:flex;align-items:center;gap:8px;margin:6px 0;color:#334155}
+.opt i{width:15px;height:15px;border:1.5px solid #94A3B8;border-radius:4px;display:inline-block}
+.opt i.c{background:#3A9282;border-color:#3A9282}
+main{flex:1}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.top h2{font-size:20px;font-weight:700}
+.sort{font-size:13px;color:#475569;border:1px solid #CBD5E1;border-radius:8px;padding:7px 12px;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:9px;height:258px}
+.card .brand{font-size:12px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.5px}
+.card h3{font-size:16px;font-weight:700;line-height:1.3}
+.row{display:flex;flex-wrap:wrap;gap:6px}
+.meta{font-size:12px;color:#64748B}
+.foot{margin-top:auto;display:flex;align-items:center;gap:10px}
+.foot .btn{padding:8px 14px;font-size:13px}
+.paid{font-size:11px;font-weight:600;color:#92400E;background:#FEF3C7;padding:3px 7px;border-radius:6px}
+.card.out{border-color:#FECACA;background:#FFFBFB}
+.card.out .btn{background:#CBD5E1;color:#475569}
+</style></head><body>
+<div class="nav"><div class="logo"><i>✓</i>PerkCheck</div><div class="links"><span class="sample">Early mockup · sample data</span><span>Perks</span><span>Graduating?</span><span>About</span><span class="mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></div></div>
+
+<div class="banner"><b>brocku.ca</b> looks like a Canadian school email. Here are 24 perks you can likely get. <span style="color:#64748B">(sample data)</span></div>
+<div class="wrap">
+<aside>
+<h4>Country</h4><div class="opt"><i class="c"></i>Canada</div><div class="opt"><i></i>United States</div>
+<h4>Price</h4><div class="opt"><i class="c"></i>Free</div><div class="opt"><i></i>Discounted</div>
+<h4>Free trial length</h4><div class="opt"><i></i>Any</div><div class="opt"><i class="c"></i>3+ months</div><div class="opt"><i></i>6+ months</div><div class="opt"><i></i>12+ months</div>
+<h4>Category</h4><div class="opt"><i class="c"></i>Dev tools</div><div class="opt"><i></i>Design</div><div class="opt"><i></i>Productivity</div><div class="opt"><i></i>AI tools</div>
+<h4>How you verify</h4><div class="opt"><i class="c"></i>School email</div><div class="opt"><i></i>SheerID</div><div class="opt"><i></i>ID upload</div>
+</aside>
+<main>
+<div class="top"><h2>24 perks for you <span style="font-weight:400;color:#64748B;font-size:15px">(sample)</span></h2><div class="sort">Sort: Recently verified ▾</div></div>
+<div class="grid">
+<div class="card"><div class="brand">GitHub</div><h3>Student Developer Pack, free while you're a student</h3><div class="row"><span class="badge ok">🇨🇦 CA</span><span class="badge ok">🇺🇸 US</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 20, 2026</span></div><div class="meta">Verify with: school email or proof of enrollment</div><div class="foot"><button class="btn">Get deal</button></div></div>
+<div class="card"><div class="brand">Sample brand A</div><h3>Code editor Pro, free for 12 months</h3><div class="row"><span class="badge ok">🇨🇦 CA</span><span class="badge ok">🇺🇸 US</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 18, 2026</span></div><div class="meta">Verify with: school email</div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+<div class="card out"><div class="brand">Google</div><h3>AI Pro plan free for students</h3><div class="row"><span class="badge no">✕ Not in CA</span><span class="badge ok">🇺🇸 US</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 20, 2026</span></div><div class="meta">Canada is excluded on Google's support page</div><div class="foot"><button class="btn">See details</button></div></div>
+<div class="card"><div class="brand">Sample brand B</div><h3>Cloud credits for student projects, 6 months</h3><div class="row"><span class="badge ok">🇨🇦 CA</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 17, 2026</span></div><div class="meta">Verify with: school email</div><div class="foot"><button class="btn">Get deal</button></div></div>
+<div class="card"><div class="brand">Sample brand C</div><h3>Git client Pro license, free for 12 months</h3><div class="row"><span class="badge ok">🇨🇦 CA</span><span class="badge ok">🇺🇸 US</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 15, 2026</span></div><div class="meta">Verify with: GitHub Student Pack</div><div class="foot"><button class="btn">Get deal</button></div></div>
+<div class="card"><div class="brand">Sample brand D</div><h3>Domain name, free for the first year</h3><div class="row"><span class="badge ok">🇨🇦 CA</span><span class="badge ok">🇺🇸 US</span><span class="badge tag">Free</span></div><div class="row"><span class="badge chip">✓ Verified Oct 14, 2026</span></div><div class="meta">Verify with: school email</div><div class="foot"><button class="btn">Get deal</button><span class="paid">Paid link</span></div></div>
+</div></main></div></body></html>
