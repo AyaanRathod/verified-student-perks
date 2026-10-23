@@ -1,0 +1,38 @@
+# Pages the Monday GitHub Action fetches. Aggregators are a lead list only.
+# The Grok bot does the open-web search and files candidates. This list is the pages
+# we already trust enough to watch every week. Add a page here after it produces a real lead.
+
+- id: freestudents
+  name: FreeStudents
+  kind: aggregator
+  url: https://freestudents.org/
+
+- id: freeforstudents
+  name: FreeForStudents
+  kind: aggregator
+  url: https://freeforstudents.org/
+
+- id: github-education-pack
+  name: GitHub Student Developer Pack
+  kind: official
+  url: https://education.github.com/pack
+
+- id: google-one-student
+  name: Google One student offer
+  kind: official
+  url: https://support.google.com/googleone/answer/17422238
+
+- id: amazon-ca-prime-young-adults
+  name: Amazon.ca Prime for Young Adults terms
+  kind: official
+  url: https://www.amazon.ca/gp/help/customer/display.html?nodeId=G201894870
+
+- id: samsung-ca-student
+  name: Samsung Canada student offers
+  kind: official
+  url: https://www.samsung.com/ca/offer/student-epp/
+
+- id: unidays-ca
+  name: UNiDAYS Canada
+  kind: aggregator
+  url: https://www.myunidays.com/CA/en-CA

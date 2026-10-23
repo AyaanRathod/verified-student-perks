@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+data/inbox/link-report.md
+data/inbox/link-report.json
+data/inbox/monday-report.md

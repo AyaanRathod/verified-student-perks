@@ -9,6 +9,7 @@
   price_type: free
   free_months: null            # lasts while you're a verified student
   countries: [CA, US]
+  ca_school_email: accepted
   verification: school-email   # school email or proof of enrollment
   email_rules: School-issued email or proof of enrollment
   how_to_claim:
@@ -29,13 +30,18 @@
   category: ai-tools
   price_type: free
   free_months: 12
-  countries: [US]              # EXAMPLE, VERIFY the full country list on the source page
+  countries: [US]
   not_available_in:
     - country: CA
       source: https://support.google.com/googleone/answer/17422238
-  verification: sheerid        # EXAMPLE, VERIFY
+  ca_school_email: rejected
+  verification: sheerid
+  email_rules: US higher-education school email, verified through SheerID. Canada is excluded.
   how_to_claim:
-    - EXAMPLE, VERIFY steps on the official page
+    - Go to one.google.com/ai-student and sign in to the Google account you want to use
+    - Select the student offer
+    - Verify with SheerID using a school email
+    - Add a qualifying payment method and finish signup
   official_url: https://support.google.com/googleone/answer/17422238
   affiliate_url: null
   source_note: "sourced: Canada exclusion listed on Google's support page"
@@ -49,6 +55,7 @@
   price_type: discount
   discount: 50% off
   countries: [CA, US]
+  ca_school_email: unknown
   verification: sheerid
   how_to_claim:
     - Open the student plan page

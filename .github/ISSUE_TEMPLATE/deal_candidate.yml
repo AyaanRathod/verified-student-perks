@@ -1,0 +1,47 @@
+name: Deal candidate
+description: A possible student deal from the Monday Grok search. It is not verified yet.
+title: "Candidate: "
+labels: ["candidate"]
+body:
+  - type: input
+    id: brand
+    attributes:
+      label: Brand
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: What students get
+    validations:
+      required: true
+  - type: input
+    id: official_url
+    attributes:
+      label: Official page
+      description: The brand's own page, not the aggregator where you found it.
+    validations:
+      required: true
+  - type: input
+    id: found_on
+    attributes:
+      label: Where the Grok bot found it
+    validations:
+      required: true
+  - type: dropdown
+    id: ca_school_email
+    attributes:
+      label: Does a Canadian school email work?
+      options:
+        - unknown
+        - accepted
+        - rejected
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Grok notes
+      description: Paste the summary. Leave the deal unpublished until the official page is checked.
+    validations:
+      required: true

@@ -1,0 +1,11 @@
+# Shape the Monday Grok bot should use when it files a lead.
+# Copy real finds into data/inbox/candidates.yaml, or use the "Deal candidate" issue form.
+# A candidate is not a published deal. It moves into data/deals.yaml only after the official page is checked.
+
+- brand: ExampleBrand
+  title: Free student plan for 12 months
+  official_url: https://example.com/students
+  found_on: https://freestudents.org/
+  countries_guess: [CA, US]
+  ca_school_email_guess: unknown
+  note: "Grok summary of what the page claimed. Confirm on the official page before publishing."

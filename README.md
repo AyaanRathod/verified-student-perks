@@ -91,8 +91,8 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
 <table>
   <tr>
     <td align="center" width="25%"><h3>1️⃣</h3><b>Data</b><br><sub>Every deal lives in one public file, <code>deals.yaml</code></sub></td>
-    <td align="center" width="25%"><h3>2️⃣</h3><b>Nightly check</b><br><sub>A bot flags broken or changed deal pages</sub></td>
-    <td align="center" width="25%"><h3>3️⃣</h3><b>Weekly review</b><br><sub>Flagged deals get rechecked on official terms pages every Monday</sub></td>
+    <td align="center" width="25%"><h3>2️⃣</h3><b>Nightly check</b><br><sub>GitHub Actions opens each official page and flags anything broken</sub></td>
+    <td align="center" width="25%"><h3>3️⃣</h3><b>Monday search</b><br><sub>The Grok bot searches for new deals. Actions watches the source list for new links</sub></td>
     <td align="center" width="25%"><h3>4️⃣</h3><b>You check</b><br><sub>Enter your email and get perks that fit you</sub></td>
   </tr>
 </table>
@@ -104,8 +104,12 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
 ```mermaid
 flowchart TD
     A["data/deals.yaml<br/>deals, countries, sources"] --> B["Nightly bot check<br/>GitHub Action requests every official_url"]
-    B -->|page broken or watch_text missing| C["Deal flagged<br/>status: needs-review"]
-    C --> D["Weekly review, every Monday<br/>Student Perks bot rechecks flagged deals<br/>and confirms Canada eligibility on official terms pages"]
+    B -->|page broken or watch_text missing| C["GitHub issue<br/>deal needs a look"]
+    S["Grok bot, every Monday<br/>searches the web for new deals"] --> I["Candidate issue<br/>not published yet"]
+    W["data/sources.yaml"] --> M["Monday Action<br/>fetches known source pages"]
+    M -->|new links| I
+    I --> D["You open the official page<br/>and add a checked row"]
+    C --> D
     D -->|updates| A
     B -->|all good| E["Site build<br/>reads deals.yaml at build time"]
     A --> E
@@ -169,6 +173,7 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 | `not_available_in` | no | Countries confirmed not to work, each with a source |
 | `verification` | yes | `school-email`, `sheerid`, `unidays`, `student-beans`, `id-upload`, `other` |
 | `email_rules` | no | Notes such as "any school-issued email" |
+| `ca_school_email` | yes | `accepted`, `rejected`, or `unknown`. `accepted` means a Canadian university `.ca` email can be used. Active deals cannot be `unknown`. |
 | `how_to_claim` | yes | 3 to 5 short steps |
 | `official_url` | yes | The brand's own page, never an aggregator |
 | `affiliate_url` | no | Paid link, shown with a "Paid link" label |
@@ -183,7 +188,8 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 
 ## 🗺️ Roadmap
 
-- [ ] **Week 1:** repo setup, 30 to 50 hand-checked deals, data validation script
+- [x] **Week 1, started:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
+- [ ] **Week 1, still open:** 30 to 50 hand-checked deals
 - [ ] **Week 2:** email checker, filters, deal pages, "Paid link" labels, first deploy
 - [ ] **Week 3:** nightly link-check bot, weekly review, "Report broken deal" button
 - [ ] **Later:** "Graduating soon?" guide, deal changelog, more countries, free listings for student-run businesses and clubs

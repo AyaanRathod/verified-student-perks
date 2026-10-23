@@ -23,6 +23,17 @@ Open an issue titled `Broken: <deal id>` with what changed and a link that shows
 3. Put the source of any eligibility claim in `source_note`.
 4. Open a pull request.
 
+## Monday search
+
+The Grok bot does the web search. File what it finds with the **Deal candidate** issue, or append a row to `data/inbox/candidates.yaml` using `data/candidates.example.yaml` as the shape.
+
+A candidate is not a published perk. Copy it into `data/deals.yaml` only after you have opened the brand's own page and filled in the countries, `ca_school_email`, and `last_verified`.
+
+GitHub Actions does the scheduled half:
+
+- Every night, the link check opens each `official_url` and opens an issue if the page is down or `watch_text` is missing.
+- Every Monday, the source watch reads `data/sources.yaml` and opens an issue when a watched page gains new links. Aggregator links are leads, not facts.
+
 ## Ground rules
 
 - Facts come from official brand pages only. Please don't copy data from UNiDAYS, Student Beans or other aggregators.
