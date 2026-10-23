@@ -190,7 +190,8 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 
 - [x] **Week 1, started:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
 - [ ] **Week 1, still open:** 30 to 50 hand-checked deals
-- [ ] **Week 2:** email checker, filters, deal pages, "Paid link" labels, first deploy
+- [x] **Week 2, preview:** email check, filters, deal pages, and a GitHub Pages site in `docs/`
+- [ ] **Week 2, still open:** more checked deals, then the public Pages address
 - [ ] **Week 3:** nightly link-check bot, weekly review, "Report broken deal" button
 - [ ] **Later:** "Graduating soon?" guide, deal changelog, more countries, free listings for student-run businesses and clubs
 

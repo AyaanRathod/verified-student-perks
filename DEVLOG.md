@@ -69,8 +69,29 @@ Put a number in a note only when the number is real.
 
 **Next**
 
-- Commit the new files and push them to GitHub.
-- Run the three Actions from the GitHub website.
 - Check more deals on the official pages.
 - Point the Monday Grok bot at the Deal candidate issue.
-- Build the website after there are more checked deals.
+
+## Week 1, same day: preview website
+
+**Work**
+
+- I added a static website in the `docs/` folder.
+- The home page has a school email field.
+- The results page has filters for country, price, free period, category, and verification.
+- Each deal has its own page with the claim steps and a link to the official page.
+- A link can show the label “Paid link”. This list has no paid link yet.
+- The email check runs in the browser.
+- The site does not store the email.
+- `scripts/build_site.py` copies `data/deals.yaml` into `docs/deals.js`.
+- GitHub Pages can serve the `docs/` folder. You must turn Pages on in the repository settings.
+
+**Result**
+
+- The preview shows the three checked deals.
+- A Canadian school email still shows the Google deal in the section “Not for this email”.
+
+**Next**
+
+- Turn on GitHub Pages for the `main` branch and the `/docs` folder.
+- Open the Pages address and enter `name@brocku.ca`.

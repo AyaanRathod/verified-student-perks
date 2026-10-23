@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your perks · PerkCheck</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="index.html"><i>✓</i>PerkCheck</a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <button class="mode" type="button" id="theme" aria-label="Switch color mode">☾</button>
+    </nav>
+  </header>
+  <div class="wrap">
+    <p class="banner" id="banner">Enter a school email on the home page.</p>
+    <div class="layout">
+      <aside>
+        <h2>Country</h2>
+        <label class="opt"><input type="checkbox" name="country" value="CA" checked> Canada</label>
+        <label class="opt"><input type="checkbox" name="country" value="US"> United States</label>
+        <h2>Price</h2>
+        <label class="opt"><input type="checkbox" name="price" value="free" checked> Free</label>
+        <label class="opt"><input type="checkbox" name="price" value="discount" checked> Discounted</label>
+        <h2>Free period</h2>
+        <label class="opt"><input type="radio" name="months" value="0" checked> Any</label>
+        <label class="opt"><input type="radio" name="months" value="3"> 3 months or more</label>
+        <label class="opt"><input type="radio" name="months" value="6"> 6 months or more</label>
+        <label class="opt"><input type="radio" name="months" value="12"> 12 months or more</label>
+        <h2>Category</h2>
+        <div id="categories"></div>
+        <h2>How you verify</h2>
+        <div id="verifications"></div>
+      </aside>
+      <main>
+        <div class="top"><h2 id="count">Perks</h2></div>
+        <div class="grid" id="fits"></div>
+        <h2 id="blocked-title" hidden>Not for this email</h2>
+        <div class="grid" id="blocked"></div>
+      </main>
+    </div>
+  </div>
+  <footer>A result is “likely eligible”. The brand makes the final check.</footer>
+  <script src="deals.js"></script>
+  <script src="app.js"></script>
+  <script>
+    var params = new URLSearchParams(location.search);
+    var email = (params.get("email") || "").trim().toLowerCase();
+    var picked = params.get("country") === "US" ? "US" : "CA";
+    var schools = null;
+
+    var categories = ["dev-tools", "design", "productivity", "music-video", "ai-tools", "shopping", "banking"];
+    var verifyNames = {
+      "school-email": "School email",
+      "sheerid": "SheerID",
+      "unidays": "UNiDAYS",
+      "student-beans": "Student Beans",
+      "id-upload": "ID upload",
+      "other": "Other"
+    };
+    document.getElementById("categories").innerHTML = categories.map(function (name) {
+      return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + name + "</label>";
+    }).join("");
+    document.getElementById("verifications").innerHTML = Object.keys(verifyNames).map(function (name) {
+      return '<label class="opt"><input type="checkbox" name="verification" value="' + name + '" checked> ' + verifyNames[name] + "</label>";
+    }).join("");
+
+    document.querySelector("aside").addEventListener("change", draw);
+
+    loadSchools().then(function (list) {
+      schools = list;
+      if (email) {
+        var school = findSchool(email.split("@")[1] || "", schools);
+        if (school) picked = school.alpha_two_code === "US" ? "US" : (school.alpha_two_code === "CA" ? "CA" : picked);
+      }
+      document.querySelectorAll('input[name="country"]').forEach(function (box) {
+        box.checked = box.value === picked;
+      });
+      draw();
+    });
+
+    function draw() {
+      var domain = email.split("@")[1] || "";
+      var school = schools ? findSchool(domain, schools) : null;
+      var country = school ? school.alpha_two_code : picked;
+      var banner = document.getElementById("banner");
+      if (!email) {
+        banner.textContent = "No email yet. This is a preview of the checked deals. Pick a country in the filter.";
+      } else if (!school) {
+        banner.textContent = domain + " is not in the public school list. The list below is a preview for " + (country === "CA" ? "Canada" : country) + ".";
+      } else {
+        banner.innerHTML = "<b>" + domain + "</b> matches " + school.name + " (" + school.alpha_two_code + "). These deals are likely eligible. The brand makes the final check.";
+      }
+
+      var active = window.PERKCHECK_DEALS.filter(function (deal) { return deal.status === "active"; });
+      var fits = [];
+      var blocked = [];
+      active.forEach(function (deal) {
+        if (isBlocked(deal, country)) blocked.push(deal);
+        else if (fitsCountry(deal, country) && passesFilters(deal, true)) fits.push(deal);
+      });
+      blocked = blocked.filter(function (deal) { return passesFilters(deal, false); });
+      document.getElementById("count").textContent = fits.length + (fits.length === 1 ? " perk for this email" : " perks for this email");
+      var fitsBox = document.getElementById("fits");
+      if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
+      else renderCards(fitsBox, fits);
+      var title = document.getElementById("blocked-title");
+      title.hidden = blocked.length === 0;
+      renderCards(document.getElementById("blocked"), blocked, true);
+    }
+
+    function selected(name) {
+      return Array.prototype.map.call(document.querySelectorAll('input[name="' + name + '"]:checked'), function (box) {
+        return box.value;
+      });
+    }
+
+    function passesFilters(deal, useCountry) {
+      var countries = selected("country");
+      var prices = selected("price");
+      var cats = selected("category");
+      var verifies = selected("verification");
+      var minMonths = Number((document.querySelector('input[name="months"]:checked') || {}).value || 0);
+      if (useCountry && countries.length && !deal.countries.some(function (code) { return countries.indexOf(code) !== -1; })) return false;
+      if (prices.indexOf(deal.price_type) === -1) return false;
+      if (cats.indexOf(deal.category) === -1) return false;
+      if (verifies.indexOf(deal.verification) === -1) return false;
+      if (minMonths && !(deal.free_months >= minMonths)) return false;
+      return true;
+    }
+  </script>
+</body>
+</html>

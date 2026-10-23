@@ -1,0 +1,87 @@
+window.PERKCHECK_DEALS = [
+  {
+    "id": "github-student-pack",
+    "brand": "GitHub",
+    "title": "Student Developer Pack, free developer tools while you're a student",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Academic email when the school issues one, otherwise proof of enrollment. A .edu address is not required.",
+    "how_to_claim": [
+      "Open your GitHub Education benefits settings",
+      "Under GitHub Education, start an application",
+      "Add and verify your school email if asked, or upload proof of enrollment",
+      "Submit the application and wait for approval"
+    ],
+    "official_url": "https://education.github.com/pack",
+    "affiliate_url": null,
+    "source_note": "sourced: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-22",
+    "watch_text": "Student Developer Pack",
+    "status": "active"
+  },
+  {
+    "id": "google-ai-pro-students",
+    "brand": "Google",
+    "title": "Free 12-month Google AI Pro trial for students",
+    "category": "ai-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "US"
+    ],
+    "not_available_in": [
+      {
+        "country": "CA",
+        "source": "https://support.google.com/googleone/answer/17422238"
+      }
+    ],
+    "ca_school_email": "rejected",
+    "verification": "sheerid",
+    "email_rules": "US higher-education school email, verified through SheerID. Canada is on Google's exclusion list.",
+    "how_to_claim": [
+      "Go to one.google.com/ai-student and sign in to the Google account you want to use",
+      "Select the student offer",
+      "Verify with SheerID using a school email",
+      "Add a qualifying payment method and finish signup"
+    ],
+    "official_url": "https://support.google.com/googleone/answer/17422238",
+    "affiliate_url": null,
+    "source_note": "sourced: https://support.google.com/googleone/answer/17422238 lists Canada among excluded countries and limits the free 12-month AI Pro trial to higher education in the US",
+    "last_verified": "2026-10-22",
+    "watch_text": "excluding Albania, Bolivia, Canada",
+    "status": "active"
+  },
+  {
+    "id": "amazon-prime-young-adults-ca",
+    "brand": "Amazon",
+    "title": "Prime for Young Adults on Amazon.ca, free for an initial period",
+    "category": "shopping",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Valid Canadian college, university, or CEGEP email. Amazon may ask for proof of enrolment. The terms also allow ages 19 to 24 to join with government ID, which is separate from the school-email path.",
+    "how_to_claim": [
+      "Open the Prime for Young Adults page on Amazon.ca",
+      "Sign in to an Amazon.ca account",
+      "Join as a student enrolled at a Canadian college, university, or CEGEP",
+      "Use a school email and provide proof of enrolment if Amazon asks"
+    ],
+    "official_url": "https://www.amazon.ca/gp/help/customer/display.html?nodeId=G201894870",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.amazon.ca/gp/help/customer/display.html?nodeId=G201894870 requires a valid Canadian college, university, or CEGEP email for the student path. The length of the free period is shown at signup and is not stated on this page.",
+    "last_verified": "2026-10-22",
+    "watch_text": "CEGEP email",
+    "status": "active"
+  }
+];
