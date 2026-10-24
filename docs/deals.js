@@ -24,7 +24,11 @@ window.PERKCHECK_DEALS = [
     "source_note": "sourced: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
     "last_verified": "2026-10-22",
     "watch_text": "Student Developer Pack",
-    "status": "active"
+    "status": "active",
+    "logo": "github.svg",
+    "banner_color": "#181717",
+    "logo_color": "#FFFFFF",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student"
   },
   {
     "id": "google-ai-pro-students",
@@ -56,7 +60,9 @@ window.PERKCHECK_DEALS = [
     "source_note": "sourced: https://support.google.com/googleone/answer/17422238 lists Canada among excluded countries and limits the free 12-month AI Pro trial to higher education in the US",
     "last_verified": "2026-10-22",
     "watch_text": "excluding Albania, Bolivia, Canada",
-    "status": "active"
+    "status": "active",
+    "logo": "google-g.svg",
+    "banner_color": "#FFFFFF"
   },
   {
     "id": "amazon-prime-young-adults-ca",
@@ -82,6 +88,293 @@ window.PERKCHECK_DEALS = [
     "source_note": "sourced: https://www.amazon.ca/gp/help/customer/display.html?nodeId=G201894870 requires a valid Canadian college, university, or CEGEP email for the student path. The length of the free period is shown at signup and is not stated on this page.",
     "last_verified": "2026-10-22",
     "watch_text": "CEGEP email",
-    "status": "active"
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9",
+    "ca_school_email_source": "https://www.amazon.ca/gp/help/customer/display.html?nodeId=G201894870"
+  },
+  {
+    "id": "openai-codex-students",
+    "brand": "OpenAI",
+    "title": "Codex student credits: US$100 (2,500 credits)",
+    "category": "ai-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Student status verified through SheerID at a degree-granting university. You must live in the US or Canada when you claim. Codex credits only, not ChatGPT Plus. One per student.",
+    "how_to_claim": [
+      "Open chatgpt.com/codex/students on a personal ChatGPT account",
+      "Verify student status via SheerID (degree-granting university, reside in US/CA at claim)",
+      "Credits granted; expire 12 months after grant"
+    ],
+    "official_url": "https://chatgpt.com/codex/students/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://chatgpt.com/codex/students/",
+    "ca_school_email_source": "https://chatgpt.com/codex/students/",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "github-copilot-student",
+    "brand": "GitHub",
+    "title": "Copilot Student (free while GitHub Education verified)",
+    "category": "ai-tools",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Needs an approved GitHub Education student account. GitHub re-checks eligibility monthly.",
+    "how_to_claim": [
+      "Get verified in GitHub Education",
+      "Open github.com/settings/education/benefits",
+      "Activate Copilot Student"
+    ],
+    "official_url": "https://github.com/settings/education/benefits",
+    "affiliate_url": null,
+    "source_note": "sourced: https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+    "ca_school_email_source": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": "githubcopilot.svg",
+    "banner_color": "#000000",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "azure-for-students",
+    "brand": "Microsoft Azure",
+    "title": "Azure for Students: US$100 credit, no card",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Sign up with your school email. No credit card required. Renewable yearly while a student. Also offered through the GitHub Student Pack; claim once.",
+    "how_to_claim": [
+      "Sign up at azure.microsoft.com/en-ca/free/students with your school email",
+      "No credit card required",
+      "Renewable yearly while a student"
+    ],
+    "official_url": "https://azure.microsoft.com/en-ca/free/students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://azure.microsoft.com/en-ca/free/students",
+    "ca_school_email_source": "https://azure.microsoft.com/en-ca/free/students",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "figma-education",
+    "brand": "Figma",
+    "title": "Figma Education Professional + FigJam + Dev Mode",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Apply through Figma Education. Verified through SheerID with your school email. Reapply when it ends.",
+    "how_to_claim": [
+      "Apply at figma.com/education/apply",
+      "Verify via SheerID + school email",
+      "Reapply when it ends"
+    ],
+    "official_url": "https://www.figma.com/education/apply",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.figma.com/education/apply",
+    "ca_school_email_source": "https://www.figma.com/education/apply",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": "figma.svg",
+    "banner_color": "#F24E1E",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "notion-education-plus",
+    "brand": "Notion",
+    "title": "Notion Education Plus",
+    "category": "productivity",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Sign up with your school email. The school must be listed in WHED. Re-verify yearly.",
+    "how_to_claim": [
+      "Sign up with your school email",
+      "Settings -> Upgrade -> Get free education plan",
+      "Re-verify yearly"
+    ],
+    "official_url": "https://www.notion.com/help/notion-for-education",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.notion.com/help/notion-for-education",
+    "ca_school_email_source": "https://www.notion.com/help/notion-for-education",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": "notion.svg",
+    "banner_color": "#000000",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "unity-student",
+    "brand": "Unity",
+    "title": "Unity Student: Unity Pro + student assets",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Accredited institutions, age 16 or older. Verified through SheerID. Renew annually while enrolled.",
+    "how_to_claim": [
+      "Apply at unity.com/products/unity-student",
+      "Verify via SheerID",
+      "Renew annually while enrolled"
+    ],
+    "official_url": "https://unity.com/products/unity-student",
+    "affiliate_url": null,
+    "source_note": "sourced: https://unity.com/products/unity-student",
+    "ca_school_email_source": "https://unity.com/products/unity-student",
+    "last_verified": "2026-10-19",
+    "status": "active",
+    "logo": "unity.svg",
+    "banner_color": "#000000",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "aws-student-rewards-skill-builder",
+    "brand": "AWS",
+    "title": "Builder Center Student Rewards: Skill Builder Premium + badge credits",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Higher-education students, age 18 or older. Verified through SheerID.",
+    "how_to_claim": [
+      "Sign in at builder.aws.com",
+      "Verify via SheerID and complete profile",
+      "Earn badges for up to ~US$30 credits + foundational cert voucher"
+    ],
+    "official_url": "https://builder.aws.com/learn/students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://builder.aws.com/learn/students",
+    "ca_school_email_source": "https://builder.aws.com/learn/students",
+    "last_verified": "2026-09-28",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "jetbrains-pack",
+    "brand": "JetBrains",
+    "title": "JetBrains student licence (IntelliJ IDEA, PyCharm, etc.) via GitHub Pack",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Claimed through the GitHub Student Developer Pack with an approved GitHub student account. Renewed annually.",
+    "how_to_claim": [
+      "Open JetBrains offer on education.github.com/pack",
+      "Link GitHub student account",
+      "Renew annually (re-checks GitHub student status)"
+    ],
+    "official_url": "https://education.github.com/pack",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.github.com/pack",
+    "ca_school_email_source": "https://education.github.com/pack",
+    "last_verified": "2026-10-22",
+    "status": "active",
+    "logo": "jetbrains.svg",
+    "banner_color": "#000000",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "zed-student",
+    "brand": "Zed",
+    "title": "Zed Student: Zed Pro + US$10/mo AI credits",
+    "category": "dev-tools",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Accredited university, age 18 or older. Sign in with a GitHub account older than 30 days, then share your university email. Zed checks the domain against the JetBrains university list. Drops to the Free plan after 12 months.",
+    "how_to_claim": [
+      "GitHub account older than 30 days",
+      "Apply at zed.dev/education while a current student",
+      "School email checked against JetBrains' university list"
+    ],
+    "official_url": "https://zed.dev/education",
+    "affiliate_url": null,
+    "source_note": "sourced: https://zed.dev/education. Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-22; official page does not exclude Canada.",
+    "ca_school_email_source": "https://zed.dev/education",
+    "last_verified": "2026-10-22",
+    "status": "active",
+    "logo": "zedindustries.svg",
+    "banner_color": "#084CCF",
+    "logo_color": "#FFFFFF"
+  },
+  {
+    "id": "framer-education",
+    "brand": "Framer",
+    "title": "Framer Education: Basic site plan + 1,000 AI credits/mo",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Students in a certified in-person or online program. New Framer customers only. Review takes about 5 working days. Reapply every 11 months while a student.",
+    "how_to_claim": [
+      "Apply at framer.com/education/students (new accounts only)",
+      "Review takes ~5 working days",
+      "Reapply every 11 months while enrolled"
+    ],
+    "official_url": "https://www.framer.com/education/students/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.framer.com/education/students/. Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-22; official page does not exclude Canada.",
+    "ca_school_email_source": "https://www.framer.com/education/students/",
+    "last_verified": "2026-10-22",
+    "status": "active",
+    "logo": "framer.svg",
+    "banner_color": "#0055FF",
+    "logo_color": "#FFFFFF"
   }
 ];

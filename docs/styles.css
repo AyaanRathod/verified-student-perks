@@ -44,13 +44,17 @@ button, input { font-family: inherit; }
   top: 0;
   z-index: 2;
 }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 20px; text-decoration: none; }
-.logo i {
+a.logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 20px; text-decoration: none; }
+a.logo i {
   width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
   display: inline-flex; align-items: center; justify-content: center; color: #fff; font-style: normal;
 }
 .links { display: flex; align-items: center; gap: 18px; color: var(--muted); }
 .links a { text-decoration: none; }
+.repo {
+  width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; color: var(--text);
+}
 .mode {
   width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%;
   background: var(--card); color: var(--text); cursor: pointer;
@@ -101,7 +105,16 @@ body.dark .example { background: #3f1d1d; border-color: #7f1d1d; }
 .feat { margin: 48px auto 32px; }
 .feat h2 { margin-bottom: 4px; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.card, .deal { border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 9px; }
+.card, .deal { border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 9px; overflow: hidden; }
+.card-banner {
+  margin: -16px -16px 6px; aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.card-banner img, .card-banner svg { height: 64px; width: auto; max-width: 70%; }
+.deal .card-banner { height: 220px; aspect-ratio: auto; }
+.deal .card-banner img, .deal .card-banner svg { height: 96px; }
+.banner-name { font-size: 22px; font-weight: 700; color: #111827; }
+.deal .banner-name { font-size: 32px; }
 .card h3, .deal h1 { margin: 0; font-size: 16px; line-height: 1.35; }
 .brand { font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--faint); }
 .row { display: flex; flex-wrap: wrap; gap: 6px; }

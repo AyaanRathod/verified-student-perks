@@ -243,6 +243,6 @@ If that sounds like someone you'd want on your team, let's chat. Find me on [Git
 
 ---
 
-<sub><b>Affiliate disclosure:</b> PerkCheck is free. Some links may be paid links, and each one is labeled. Paid links never affect which deals are listed or how they're verified. Brand names are text only and don't imply any partnership.</sub>
+<sub><b>Affiliate disclosure:</b> PerkCheck is free. Some links may be paid links, and each one is labeled. Paid links never affect which deals are listed or how they're verified. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</sub>
 
 <p align="center"><sub>MIT © 2026 Ayaan Rathod · Made with ☕ in Ontario 🇨🇦</sub></p>

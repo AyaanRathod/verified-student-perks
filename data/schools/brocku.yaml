@@ -1,0 +1,52 @@
+# Campus deals for Brock University only.
+# These rows are not in data/deals.yaml, so the public site does not show them.
+# A later school page can read data/schools/<domain>.yaml for the signed-in school.
+
+- id: oreilly-brock-library
+  brand: O'Reilly (Brock Library licence)
+  title: O'Reilly for Higher Education (full library)
+  category: productivity
+  price_type: free
+  free_months: null
+  countries: [CA]
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: Brock University only. Paid for by Brock Library. Works while your Brock login works.
+  how_to_claim:
+  - Open the Brock CS books research guide
+  - Choose O'Reilly for Higher Education
+  - Sign in with Brock credentials
+  official_url: https://researchguides.library.brocku.ca/c.php?g=732846&p=5266909
+  affiliate_url: null
+  source_note: 'sourced: https://researchguides.library.brocku.ca/c.php?g=732846&p=5266909'
+  ca_school_email_source: https://researchguides.library.brocku.ca/c.php?g=732846&p=5266909
+  last_verified: 2026-10-19
+  status: active
+  schools: [brocku.ca]
+  logo: oreilly.svg
+  banner_color: '#D3002D'
+  logo_color: '#FFFFFF'
+
+- id: matlab-brock-tah
+  brand: MathWorks (Brock campus licence)
+  title: MATLAB + Simulink + self-paced courses (Total Academic Headcount)
+  category: dev-tools
+  price_type: free
+  free_months: null
+  countries: [CA]
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: Brock University only, through the Brock campus licence. Sign in with your @brocku.ca email.
+  how_to_claim:
+  - Open the Brock TAH portal
+  - Sign in / create MathWorks account with @brocku.ca
+  - Install MATLAB
+  official_url: https://www.mathworks.com/academia/tah-portal/brock-university-31490129.html
+  affiliate_url: null
+  source_note: 'sourced: https://www.mathworks.com/academia/tah-portal/brock-university-31490129.html'
+  ca_school_email_source: https://www.mathworks.com/academia/tah-portal/brock-university-31490129.html
+  last_verified: 2026-10-19
+  status: active
+  schools: [brocku.ca]
+  logo: null
+  banner_color: '#F1F5F9'

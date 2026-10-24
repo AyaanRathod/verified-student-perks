@@ -37,6 +37,6 @@ GitHub Actions does the scheduled half:
 ## Ground rules
 
 - Facts come from official brand pages only. Please don't copy data from UNiDAYS, Student Beans or other aggregators.
-- Brand names as text only. No logos.
+- Official logos may be shown unaltered, only to identify the deal. No endorsement is implied. Logos belong to their owners.
 - Any affiliate link goes in `affiliate_url` and is always shown with a "Paid link" label.
 - Be kind in issues and reviews.

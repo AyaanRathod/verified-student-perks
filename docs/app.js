@@ -28,10 +28,63 @@ function priceBadge(deal) {
   return '<span class="badge tag">Free</span>';
 }
 
+function safeHex(value) {
+  return /^#[0-9A-Fa-f]{3,8}$/.test(value || "") ? value : "";
+}
+
+function safeLogoFile(value) {
+  return /^[a-z0-9.-]+\.svg$/i.test(value || "") ? value : "";
+}
+
+function bannerHtml(deal) {
+  var background = safeHex(deal.banner_color) || "#F1F5F9";
+  var brand = escapeHtml(deal.brand);
+  var file = safeLogoFile(deal.logo);
+  if (!file) {
+    return '<div class="card-banner" style="background:' + background + '"><span class="banner-name">' + brand + "</span></div>";
+  }
+  var fill = safeHex(deal.logo_color);
+  if (fill) {
+    return '<div class="card-banner logo" style="background:' + background + '" data-logo="' + escapeHtml(file) + '" data-fill="' + fill + '" data-alt="' + brand + ' logo"></div>';
+  }
+  return '<div class="card-banner logo" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo"></div>';
+}
+
+function paintColoredLogos(root) {
+  if (!root) return;
+  Array.prototype.forEach.call(root.querySelectorAll(".card-banner[data-logo]"), function (slot) {
+    var file = slot.getAttribute("data-logo");
+    var fill = slot.getAttribute("data-fill");
+    if (!safeLogoFile(file) || !safeHex(fill)) return;
+    fetch("logos/" + file).then(function (response) {
+      if (!response.ok) throw new Error("logo");
+      return response.text();
+    }).then(function (text) {
+      var parsed = new DOMParser().parseFromString(text, "image/svg+xml");
+      var svg = parsed.querySelector("svg");
+      if (!svg || parsed.querySelector("parsererror")) return;
+      parsed.querySelectorAll("script").forEach(function (node) { node.remove(); });
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", slot.getAttribute("data-alt") || "");
+      svg.setAttribute("fill", fill);
+      svg.style.color = fill;
+      svg.style.height = slot.closest(".deal") ? "96px" : "64px";
+      svg.style.width = "auto";
+      svg.style.maxWidth = "70%";
+      svg.querySelectorAll("*").forEach(function (node) {
+        var current = node.getAttribute("fill");
+        if (current && current !== "none") node.setAttribute("fill", fill);
+      });
+      slot.replaceChildren(svg);
+    }).catch(function () {});
+  });
+}
+
 function renderCards(target, deals) {
   target.innerHTML = deals.map(function (deal) {
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
     return '<article class="card">' +
+      bannerHtml(deal) +
       '<div class="brand">' + escapeHtml(deal.brand) + "</div>" +
       "<h3>" + escapeHtml(deal.title) + "</h3>" +
       '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
@@ -40,6 +93,7 @@ function renderCards(target, deals) {
       '<div class="foot"><a class="btn" href="deal.html?id=' + encodeURIComponent(deal.id) + '">See deal</a>' + paid + "</div>" +
     "</article>";
   }).join("");
+  paintColoredLogos(target);
 }
 
 function findSchool(domain, schools) {
