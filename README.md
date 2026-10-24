@@ -20,10 +20,12 @@
 
 <h3 align="center">Student perks that actually work for <i>you</i>.<br>Checked by country 🇨🇦 🇺🇸 and school email ✉️, with a date on every deal.</h3>
 
+<p align="center"><a href="https://ayaanrathod.github.io/verified-student-perks/"><b>Open the live site</b></a></p>
+
 <p align="center"><b>⭐ If this looks useful, a star helps other students find it.</b></p>
 
 > [!NOTE]
-> **Early development.** PerkCheck is a placeholder name, and nothing is live yet unless it's checked off in the [roadmap](#-roadmap).
+> **The site is live.** [PerkCheck](https://ayaanrathod.github.io/verified-student-perks/) checks a school email in the browser. 13 deals are hand-checked. The goal is 30 to 50.
 
 ---
 
@@ -58,7 +60,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
   <tr>
     <td valign="top">
       <h3>✅ Last verified date</h3>
-      Every deal shows when it was last checked, plus a public changelog.
+      Every deal shows when it was last checked.
     </td>
     <td valign="top">
       <h3>🤖 Nightly bot</h3>
@@ -71,13 +73,13 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
   </tr>
 </table>
 
-<sub>All features are planned and get checked off in the roadmap as they ship.</sub>
+<sub>The email checker, country tags, trial filter, last-verified date, nightly check, and paid-link label are in the project today.</sub>
 
 ---
 
 ## 📸 Sneak peek
 
-<p align="center"><i>Early mockups with sample data. The real site is being built from scratch.</i></p>
+<p align="center"><i>The live site is <a href="https://ayaanrathod.github.io/verified-student-perks/">ayaanrathod.github.io/verified-student-perks</a>. These pictures are the early layout. Students use the site in <code>docs/</code>.</i></p>
 
 <p align="center">
   <img src="assets/mockup-home.png" alt="Home page, early mockup" width="49%">
@@ -119,8 +121,8 @@ flowchart TD
     H --> D
 ```
 
-- **Email check:** the site matches your email's domain (like `brocku.ca`) against the open [swot](https://github.com/JetBrains/swot) and [university-domains-list](https://github.com/Hipo/university-domains-list) databases, right in your browser. A result names the school and how that deal was checked. Each brand's own verifier makes the final call.
-- **Reports:** every deal gets a **Report broken deal** button that opens a GitHub issue for the weekly review.
+- **Email check:** the site matches your email's domain (like `brocku.ca`) against [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list) at commit [`603e10f51b67c6553b9bca9aecc0db4c2417ed10`](https://github.com/Hipo/university-domains-list/tree/603e10f51b67c6553b9bca9aecc0db4c2417ed10), right in your browser. A result names the school and how that deal was checked. Each brand's own verifier makes the final call.
+- **Reports:** every deal gets a **Report broken deal** button that opens a GitHub issue.
 - **No database:** the site is built straight from `deals.yaml`.
 
 </details>
@@ -135,7 +137,7 @@ I'm building this myself and treating it like a real product, not a weekend demo
 |---|---|
 | The data design and eligibility rules | Data and validation first |
 | Checking every deal on its official page | Small, reviewed pull requests |
-| Reviewing and understanding every change | Tests for the email checker and filters |
+| Reviewing and understanding every change | Tests for the deal file, the link check, and the Monday watch |
 | The architecture: a simple static site | Weekly notes in [DEVLOG.md](DEVLOG.md) |
 
 <details>
@@ -143,14 +145,17 @@ I'm building this myself and treating it like a real product, not a weekend demo
 <br>
 
 <p>
-  <img src="https://img.shields.io/badge/Next.js%20or%20Astro-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js or Astro">
-  <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white" alt="Netlify">
+  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="GitHub Pages">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions">
   <img src="https://img.shields.io/badge/YAML-CB171E?style=flat-square&logo=yaml&logoColor=white" alt="YAML">
 </p>
 
-School domain data with thanks to [JetBrains/swot](https://github.com/JetBrains/swot) and [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list).
+Built today: plain HTML, CSS and JavaScript in `docs/` on GitHub Pages, Python scripts, GitHub Actions, and YAML.
+
+**Planned:** Move to Astro and Netlify when I'll add school pages and paid links.
+
+School domain data comes from [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list) at commit [`603e10f51b67c6553b9bca9aecc0db4c2417ed10`](https://github.com/Hipo/university-domains-list/tree/603e10f51b67c6553b9bca9aecc0db4c2417ed10).
 
 </details>
 
@@ -188,11 +193,11 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 
 ## 🗺️ Roadmap
 
-- [x] **Week 1, started:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
-- [ ] **Week 1, still open:** 30 to 50 hand-checked deals
-- [x] **Week 2, preview:** email check, filters, deal pages, and a GitHub Pages site in `docs/`
-- [ ] **Week 2, still open:** more checked deals, then the public Pages address
-- [ ] **Week 3:** nightly link-check bot, weekly review, "Report broken deal" button
+- [x] **Week 1:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
+- [ ] **Still open:** 30 to 50 hand-checked deals. 13 are checked.
+- [x] **Week 2:** email check, filters, deal pages, and the live GitHub Pages site
+- [x] **Report broken deal** button. It opens a GitHub issue.
+- [ ] **Week 3, still open:** weekly review
 - [ ] **Later:** "Graduating soon?" guide, deal changelog, more countries, free listings for student-run businesses and clubs
 
 ---
