@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <header class="nav">
     <a class="logo" href="index.html"><i>✓</i>PerkCheck</a>
     <nav class="links">
       <span class="sample" id="deal-count"></span>
-      <a href="results.html">Perks</a>
-      <a href="#about">About</a>
+      <a class="nav-text" href="results.html">Perks</a>
+      <a class="nav-text" href="#about">About</a>
       <a class="repo" href="https://github.com/AyaanRathod/verified-student-perks" aria-label="Star PerkCheck on GitHub"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
       <button class="mode" type="button" id="theme" aria-label="Switch color mode">☾</button>
     </nav>
@@ -23,13 +23,13 @@
       <p class="sub">Student deals checked for Canada and the United States. Each deal shows the date of the last check.</p>
       <form class="form" id="email-form" action="results.html" method="get">
         <label class="visually-hidden" for="email">School email</label>
-        <input class="email" id="email" name="email" type="email" required placeholder="Enter your school email (name@brocku.ca)" autocomplete="email">
+        <input class="email" id="email" type="email" required placeholder="Enter your school email (name@brocku.ca)" autocomplete="email">
+        <p id="school-hint" aria-live="polite"></p>
+        <select id="country-pick" hidden>
+          <option value="CA">Canada</option>
+          <option value="US">United States</option>
+        </select>
         <div class="frow">
-          <div class="toggle" role="group" aria-label="Country preview">
-            <button type="button" id="pick-ca" aria-pressed="true">Canada</button>
-            <button type="button" id="pick-us" aria-pressed="false">United States</button>
-          </div>
-          <input type="hidden" name="country" id="country" value="CA">
           <button class="btn" type="submit">Check my perks</button>
         </div>
       </form>
@@ -74,25 +74,67 @@
   <script src="deals.js?v=2"></script>
   <script src="app.js?v=5"></script>
   <script>
+    var schools = null;
+    var regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+    var emailInput = document.getElementById("email");
+    var hint = document.getElementById("school-hint");
+    var countryPick = document.getElementById("country-pick");
+
+    function emailDomain(value) {
+      var text = String(value || "").trim().toLowerCase();
+      var at = text.lastIndexOf("@");
+      if (at === -1) return "";
+      return text.slice(at + 1);
+    }
+
+    function regionName(code) {
+      try { return regionNames.of(code) || code; } catch (error) { return code; }
+    }
+
+    function showHint() {
+      var domain = emailDomain(emailInput.value);
+      if (!domain || !schools) {
+        hint.textContent = "";
+        countryPick.hidden = true;
+        return;
+      }
+      var school = findSchool(domain, schools);
+      if (school) {
+        hint.textContent = school.name + " · " + regionName(school.alpha_two_code);
+        countryPick.hidden = true;
+        return;
+      }
+      hint.textContent = "We could not find this school. Pick your country:";
+      countryPick.hidden = false;
+    }
+
+    emailInput.addEventListener("input", showHint);
+    loadSchools().then(function (list) {
+      schools = list;
+      showHint();
+    });
+
     document.getElementById("email-form").addEventListener("submit", function (event) {
       event.preventDefault();
-      var email = document.getElementById("email").value.trim();
-      var country = document.getElementById("country").value === "US" ? "US" : "CA";
-      window.location.href = "results.html#email=" + encodeURIComponent(email) + "&country=" + country;
+      var email = emailInput.value.trim();
+      function go() {
+        try { sessionStorage.setItem("perkcheck-email", email); } catch (error) {}
+        var school = schools ? findSchool(emailDomain(email), schools) : null;
+        if (school) {
+          window.location.href = "results.html";
+          return;
+        }
+        var country = countryPick.value === "US" ? "US" : "CA";
+        window.location.href = "results.html?country=" + country;
+      }
+      if (schools) go();
+      else loadSchools().then(function (list) { schools = list; go(); });
     });
     var activeDeals = (window.PERKCHECK_DEALS || []).filter(function (deal) {
       return deal.status === "active";
     });
     document.getElementById("deal-count").textContent = activeDeals.length + " checked deals";
     renderCards(document.getElementById("home-deals"), activeDeals);
-    var country = document.getElementById("country");
-    document.getElementById("pick-ca").addEventListener("click", function () { setCountry("CA"); });
-    document.getElementById("pick-us").addEventListener("click", function () { setCountry("US"); });
-    function setCountry(code) {
-      country.value = code;
-      document.getElementById("pick-ca").setAttribute("aria-pressed", code === "CA" ? "true" : "false");
-      document.getElementById("pick-us").setAttribute("aria-pressed", code === "US" ? "true" : "false");
-    }
   </script>
 </body>
 </html>
