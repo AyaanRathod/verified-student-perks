@@ -120,7 +120,7 @@
   free_months: null
   countries: [CA, US]
   ca_school_email: accepted
-  verification: other
+  verification: github-education
   email_rules: Needs an approved GitHub Education student account. GitHub re-checks eligibility monthly.
   how_to_claim:
   - Get verified in GitHub Education
@@ -262,7 +262,7 @@
   free_months: null
   countries: [CA, US]
   ca_school_email: accepted
-  verification: other
+  verification: github-education
   email_rules: Claimed through the GitHub Student Developer Pack with an approved GitHub student account. Renewed annually.
   how_to_claim:
   - Open JetBrains offer on education.github.com/pack

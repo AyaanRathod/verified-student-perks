@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your perks · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="nav">
@@ -43,24 +43,27 @@
       </main>
     </div>
   </div>
-  <footer>A result is “likely eligible”. The brand makes the final check.</footer>
+  <footer>Each perk says how it was verified. The brand makes the final check.</footer>
   <script src="deals.js?v=2"></script>
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=5"></script>
   <script>
-    var params = new URLSearchParams(location.search);
-    var email = (params.get("email") || "").trim().toLowerCase();
-    var picked = params.get("country") === "US" ? "US" : "CA";
+    var email = "";
+    var picked = "CA";
     var schools = null;
 
-    var categories = ["dev-tools", "design", "productivity", "music-video", "ai-tools", "shopping", "banking"];
-    var verifyNames = {
-      "school-email": "School email",
-      "sheerid": "SheerID",
-      "unidays": "UNiDAYS",
-      "student-beans": "Student Beans",
-      "id-upload": "ID upload",
-      "other": "Other"
-    };
+    function readHash() {
+      var params = new URLSearchParams(location.hash.slice(1));
+      email = (params.get("email") || "").trim().toLowerCase();
+      var school = schools && email ? findSchool(email.split("@")[1] || "", schools) : null;
+      if (school && (school.alpha_two_code === "CA" || school.alpha_two_code === "US")) picked = school.alpha_two_code;
+      else if (!email) picked = params.get("country") === "US" ? "US" : "CA";
+      else picked = "";
+      document.querySelectorAll('input[name="country"]').forEach(function (box) {
+        box.checked = picked !== "" && box.value === picked;
+      });
+    }
+
+    var categories = ["dev-tools", "design", "productivity", "music-video", "ai-tools", "shopping"];
     document.getElementById("categories").innerHTML = categories.map(function (name) {
       return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + name + "</label>";
     }).join("");
@@ -72,44 +75,50 @@
 
     loadSchools().then(function (list) {
       schools = list;
-      if (email) {
-        var school = findSchool(email.split("@")[1] || "", schools);
-        if (school) picked = school.alpha_two_code === "US" ? "US" : (school.alpha_two_code === "CA" ? "CA" : picked);
-      }
-      document.querySelectorAll('input[name="country"]').forEach(function (box) {
-        box.checked = box.value === picked;
-      });
+      readHash();
+      draw();
+    });
+    window.addEventListener("hashchange", function () {
+      readHash();
       draw();
     });
 
     function draw() {
       var domain = email.split("@")[1] || "";
       var school = schools ? findSchool(domain, schools) : null;
-      var country = school ? school.alpha_two_code : picked;
       var banner = document.getElementById("banner");
-      if (!email) {
-        banner.textContent = "No email yet. This is a preview of the checked deals. Pick a country in the filter.";
-      } else if (!school) {
-        banner.textContent = domain + " is not in the public school list. The list below is a preview for " + (country === "CA" ? "Canada" : country) + ".";
-      } else {
-        banner.innerHTML = "<b>" + domain + "</b> matches " + school.name + " (" + school.alpha_two_code + "). These deals are likely eligible. The brand makes the final check.";
+      var title = document.getElementById("blocked-title");
+      var fitsBox = document.getElementById("fits");
+      var blockedBox = document.getElementById("blocked");
+      if (!school) {
+        banner.textContent = email ? "We don't recognize this as a school email." : "Enter a school email on the home page.";
+        document.getElementById("count").textContent = "0 perks for this email";
+        fitsBox.innerHTML = '<p class="empty">' + (email ? "No checked deal matches this email." : "Enter a school email to see perks.") + "</p>";
+        title.hidden = true;
+        blockedBox.innerHTML = "";
+        return;
       }
+
+      var country = school.alpha_two_code;
+      var place = country === "US" ? "United States" : (country === "CA" ? "Canada" : country);
+      banner.innerHTML = "<b>" + escapeHtml(domain) + "</b> matches " + escapeHtml(school.name) + " (" + place + ").";
 
       var active = window.PERKCHECK_DEALS.filter(function (deal) { return deal.status === "active"; });
       var fits = [];
       var blocked = [];
       active.forEach(function (deal) {
+        if (!schoolListAllows(deal, domain)) return;
+        if (country === "CA" && deal.ca_school_email === "unknown") return;
         if (isBlocked(deal, country)) blocked.push(deal);
         else if (fitsCountry(deal, country) && passesFilters(deal, true)) fits.push(deal);
       });
       blocked = blocked.filter(function (deal) { return passesFilters(deal, false); });
       document.getElementById("count").textContent = fits.length + (fits.length === 1 ? " perk for this email" : " perks for this email");
-      var fitsBox = document.getElementById("fits");
       if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
-      else renderCards(fitsBox, fits);
-      var title = document.getElementById("blocked-title");
+      else renderCards(fitsBox, fits, country);
       title.hidden = blocked.length === 0;
-      renderCards(document.getElementById("blocked"), blocked, true);
+      if (blocked.length) renderCards(blockedBox, blocked, country);
+      else blockedBox.innerHTML = "";
     }
 
     function selected(name) {

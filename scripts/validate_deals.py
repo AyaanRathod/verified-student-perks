@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -25,7 +26,6 @@ CATEGORIES = {
     "music-video",
     "ai-tools",
     "shopping",
-    "banking",
 }
 PRICE_TYPES = {"free", "discount"}
 VERIFICATIONS = {
@@ -34,8 +34,11 @@ VERIFICATIONS = {
     "unidays",
     "student-beans",
     "id-upload",
+    "github-education",
     "other",
 }
+HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
+LOGO_FILE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*\.svg$")
 STATUSES = {"active", "needs-review", "expired"}
 SCHOOL_EMAIL = {"accepted", "rejected", "unknown"}
 REQUIRED = (
@@ -214,7 +217,45 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
     if watch is not None and (not isinstance(watch, str) or not watch.strip()):
         err("watch_text must be a phrase or omitted")
 
+    if status == "active":
+        banner = deal.get("banner_color")
+        if not isinstance(banner, str) or not HEX_COLOR.fullmatch(banner):
+            err("banner_color is required for active deals and must be a #RRGGBB color")
+
+    if "logo_color" in deal and deal.get("logo_color") is not None:
+        paint = deal.get("logo_color")
+        if not isinstance(paint, str) or not HEX_COLOR.fullmatch(paint):
+            err("logo_color must be a #RRGGBB color")
+
+    logo = deal.get("logo", None)
+    if logo is not None:
+        if not isinstance(logo, str) or not LOGO_FILE.fullmatch(logo):
+            err("logo must be a file name ending in .svg, with no slashes")
+        elif not (ROOT / "docs" / "logos" / logo).is_file():
+            err(f"logo file docs/logos/{logo} does not exist")
+
+    if status == "active" and school == "accepted" and not is_https(deal.get("ca_school_email_source")):
+        err("ca_school_email_source must be an https URL when a Canadian school email is accepted")
+
+    if "schools" in deal and deal.get("schools") is not None:
+        domains = deal.get("schools")
+        if not isinstance(domains, list) or not domains or not all(_is_domain(item) for item in domains):
+            err("schools must be a list of lowercase domains")
+
     return errors
+
+
+def _is_domain(value) -> bool:
+    return (
+        isinstance(value, str)
+        and value == value.lower()
+        and "." in value
+        and "/" not in value
+        and "\\" not in value
+        and " " not in value
+        and not value.startswith(".")
+        and not value.endswith(".")
+    )
 
 
 def validate_candidates(candidates) -> list[str]:

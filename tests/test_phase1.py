@@ -23,10 +23,13 @@ def deal(**overrides):
         "verification": "school-email",
         "email_rules": "Any school email",
         "how_to_claim": ["Open the page", "Verify your school email", "Accept the plan"],
-        "official_url": "https://brand.example/students",
-        "source_note": "sourced: https://brand.example/students",
+        "official_url": "https://brand.test/students",
+        "source_note": "sourced: https://brand.test/students",
         "last_verified": dt.date(2026, 10, 22),
         "status": "active",
+        "banner_color": "#112233",
+        "logo": None,
+        "ca_school_email_source": "https://brand.test/students",
     }
     base.update(overrides)
     return base
@@ -63,6 +66,40 @@ class ValidateDealsTest(unittest.TestCase):
             today=dt.date(2026, 10, 22),
         )
         self.assertTrue(any("must be rejected" in error for error in errors))
+
+    def test_bad_banner_color_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(banner_color="red")],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("banner_color" in error for error in errors))
+
+    def test_missing_logo_file_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(logo="not-a-real-logo.svg")],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("does not exist" in error for error in errors))
+
+    def test_null_logo_passes(self):
+        self.assertEqual(
+            validate_deals.validate_deals([deal(logo=None)], today=dt.date(2026, 10, 22)),
+            [],
+        )
+
+    def test_banking_category_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(category="banking")],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("category" in error for error in errors))
+
+    def test_accepted_without_source_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(ca_school_email_source=None)],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("ca_school_email_source" in error for error in errors))
 
     def test_duplicate_id(self):
         errors = validate_deals.validate_deals(

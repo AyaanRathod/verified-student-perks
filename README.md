@@ -44,7 +44,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
   <tr>
     <td width="33%" valign="top">
       <h3>✉️ Email checker</h3>
-      Type your school email and see the perks you're likely eligible for. Runs in your browser, and nothing is stored.
+      Type your school email and see the perks recorded for that school. Runs in your browser, and nothing is stored.
     </td>
     <td width="33%" valign="top">
       <h3>🇨🇦 Country tags</h3>
@@ -114,12 +114,12 @@ flowchart TD
     B -->|all good| E["Site build<br/>reads deals.yaml at build time"]
     A --> E
     E --> F["Student checks their school email<br/>domain matched in the browser"]
-    F --> G["Likely eligible perks<br/>filtered by country and trial length"]
+    F --> G["Perks for that school<br/>filtered by country and trial length"]
     G -->|something wrong?| H["Report broken deal button<br/>opens a GitHub issue"]
     H --> D
 ```
 
-- **Email check:** the site matches your email's domain (like `brocku.ca`) against the open [swot](https://github.com/JetBrains/swot) and [university-domains-list](https://github.com/Hipo/university-domains-list) databases, right in your browser. Results say **"likely eligible"** because each brand's own verifier makes the final call.
+- **Email check:** the site matches your email's domain (like `brocku.ca`) against the open [swot](https://github.com/JetBrains/swot) and [university-domains-list](https://github.com/Hipo/university-domains-list) databases, right in your browser. A result names the school and how that deal was checked. Each brand's own verifier makes the final call.
 - **Reports:** every deal gets a **Report broken deal** button that opens a GitHub issue for the weekly review.
 - **No database:** the site is built straight from `deals.yaml`.
 
@@ -165,13 +165,13 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 | `id` | yes | Short unique slug, e.g. `github-student-pack` |
 | `brand` | yes | Brand name as text (no logos) |
 | `title` | yes | One-line benefit |
-| `category` | yes | `dev-tools`, `design`, `productivity`, `music-video`, `ai-tools`, `shopping`, `banking` |
+| `category` | yes | `dev-tools`, `design`, `productivity`, `music-video`, `ai-tools`, `shopping` |
 | `price_type` | yes | `free` or `discount` |
 | `free_months` | no | Length of the free period in months |
 | `discount` | no | e.g. `50% off` |
 | `countries` | yes | Countries confirmed to work, e.g. `[CA, US]` |
 | `not_available_in` | no | Countries confirmed not to work, each with a source |
-| `verification` | yes | `school-email`, `sheerid`, `unidays`, `student-beans`, `id-upload`, `other` |
+| `verification` | yes | `school-email`, `sheerid`, `unidays`, `student-beans`, `id-upload`, `github-education`, `other` |
 | `email_rules` | no | Notes such as "any school-issued email" |
 | `ca_school_email` | yes | `accepted`, `rejected`, or `unknown`. `accepted` means a Canadian university `.ca` email can be used. Active deals cannot be `unknown`. |
 | `how_to_claim` | yes | 3 to 5 short steps |

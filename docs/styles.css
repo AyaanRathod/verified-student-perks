@@ -147,6 +147,8 @@ main { flex: 1; min-width: 0; }
 .steps { margin: 0; padding-left: 18px; }
 .steps li { margin: 8px 0; }
 .note { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.status { margin: 0; font-size: 14px; font-weight: 650; }
+.status a { color: var(--teal); }
 .page { padding: 28px 0 48px; }
 .back { color: var(--teal); text-decoration: none; font-weight: 650; }
 footer { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; padding: 22px; text-align: center; }

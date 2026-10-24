@@ -80,40 +80,90 @@ function paintColoredLogos(root) {
   });
 }
 
-function renderCards(target, deals) {
+var verifyNames = {
+  "school-email": "School email",
+  "sheerid": "SheerID",
+  "unidays": "UNiDAYS",
+  "student-beans": "Student Beans",
+  "id-upload": "ID upload",
+  "github-education": "GitHub Education",
+  "other": "Other"
+};
+
+function countryPhrase(country) {
+  if (country === "US") return "the United States";
+  if (country === "CA") return "Canada";
+  return country;
+}
+
+function cardStatus(deal, country) {
+  if (isBlocked(deal, country)) return "Not available in " + countryPhrase(country);
+  if (deal.ca_school_email === "accepted" && deal.ca_school_email_source && deal.verification === "school-email") {
+    return "Works with your school email";
+  }
+  return "Available in " + countryPhrase(country) + ", verified through " + (verifyNames[deal.verification] || "Other");
+}
+
+function cardStatusHtml(deal, country) {
+  var text = cardStatus(deal, country);
+  if (!isBlocked(deal, country)) return escapeHtml(text);
+  var item = (deal.not_available_in || []).filter(function (entry) { return entry.country === country; })[0];
+  if (item && typeof item.source === "string" && item.source.indexOf("https://") === 0) {
+    return '<a href="' + escapeHtml(item.source) + '">' + escapeHtml(text) + "</a>";
+  }
+  return escapeHtml(text);
+}
+
+function renderCards(target, deals, country) {
   target.innerHTML = deals.map(function (deal) {
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
+    var status = country ? '<p class="status">' + cardStatusHtml(deal, country) + "</p>" : "";
+    var href = "deal.html?id=" + encodeURIComponent(deal.id) + (country ? "&country=" + encodeURIComponent(country) : "");
     return '<article class="card">' +
       bannerHtml(deal) +
       '<div class="brand">' + escapeHtml(deal.brand) + "</div>" +
       "<h3>" + escapeHtml(deal.title) + "</h3>" +
       '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
       '<div class="row"><span class="badge chip">Checked ' + formatDate(deal.last_verified) + "</span></div>" +
+      status +
       '<p class="note">' + escapeHtml(deal.email_rules || "") + "</p>" +
-      '<div class="foot"><a class="btn" href="deal.html?id=' + encodeURIComponent(deal.id) + '">See deal</a>' + paid + "</div>" +
+      '<div class="foot"><a class="btn" href="' + href + '">See deal</a>' + paid + "</div>" +
     "</article>";
   }).join("");
   paintColoredLogos(target);
 }
 
+function hostMatches(host, schoolDomain) {
+  schoolDomain = String(schoolDomain || "").toLowerCase();
+  host = String(host || "").toLowerCase();
+  return !!schoolDomain && (host === schoolDomain || host.endsWith("." + schoolDomain));
+}
+
 function findSchool(domain, schools) {
-  if (!domain) return null;
-  var host = domain.toLowerCase();
+  if (!domain || !schools) return null;
+  var host = String(domain).toLowerCase();
   for (var i = 0; i < schools.length; i++) {
     var domains = schools[i].domains || [];
     for (var j = 0; j < domains.length; j++) {
-      var schoolDomain = String(domains[j]).toLowerCase();
-      if (host === schoolDomain || host.endsWith("." + schoolDomain)) return schools[i];
+      if (hostMatches(host, domains[j])) return schools[i];
     }
   }
   return null;
 }
 
+function schoolListAllows(deal, domain) {
+  if (!deal.schools || !deal.schools.length) return true;
+  var host = String(domain || "").toLowerCase();
+  return deal.schools.some(function (item) { return hostMatches(host, item); });
+}
+
 function fitsCountry(deal, country) {
+  if (country === "CA" && deal.ca_school_email === "unknown") return false;
   return (deal.countries || []).indexOf(country) !== -1 && !(country === "CA" && deal.ca_school_email === "rejected");
 }
 
 function isBlocked(deal, country) {
+  if (country === "CA" && deal.ca_school_email === "unknown") return false;
   var excluded = (deal.not_available_in || []).some(function (item) { return item.country === country; });
   if (excluded) return true;
   return country === "CA" && deal.ca_school_email === "rejected";
@@ -121,13 +171,21 @@ function isBlocked(deal, country) {
 
 var FALLBACK_SCHOOLS = [
   { name: "Brock University", domains: ["brocku.ca"], alpha_two_code: "CA" },
-  { name: "University of Toronto", domains: ["utoronto.ca"], alpha_two_code: "CA" },
+  { name: "University of Toronto", domains: ["utoronto.ca", "toronto.edu"], alpha_two_code: "CA" },
   { name: "University of Waterloo", domains: ["uwaterloo.ca"], alpha_two_code: "CA" },
+  { name: "York University", domains: ["yorku.ca"], alpha_two_code: "CA" },
+  { name: "McMaster University", domains: ["mcmaster.ca"], alpha_two_code: "CA" },
+  { name: "University of Western Ontario", domains: ["uwo.ca"], alpha_two_code: "CA" },
+  { name: "Queen's University", domains: ["queensu.ca"], alpha_two_code: "CA" },
+  { name: "University of British Columbia", domains: ["ubc.ca"], alpha_two_code: "CA" },
+  { name: "McGill University", domains: ["mcgill.ca"], alpha_two_code: "CA" },
+  { name: "Sheridan College", domains: ["sheridancollege.ca"], alpha_two_code: "CA" },
+  { name: "Niagara College Canada", domains: ["niagaracollege.ca"], alpha_two_code: "CA" },
   { name: "Massachusetts Institute of Technology", domains: ["mit.edu"], alpha_two_code: "US" }
 ];
 
 function loadSchools() {
-  return fetch("https://cdn.jsdelivr.net/gh/Hipo/university-domains-list@master/world_universities_and_domains.json")
+  return fetch("https://cdn.jsdelivr.net/gh/Hipo/university-domains-list@603e10f51b67c6553b9bca9aecc0db4c2417ed10/world_universities_and_domains.json")
     .then(function (response) {
       if (!response.ok) throw new Error("school list unavailable");
       return response.json();

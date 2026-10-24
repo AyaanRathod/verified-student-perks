@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deal · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="nav">
@@ -18,9 +18,11 @@
   <main class="wrap page" id="deal"></main>
   <footer>PerkCheck does not store your email.</footer>
   <script src="deals.js?v=2"></script>
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=5"></script>
   <script>
-    var id = new URLSearchParams(location.search).get("id");
+    var params = new URLSearchParams(location.search);
+    var id = params.get("id");
+    var country = params.get("country");
     var deal = (window.PERKCHECK_DEALS || []).find(function (item) { return item.id === id; });
     var box = document.getElementById("deal");
     if (!deal) {
@@ -39,6 +41,7 @@
           "<h1>" + escapeHtml(deal.title) + "</h1>" +
           '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
           '<div class="row"><span class="badge chip">Checked ' + formatDate(deal.last_verified) + "</span></div>" +
+          (country ? '<p class="status">' + cardStatusHtml(deal, country) + "</p>" : "") +
           "<p>" + escapeHtml(deal.email_rules || "") + "</p>" +
           (excluded ? "<p>" + excluded + "</p>" : "") +
           "<h2>How to claim</h2><ol class=\"steps\">" +
