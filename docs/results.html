@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your perks · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
   <header class="nav">
@@ -20,28 +20,28 @@
     <p class="note" id="school-list-notice" hidden></p>
     <nav class="cat-bar" id="cat-bar" hidden aria-label="Categories"></nav>
     <div class="layout">
-      <aside id="filters">
-        <div id="country-filter" hidden>
-          <h2>Country</h2>
-          <div id="countries"></div>
-        </div>
-        <h2>Price</h2>
-        <label class="opt"><input type="checkbox" name="price" value="free" checked> Free</label>
-        <label class="opt"><input type="checkbox" name="price" value="discount" checked> Discounted</label>
-        <h2>Free period</h2>
-        <label class="opt"><input type="radio" name="months" value="0" checked> Any</label>
-        <label class="opt"><input type="radio" name="months" value="3"> 3 months or more</label>
-        <label class="opt"><input type="radio" name="months" value="6"> 6 months or more</label>
-        <label class="opt"><input type="radio" name="months" value="12"> 12 months or more</label>
-        <h2>Category</h2>
-        <div id="categories"></div>
-        <h2>How you verify</h2>
-        <div id="verifications"></div>
+      <aside>
+        <details class="filters" id="filters">
+          <summary>Filters</summary>
+          <h2>Price</h2>
+          <label class="opt"><input type="checkbox" name="price" value="free" checked> Free</label>
+          <label class="opt"><input type="checkbox" name="price" value="discount" checked> Discounted</label>
+          <h2>Free period</h2>
+          <label class="opt"><input type="radio" name="months" value="0" checked> Any</label>
+          <label class="opt"><input type="radio" name="months" value="3"> 3 months or more</label>
+          <label class="opt"><input type="radio" name="months" value="6"> 6 months or more</label>
+          <label class="opt"><input type="radio" name="months" value="12"> 12 months or more</label>
+          <h2>How you verify</h2>
+          <div id="verifications"></div>
+        </details>
       </aside>
       <main>
         <div class="top" id="catalog"><h2 id="count">Perks</h2></div>
         <section class="featured" id="featured" hidden>
-          <h2>Featured</h2>
+          <div class="section-head">
+            <h2>Featured</h2>
+            <span class="swipe-hint" id="swipe-hint" hidden>swipe →</span>
+          </div>
           <div class="featured-row" id="featured-row"></div>
         </section>
         <div id="fits"></div>
@@ -57,7 +57,6 @@
   <script src="app.js?v=9"></script>
   <script>
     var email = "";
-    var picked = "";
     var schools = null;
     var regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
@@ -82,16 +81,6 @@
 
     function readVisit() {
       email = storedEmail();
-      var school = schools && email ? findSchool(emailDomain(email), schools) : null;
-      picked = school ? school.alpha_two_code : "";
-      var filter = document.getElementById("country-filter");
-      var box = document.getElementById("countries");
-      filter.hidden = !picked;
-      if (!picked) {
-        box.innerHTML = "";
-        return;
-      }
-      box.innerHTML = '<label class="opt"><input type="checkbox" name="country" value="' + escapeHtml(picked) + '" checked> ' + escapeHtml(regionName(picked)) + "</label>";
     }
 
     function showSchoolListNotice() {
@@ -105,12 +94,20 @@
       notice.textContent = "The school list did not load. Only a few schools are recognized right now. Try again later.";
     }
 
-    document.getElementById("categories").innerHTML = Object.keys(CATEGORY_LABELS).map(function (name) {
-      return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + escapeHtml(CATEGORY_LABELS[name]) + "</label>";
-    }).join("");
     document.getElementById("verifications").innerHTML = Object.keys(verifyNames).map(function (name) {
       return '<label class="opt"><input type="checkbox" name="verification" value="' + name + '" checked> ' + verifyNames[name] + "</label>";
     }).join("");
+
+    var filterPanel = document.getElementById("filters");
+    var wideFilters = window.matchMedia("(min-width: 801px)");
+    function syncFilters() {
+      filterPanel.open = wideFilters.matches;
+    }
+    syncFilters();
+    wideFilters.addEventListener("change", syncFilters);
+    filterPanel.addEventListener("toggle", function () {
+      if (wideFilters.matches) filterPanel.open = true;
+    });
 
     document.querySelector("aside").addEventListener("change", draw);
     document.getElementById("cat-bar").addEventListener("click", function (event) {
@@ -119,8 +116,35 @@
       var target = document.getElementById(button.getAttribute("data-target"));
       if (!target) return;
       markChip(button.getAttribute("data-target"));
+      if (target === filterPanel) target.open = true;
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+
+    (function () {
+      var row = document.getElementById("featured-row");
+      var startX = 0;
+      var startLeft = 0;
+      var dragged = false;
+      row.addEventListener("pointerdown", function (event) {
+        if (event.pointerType === "touch") return;
+        startX = event.clientX;
+        startLeft = row.scrollLeft;
+        dragged = false;
+        row.setPointerCapture(event.pointerId);
+      });
+      row.addEventListener("pointermove", function (event) {
+        if (!row.hasPointerCapture(event.pointerId)) return;
+        var delta = event.clientX - startX;
+        if (Math.abs(delta) > 6) dragged = true;
+        row.scrollLeft = startLeft - delta;
+      });
+      row.addEventListener("click", function (event) {
+        if (!dragged) return;
+        event.preventDefault();
+        event.stopPropagation();
+        dragged = false;
+      }, true);
+    })();
 
     loadSchools().then(function (list) {
       schools = list;
@@ -173,6 +197,13 @@
       Array.prototype.forEach.call(nodes, function (node) { sectionObserver.observe(node); });
     }
 
+    function updateSwipeHint() {
+      var row = document.getElementById("featured-row");
+      var hint = document.getElementById("swipe-hint");
+      hint.hidden = row.scrollWidth <= row.clientWidth + 1;
+    }
+    window.addEventListener("resize", updateSwipeHint);
+
     function draw() {
       var domain = emailDomain(email);
       var school = schools ? findSchool(domain, schools) : null;
@@ -223,9 +254,11 @@
       if (!featured.length) {
         featuredBox.hidden = true;
         document.getElementById("featured-row").innerHTML = "";
+        document.getElementById("swipe-hint").hidden = true;
       } else {
         featuredBox.hidden = false;
         renderCards(document.getElementById("featured-row"), featured, { country: country, schoolName: school.name, blocked: false, featured: true });
+        updateSwipeHint();
       }
 
       var cardOptions = { country: country, schoolName: school.name, blocked: false };
@@ -260,20 +293,11 @@
       });
     }
 
-    function passesFilters(deal, useCountry) {
-      var countries = selected("country");
+    function passesFilters(deal) {
       var prices = selected("price");
-      var cats = selected("category");
       var verifies = selected("verification");
       var minMonths = Number((document.querySelector('input[name="months"]:checked') || {}).value || 0);
-      if (useCountry && countries.length && deal.countries_scope !== "global" && !deal.countries.some(function (code) {
-        return code === "GLOBAL" || countries.indexOf(code) !== -1;
-      })) return false;
       if (prices.indexOf(deal.price_type) === -1) return false;
-      // Keep the deal when its own category is checked, or when it is a Pack offer
-      // and the GitHub Pack box is checked.
-      var packChecked = deal.github_pack === true && cats.indexOf("github-pack") !== -1;
-      if (cats.indexOf(deal.category) === -1 && !packChecked) return false;
       if (verifies.indexOf(deal.verification) === -1) return false;
       if (minMonths && !(deal.free_months >= minMonths)) return false;
       return true;
