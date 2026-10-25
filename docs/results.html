@@ -138,10 +138,18 @@
       });
     }
 
+    function inCategory(deal, key) {
+      // GitHub Pack is a source, not only a category. Termius stays under Coding tools
+      // and also shows under GitHub Pack. Other chips still match the category field.
+      if (key === "github-pack") return deal.category === "github-pack" || deal.github_pack === true;
+      return deal.category === key;
+    }
+
     function renderCatBar(fits) {
+      // fits.length is one count per deal. A deal in two sections is not counted twice.
       var buttons = ['<button type="button" class="cat-chip" data-target="catalog" aria-current="true">All ' + fits.length + "</button>"];
       Object.keys(CATEGORY_LABELS).forEach(function (key) {
-        var count = fits.filter(function (deal) { return deal.category === key; }).length;
+        var count = fits.filter(function (deal) { return inCategory(deal, key); }).length;
         if (!count) return;
         buttons.push('<button type="button" class="cat-chip" data-target="cat-' + key + '">' + escapeHtml(CATEGORY_LABELS[key]) + "</button>");
       });
@@ -224,15 +232,15 @@
       if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
       else {
         fitsBox.innerHTML = Object.keys(CATEGORY_LABELS).filter(function (key) {
-          return fits.some(function (deal) { return deal.category === key; });
+          return fits.some(function (deal) { return inCategory(deal, key); });
         }).map(function (key) {
-          var count = fits.filter(function (deal) { return deal.category === key; }).length;
+          var count = fits.filter(function (deal) { return inCategory(deal, key); }).length;
           return '<section class="cat-section" id="cat-' + key + '"><h2>' + escapeHtml(CATEGORY_LABELS[key]) + " · " + count + '</h2><div class="grid"></div></section>';
         }).join("");
         Object.keys(CATEGORY_LABELS).forEach(function (key) {
           var section = document.getElementById("cat-" + key);
           if (!section) return;
-          renderCards(section.querySelector(".grid"), fits.filter(function (deal) { return deal.category === key; }), cardOptions);
+          renderCards(section.querySelector(".grid"), fits.filter(function (deal) { return inCategory(deal, key); }), cardOptions);
         });
       }
       watchSections();
@@ -262,7 +270,10 @@
         return code === "GLOBAL" || countries.indexOf(code) !== -1;
       })) return false;
       if (prices.indexOf(deal.price_type) === -1) return false;
-      if (cats.indexOf(deal.category) === -1) return false;
+      // Keep the deal when its own category is checked, or when it is a Pack offer
+      // and the GitHub Pack box is checked.
+      var packChecked = deal.github_pack === true && cats.indexOf("github-pack") !== -1;
+      if (cats.indexOf(deal.category) === -1 && !packChecked) return false;
       if (verifies.indexOf(deal.verification) === -1) return false;
       if (minMonths && !(deal.free_months >= minMonths)) return false;
       return true;

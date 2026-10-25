@@ -257,6 +257,12 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
     if "featured" in deal and deal.get("featured") is not None and deal.get("featured") not in (True, False):
         err("featured must be true or false")
 
+    # Optional. Marks a perk that comes from the GitHub Student Developer Pack,
+    # even when its category is coding, cloud, or something else.
+    # Missing is fine. "yes" is not a bool, so it fails.
+    if "github_pack" in deal and deal.get("github_pack") is not None and not isinstance(deal.get("github_pack"), bool):
+        err("github_pack must be true or false")
+
     rank = deal.get("featured_rank")
     if "featured_rank" in deal and rank is not None:
         if isinstance(rank, bool) or not isinstance(rank, int) or rank < 1:

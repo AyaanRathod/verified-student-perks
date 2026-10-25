@@ -38,7 +38,22 @@ def deal(**overrides):
 class ValidateDealsTest(unittest.TestCase):
     def test_published_file(self):
         deals = validate_deals.load_yaml(ROOT / "data" / "deals.yaml")
-        self.assertEqual(validate_deals.validate_deals(deals, today=dt.date(2026, 10, 22)), [])
+        self.assertEqual(validate_deals.validate_deals(deals, today=dt.date(2026, 10, 24)), [])
+
+    def test_github_pack_true_passes(self):
+        # The flag is optional, and a real boolean true is valid.
+        self.assertEqual(
+            validate_deals.validate_deals([deal(github_pack=True)], today=dt.date(2026, 10, 22)),
+            [],
+        )
+
+    def test_github_pack_not_boolean_fails(self):
+        # A string is not a Python bool, so the validator names the field.
+        errors = validate_deals.validate_deals(
+            [deal(github_pack="yes")],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("github_pack" in error for error in errors))
 
     def test_active_unknown_email_rule_fails(self):
         errors = validate_deals.validate_deals(

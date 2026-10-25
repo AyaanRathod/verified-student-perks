@@ -4,6 +4,7 @@ window.PERKCHECK_DEALS = [
     "brand": "GitHub",
     "title": "Student Developer Pack, free developer tools while you're a student",
     "category": "github-pack",
+    "github_pack": true,
     "featured": true,
     "featured_rank": 1,
     "price_type": "free",
@@ -128,6 +129,7 @@ window.PERKCHECK_DEALS = [
     "brand": "GitHub",
     "title": "Copilot Student (free while GitHub Education verified)",
     "category": "github-pack",
+    "github_pack": true,
     "price_type": "free",
     "free_months": null,
     "countries": [
