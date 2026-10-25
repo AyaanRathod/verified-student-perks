@@ -84,6 +84,17 @@ function paintColoredLogos(root) {
   });
 }
 
+var CATEGORY_LABELS = {
+  "github-pack": "GitHub Pack",
+  ai: "AI",
+  coding: "Coding tools",
+  cloud: "Cloud",
+  design: "Design",
+  notes: "Notes & notebooks",
+  learning: "Learning",
+  shopping: "Shopping"
+};
+
 var verifyNames = {
   "school-email": "School email",
   "sheerid": "SheerID",
@@ -180,7 +191,7 @@ function renderCards(target, deals, options) {
     var href = cardHref(deal, options);
     var chips = country ? "" : '<div class="row">' + countryBadges(deal) + "</div>";
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
-    return '<a class="card' + (options.blocked ? " is-blocked" : "") + '" href="' + escapeHtml(href) + '">' +
+    return '<a class="card' + (options.blocked ? " is-blocked" : "") + (options.featured ? " is-featured" : "") + '" href="' + escapeHtml(href) + '">' +
       bannerHtml(deal) +
       logoTile(deal) +
       '<div class="card-copy">' +
@@ -223,7 +234,7 @@ function schoolListAllows(deal, domain) {
 function fitsCountry(deal, country) {
   if (country === "CA" && deal.ca_school_email === "unknown") return false;
   var codes = deal.countries || [];
-  var listed = codes.indexOf(country) !== -1 || codes.indexOf("GLOBAL") !== -1;
+  var listed = deal.countries_scope === "global" || codes.indexOf(country) !== -1 || codes.indexOf("GLOBAL") !== -1;
   var excluded = (deal.not_available_in || []).some(function (item) { return item.country === country; });
   if (!listed || excluded) return false;
   return !(country === "CA" && deal.ca_school_email === "rejected");

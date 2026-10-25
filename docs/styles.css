@@ -160,6 +160,24 @@ details.blocked .grid { margin-top: 12px; }
 .banner {
   margin: 20px auto; background: #f0f7f5; border: 1px solid #cfe6e0; border-radius: 12px; padding: 14px 18px; color: var(--teal-ink);
 }
+.cat-bar {
+  display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.cat-bar[hidden] { display: none; }
+.cat-chip {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  border-radius: 999px; padding: 0 14px; min-height: 40px; font-size: 14px; font-weight: 650;
+  cursor: pointer; flex: none;
+}
+.cat-chip[aria-current="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+.featured { margin-bottom: 8px; }
+.featured h2, .cat-section h2 { margin: 0 0 12px; font-size: 18px; }
+.cat-section { margin-top: 22px; }
+#catalog, #filters, .featured, .cat-section { scroll-margin-top: 120px; }
+.featured-row {
+  display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px;
+}
+.featured-row .card { flex: 0 0 240px; width: 240px; }
 body.dark .banner { background: #134e4a; border-color: #115e59; color: #ccfbf1; }
 .layout { display: flex; gap: 20px; align-items: flex-start; padding-bottom: 40px; }
 aside {
@@ -191,8 +209,16 @@ footer { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px
   .layout { flex-direction: column; }
   aside { width: 100%; }
   .sample { display: none; }
+  .cat-bar {
+    position: sticky; top: 64px; z-index: 1; flex-wrap: nowrap; overflow-x: auto;
+    scrollbar-width: none; background: var(--bg); padding: 8px 0;
+  }
+  .cat-bar::-webkit-scrollbar { display: none; }
   a.card { flex-direction: row; align-items: center; gap: 12px; min-height: 44px; }
   .card-banner { display: none; }
+  .featured-row .card { flex-direction: column; align-items: stretch; min-height: 0; }
+  .featured-row .card-banner { display: flex; }
+  .featured-row .logo-tile, .featured-row .chevron { display: none; }
   .logo-tile {
     display: flex; width: 56px; height: 56px; flex: none; border-radius: 12px;
     align-items: center; justify-content: center; overflow: hidden;

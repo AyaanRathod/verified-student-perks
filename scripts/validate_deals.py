@@ -153,6 +153,9 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
     elif "GLOBAL" in countries and any(code != "GLOBAL" for code in countries):
         err("GLOBAL cannot be combined with country codes")
 
+    if "countries_scope" in deal and deal.get("countries_scope") is not None and deal.get("countries_scope") != "global":
+        err('countries_scope must be "global"')
+
     excluded = []
     if "not_available_in" in deal and deal["not_available_in"] is not None:
         entries = deal["not_available_in"]

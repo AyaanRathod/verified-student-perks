@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your perks · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <header class="nav">
@@ -18,8 +18,9 @@
   <div class="wrap">
     <p class="banner" id="banner">Enter your school email to see your perks.</p>
     <p class="note" id="school-list-notice" hidden></p>
+    <nav class="cat-bar" id="cat-bar" hidden aria-label="Categories"></nav>
     <div class="layout">
-      <aside>
+      <aside id="filters">
         <div id="country-filter" hidden>
           <h2>Country</h2>
           <div id="countries"></div>
@@ -38,8 +39,12 @@
         <div id="verifications"></div>
       </aside>
       <main>
-        <div class="top"><h2 id="count">Perks</h2></div>
-        <div class="grid" id="fits"></div>
+        <div class="top" id="catalog"><h2 id="count">Perks</h2></div>
+        <section class="featured" id="featured" hidden>
+          <h2>Featured</h2>
+          <div class="featured-row" id="featured-row"></div>
+        </section>
+        <div id="fits"></div>
         <details class="blocked" id="blocked-details" hidden>
           <summary id="blocked-summary"></summary>
           <div class="grid" id="blocked"></div>
@@ -48,8 +53,8 @@
     </div>
   </div>
   <footer>Each perk says how it was verified. The brand makes the final check.</footer>
-  <script src="deals.js?v=2"></script>
-  <script src="app.js?v=7"></script>
+  <script src="deals.js?v=4"></script>
+  <script src="app.js?v=9"></script>
   <script>
     var email = "";
     var picked = "";
@@ -100,15 +105,22 @@
       notice.textContent = "The school list did not load. Only a few schools are recognized right now. Try again later.";
     }
 
-    var categories = ["github-pack", "ai", "coding", "cloud", "design", "notes", "learning", "shopping"];
-    document.getElementById("categories").innerHTML = categories.map(function (name) {
-      return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + name + "</label>";
+    document.getElementById("categories").innerHTML = Object.keys(CATEGORY_LABELS).map(function (name) {
+      return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + escapeHtml(CATEGORY_LABELS[name]) + "</label>";
     }).join("");
     document.getElementById("verifications").innerHTML = Object.keys(verifyNames).map(function (name) {
       return '<label class="opt"><input type="checkbox" name="verification" value="' + name + '" checked> ' + verifyNames[name] + "</label>";
     }).join("");
 
     document.querySelector("aside").addEventListener("change", draw);
+    document.getElementById("cat-bar").addEventListener("click", function (event) {
+      var button = event.target.closest(".cat-chip");
+      if (!button) return;
+      var target = document.getElementById(button.getAttribute("data-target"));
+      if (!target) return;
+      markChip(button.getAttribute("data-target"));
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 
     loadSchools().then(function (list) {
       schools = list;
@@ -117,6 +129,42 @@
       draw();
     });
 
+    var sectionObserver = null;
+
+    function markChip(targetId) {
+      Array.prototype.forEach.call(document.querySelectorAll(".cat-chip"), function (chip) {
+        if (chip.getAttribute("data-target") === targetId) chip.setAttribute("aria-current", "true");
+        else chip.removeAttribute("aria-current");
+      });
+    }
+
+    function renderCatBar(fits) {
+      var buttons = ['<button type="button" class="cat-chip" data-target="catalog" aria-current="true">All ' + fits.length + "</button>"];
+      Object.keys(CATEGORY_LABELS).forEach(function (key) {
+        var count = fits.filter(function (deal) { return deal.category === key; }).length;
+        if (!count) return;
+        buttons.push('<button type="button" class="cat-chip" data-target="cat-' + key + '">' + escapeHtml(CATEGORY_LABELS[key]) + "</button>");
+      });
+      buttons.push('<button type="button" class="cat-chip" data-target="filters">Filters</button>');
+      var bar = document.getElementById("cat-bar");
+      bar.hidden = false;
+      bar.innerHTML = buttons.join("");
+    }
+
+    function watchSections() {
+      if (sectionObserver) sectionObserver.disconnect();
+      var nodes = document.querySelectorAll("#featured, .cat-section");
+      if (!nodes.length) return;
+      sectionObserver = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (entry) { return entry.isIntersecting; });
+        if (!visible.length) return;
+        visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+        var id = visible[0].target.id;
+        markChip(id === "featured" ? "catalog" : id);
+      }, { rootMargin: "-130px 0px -55% 0px", threshold: 0.1 });
+      Array.prototype.forEach.call(nodes, function (node) { sectionObserver.observe(node); });
+    }
+
     function draw() {
       var domain = emailDomain(email);
       var school = schools ? findSchool(domain, schools) : null;
@@ -124,6 +172,8 @@
       var details = document.getElementById("blocked-details");
       var fitsBox = document.getElementById("fits");
       var blockedBox = document.getElementById("blocked");
+      var featuredBox = document.getElementById("featured");
+      var bar = document.getElementById("cat-bar");
       if (!email || !school) {
         banner.textContent = email
           ? domain + " is not a school email we can find. Use the email your school gave you, like name@brocku.ca. "
@@ -133,6 +183,10 @@
         home.textContent = "Back to home";
         banner.appendChild(home);
         document.getElementById("count").textContent = "Perks";
+        bar.hidden = true;
+        bar.innerHTML = "";
+        featuredBox.hidden = true;
+        document.getElementById("featured-row").innerHTML = "";
         fitsBox.innerHTML = "";
         details.hidden = true;
         blockedBox.innerHTML = "";
@@ -153,8 +207,35 @@
       });
       blocked = blocked.filter(function (deal) { return passesFilters(deal, false); });
       document.getElementById("count").textContent = fits.length + (fits.length === 1 ? " perk for this email" : " perks for this email");
+      renderCatBar(fits);
+
+      var featured = fits.filter(function (deal) { return deal.featured === true; }).sort(function (a, b) {
+        return (a.featured_rank || 1000) - (b.featured_rank || 1000);
+      });
+      if (!featured.length) {
+        featuredBox.hidden = true;
+        document.getElementById("featured-row").innerHTML = "";
+      } else {
+        featuredBox.hidden = false;
+        renderCards(document.getElementById("featured-row"), featured, { country: country, schoolName: school.name, blocked: false, featured: true });
+      }
+
+      var cardOptions = { country: country, schoolName: school.name, blocked: false };
       if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
-      else renderCards(fitsBox, fits, { country: country, schoolName: school.name, blocked: false });
+      else {
+        fitsBox.innerHTML = Object.keys(CATEGORY_LABELS).filter(function (key) {
+          return fits.some(function (deal) { return deal.category === key; });
+        }).map(function (key) {
+          var count = fits.filter(function (deal) { return deal.category === key; }).length;
+          return '<section class="cat-section" id="cat-' + key + '"><h2>' + escapeHtml(CATEGORY_LABELS[key]) + " · " + count + '</h2><div class="grid"></div></section>';
+        }).join("");
+        Object.keys(CATEGORY_LABELS).forEach(function (key) {
+          var section = document.getElementById("cat-" + key);
+          if (!section) return;
+          renderCards(section.querySelector(".grid"), fits.filter(function (deal) { return deal.category === key; }), cardOptions);
+        });
+      }
+      watchSections();
       if (!blocked.length) {
         details.hidden = true;
         blockedBox.innerHTML = "";
@@ -177,7 +258,7 @@
       var cats = selected("category");
       var verifies = selected("verification");
       var minMonths = Number((document.querySelector('input[name="months"]:checked') || {}).value || 0);
-      if (useCountry && countries.length && !deal.countries.some(function (code) {
+      if (useCountry && countries.length && deal.countries_scope !== "global" && !deal.countries.some(function (code) {
         return code === "GLOBAL" || countries.indexOf(code) !== -1;
       })) return false;
       if (prices.indexOf(deal.price_type) === -1) return false;

@@ -80,6 +80,29 @@ class ValidateDealsTest(unittest.TestCase):
         )
         self.assertTrue(any("GLOBAL" in error for error in errors))
 
+    def test_countries_scope_global_passes(self):
+        self.assertEqual(
+            validate_deals.validate_deals(
+                [deal(countries_scope="global")],
+                today=dt.date(2026, 10, 22),
+            ),
+            [],
+        )
+
+    def test_countries_scope_global_with_exclusion_passes(self):
+        self.assertEqual(
+            validate_deals.validate_deals(
+                [
+                    deal(
+                        countries_scope="global",
+                        not_available_in=[{"country": "DE", "source": "https://brand.test/no-de"}],
+                    )
+                ],
+                today=dt.date(2026, 10, 22),
+            ),
+            [],
+        )
+
     def test_country_name_fails(self):
         errors = validate_deals.validate_deals(
             [deal(countries=["Canada"])],
