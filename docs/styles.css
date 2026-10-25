@@ -53,6 +53,7 @@ a.logo i {
 }
 .links { display: flex; align-items: center; gap: 18px; color: var(--muted); }
 .links a { text-decoration: none; }
+.links a:not(.repo) { display: inline-flex; align-items: center; min-height: 44px; }
 .repo {
   width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center; color: var(--text);
@@ -61,6 +62,7 @@ a.logo i {
 .mode {
   width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%;
   background: var(--card); color: var(--text); cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
   flex: none; padding: 0;
 }
 .sample {
@@ -225,6 +227,7 @@ footer { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px
   .layout { flex-direction: column; }
   aside { width: 100%; }
   .sample { display: none; }
+  .links a.nav-text { display: none; }
   .cat-bar {
     position: sticky; top: 64px; z-index: 1; flex-wrap: nowrap; overflow-x: auto;
     scrollbar-width: none; background: var(--bg); padding: 8px 0;
@@ -248,7 +251,6 @@ footer { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px
 }
 @media (max-width: 480px) {
   .nav { padding: 0 12px; }
-  .links { gap: 4px; }
-  .links .nav-text { display: none; }
+  .links { gap: 8px; }
   a.logo { white-space: nowrap; }
 }
