@@ -181,7 +181,7 @@ function eligibilityHtml(deal, options) {
   } else {
     return "";
   }
-  return '<p class="elig ' + kind + '">' + escapeHtml(text) + "</p>";
+  return '<p class="elig ' + kind + '">' + (kind === "ok" ? '<span class="elig-mark" aria-hidden="true">✓</span> ' : "") + escapeHtml(text) + "</p>";
 }
 
 function renderCards(target, deals, options) {

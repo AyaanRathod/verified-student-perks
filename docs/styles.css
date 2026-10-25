@@ -136,9 +136,10 @@ a.card { text-decoration: none; color: inherit; }
 .brand-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .brand-line .brand { margin: 0; }
 .logo-tile, .chevron { display: none; }
-.elig { margin: 0; font-size: 14px; }
-.elig.ok { color: #166534; }
-.elig.bad { color: #991b1b; }
+.elig { margin: 0; font-size: 14px; background: none; }
+.elig.ok { color: #15803d; background: none; }
+.elig.bad { color: #991b1b; background: none; }
+.elig-mark { font-weight: 700; }
 body.dark .elig.ok { color: #86efac; }
 body.dark .elig.bad { color: #fca5a5; }
 .checked { margin: 0; color: var(--faint); font-size: 12px; }
