@@ -124,7 +124,28 @@ body.dark .example { background: #3f1d1d; border-color: #7f1d1d; }
 .deal .card-banner img, .deal .card-banner svg { height: 96px; }
 .banner-name { font-size: 22px; font-weight: 700; color: #111827; }
 .deal .banner-name { font-size: 32px; }
+a.card { text-decoration: none; color: inherit; }
 .card h3, .deal h1 { margin: 0; font-size: 16px; line-height: 1.35; }
+.card h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.brand-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.brand-line .brand { margin: 0; }
+.logo-tile, .chevron { display: none; }
+.elig { margin: 0; font-size: 14px; }
+.elig.ok { color: #166534; }
+.elig.bad { color: #991b1b; }
+body.dark .elig.ok { color: #86efac; }
+body.dark .elig.bad { color: #fca5a5; }
+.checked { margin: 0; color: var(--faint); font-size: 12px; }
+.card.is-blocked { opacity: .7; }
+.tile-letter { font-size: 18px; font-weight: 700; color: #111827; }
+details.blocked { margin-top: 22px; }
+details.blocked summary { cursor: pointer; font-weight: 650; }
+details.blocked .grid { margin-top: 12px; }
 .brand { font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--faint); }
 .row { display: flex; flex-wrap: wrap; gap: 6px; }
 .badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
@@ -170,6 +191,18 @@ footer { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px
   .layout { flex-direction: column; }
   aside { width: 100%; }
   .sample { display: none; }
+  a.card { flex-direction: row; align-items: center; gap: 12px; min-height: 44px; }
+  .card-banner { display: none; }
+  .logo-tile {
+    display: flex; width: 56px; height: 56px; flex: none; border-radius: 12px;
+    align-items: center; justify-content: center; overflow: hidden;
+  }
+  .logo-tile img, .logo-tile svg { height: 32px; width: auto; max-width: 70%; }
+  .card-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .chevron {
+    display: flex; align-items: center; justify-content: center;
+    flex: none; width: 44px; min-height: 44px; color: var(--faint); font-size: 28px;
+  }
 }
 @media (max-width: 480px) {
   .nav { padding: 0 12px; }

@@ -16,7 +16,7 @@ def deal(**overrides):
         "id": "sample-deal",
         "brand": "Sample",
         "title": "Free for students",
-        "category": "dev-tools",
+        "category": "coding",
         "price_type": "free",
         "countries": ["CA", "US"],
         "ca_school_email": "accepted",
@@ -113,6 +113,21 @@ class ValidateDealsTest(unittest.TestCase):
             today=dt.date(2026, 10, 22),
         )
         self.assertTrue(any("category" in error for error in errors))
+
+    def test_featured_rank_without_featured_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(featured_rank=1)],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("featured_rank" in error for error in errors))
+
+    def test_five_featured_deals_fail(self):
+        rows = [
+            deal(id=f"sample-deal-{index}", featured=True, featured_rank=index)
+            for index in range(1, 6)
+        ]
+        errors = validate_deals.validate_deals(rows, today=dt.date(2026, 10, 22))
+        self.assertTrue(any("featured" in error for error in errors))
 
     def test_accepted_without_source_fails(self):
         errors = validate_deals.validate_deals(

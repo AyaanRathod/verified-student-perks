@@ -3,7 +3,9 @@ window.PERKCHECK_DEALS = [
     "id": "github-student-pack",
     "brand": "GitHub",
     "title": "Student Developer Pack, free developer tools while you're a student",
-    "category": "dev-tools",
+    "category": "github-pack",
+    "featured": true,
+    "featured_rank": 1,
     "price_type": "free",
     "free_months": null,
     "countries": [
@@ -34,7 +36,7 @@ window.PERKCHECK_DEALS = [
     "id": "google-ai-pro-students",
     "brand": "Google",
     "title": "Free 12-month Google AI Pro trial for students",
-    "category": "ai-tools",
+    "category": "ai",
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -97,7 +99,7 @@ window.PERKCHECK_DEALS = [
     "id": "openai-codex-students",
     "brand": "OpenAI",
     "title": "Codex student credits: US$100 (2,500 credits)",
-    "category": "ai-tools",
+    "category": "ai",
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -125,7 +127,7 @@ window.PERKCHECK_DEALS = [
     "id": "github-copilot-student",
     "brand": "GitHub",
     "title": "Copilot Student (free while GitHub Education verified)",
-    "category": "ai-tools",
+    "category": "github-pack",
     "price_type": "free",
     "free_months": null,
     "countries": [
@@ -154,7 +156,7 @@ window.PERKCHECK_DEALS = [
     "id": "azure-for-students",
     "brand": "Microsoft Azure",
     "title": "Azure for Students: US$100 credit, no card",
-    "category": "dev-tools",
+    "category": "cloud",
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -182,6 +184,8 @@ window.PERKCHECK_DEALS = [
     "brand": "Figma",
     "title": "Figma Education Professional + FigJam + Dev Mode",
     "category": "design",
+    "featured": true,
+    "featured_rank": 2,
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -209,7 +213,9 @@ window.PERKCHECK_DEALS = [
     "id": "notion-education-plus",
     "brand": "Notion",
     "title": "Notion Education Plus",
-    "category": "productivity",
+    "category": "notes",
+    "featured": true,
+    "featured_rank": 3,
     "price_type": "free",
     "free_months": null,
     "countries": [
@@ -238,7 +244,7 @@ window.PERKCHECK_DEALS = [
     "id": "unity-student",
     "brand": "Unity",
     "title": "Unity Student: Unity Pro + student assets",
-    "category": "dev-tools",
+    "category": "coding",
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -267,7 +273,7 @@ window.PERKCHECK_DEALS = [
     "id": "aws-student-rewards-skill-builder",
     "brand": "AWS",
     "title": "Builder Center Student Rewards: Skill Builder Premium + badge credits",
-    "category": "dev-tools",
+    "category": "cloud",
     "price_type": "free",
     "free_months": 12,
     "countries": [
@@ -295,7 +301,7 @@ window.PERKCHECK_DEALS = [
     "id": "jetbrains-pack",
     "brand": "JetBrains",
     "title": "JetBrains student licence (IntelliJ IDEA, PyCharm, etc.) via GitHub Pack",
-    "category": "dev-tools",
+    "category": "coding",
     "price_type": "free",
     "free_months": null,
     "countries": [
@@ -324,7 +330,7 @@ window.PERKCHECK_DEALS = [
     "id": "zed-student",
     "brand": "Zed",
     "title": "Zed Student: Zed Pro + US$10/mo AI credits",
-    "category": "dev-tools",
+    "category": "coding",
     "price_type": "free",
     "free_months": 12,
     "countries": [

@@ -18,10 +18,10 @@ function formatDate(value) {
 
 function countryBadges(deal) {
   var html = (deal.countries || []).map(function (code) {
-    return '<span class="badge ok">' + code + "</span>";
+    return '<span class="badge ok">' + escapeHtml(code) + "</span>";
   }).join("");
   (deal.not_available_in || []).forEach(function (item) {
-    html += '<span class="badge no">Not in ' + item.country + "</span>";
+    html += '<span class="badge no">Not in ' + escapeHtml(item.country) + "</span>";
   });
   return html;
 }
@@ -56,7 +56,7 @@ function bannerHtml(deal) {
 
 function paintColoredLogos(root) {
   if (!root) return;
-  Array.prototype.forEach.call(root.querySelectorAll(".card-banner[data-logo]"), function (slot) {
+  Array.prototype.forEach.call(root.querySelectorAll(".card-banner[data-logo], .logo-tile[data-logo]"), function (slot) {
     var file = slot.getAttribute("data-logo");
     var fill = slot.getAttribute("data-fill");
     if (!safeLogoFile(file) || !safeHex(fill)) return;
@@ -72,7 +72,7 @@ function paintColoredLogos(root) {
       svg.setAttribute("aria-label", slot.getAttribute("data-alt") || "");
       svg.setAttribute("fill", fill);
       svg.style.color = fill;
-      svg.style.height = slot.closest(".deal") ? "96px" : "64px";
+      svg.style.height = slot.classList.contains("logo-tile") ? "32px" : (slot.closest(".deal") ? "96px" : "64px");
       svg.style.width = "auto";
       svg.style.maxWidth = "70%";
       svg.querySelectorAll("*").forEach(function (node) {
@@ -118,21 +118,80 @@ function cardStatusHtml(deal, country) {
   return escapeHtml(text);
 }
 
-function renderCards(target, deals, country) {
-  target.innerHTML = deals.map(function (deal) {
+function logoTile(deal) {
+  var background = safeHex(deal.banner_color) || "#F1F5F9";
+  var brand = escapeHtml(deal.brand);
+  var file = safeLogoFile(deal.logo);
+  if (!file) {
+    var letter = escapeHtml(String(deal.brand || "?").trim().charAt(0) || "?");
+    return '<div class="logo-tile" style="background:' + background + '"><span class="tile-letter">' + letter + "</span></div>";
+  }
+  var fill = safeHex(deal.logo_color);
+  if (fill) {
+    return '<div class="logo-tile" style="background:' + background + '" data-logo="' + escapeHtml(file) + '" data-fill="' + fill + '" data-alt="' + brand + ' logo"></div>';
+  }
+  return '<div class="logo-tile" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo"></div>';
+}
+
+function countryLabel(code) {
+  if (!code || code === "GLOBAL") return code || "";
+  try {
+    return new Intl.DisplayNames(["en"], { type: "region" }).of(code) || code;
+  } catch (error) {
+    return code;
+  }
+}
+
+function checkedText(value) {
+  var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var date = new Date(value + "T00:00:00");
+  if (Number.isNaN(date.getTime())) return "Checked " + escapeHtml(value);
+  return "Checked " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+}
+
+function cardHref(deal, options) {
+  if (options.blocked) {
+    var item = (deal.not_available_in || []).filter(function (entry) { return entry.country === options.country; })[0];
+    if (item && typeof item.source === "string" && item.source.indexOf("https://") === 0) return item.source;
+  }
+  return "deal.html?id=" + encodeURIComponent(deal.id);
+}
+
+function eligibilityHtml(deal, options) {
+  var text = "";
+  var kind = "ok";
+  if (options.blocked) {
+    text = "Not available in " + countryLabel(options.country);
+    kind = "bad";
+  } else if (deal.schools && deal.schools.length && options.schoolName) {
+    text = "Works with a " + options.schoolName + " email";
+  } else if (options.country) {
+    text = "Works in " + countryLabel(options.country);
+  } else {
+    return "";
+  }
+  return '<p class="elig ' + kind + '">' + escapeHtml(text) + "</p>";
+}
+
+function renderCards(target, deals, options) {
+  options = options || {};
+  var country = options.country || "";
+  target.innerHTML = (deals || []).map(function (deal) {
+    var href = cardHref(deal, options);
+    var chips = country ? "" : '<div class="row">' + countryBadges(deal) + "</div>";
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
-    var status = country ? '<p class="status">' + cardStatusHtml(deal, country) + "</p>" : "";
-    var href = "deal.html?id=" + encodeURIComponent(deal.id) + (country ? "&country=" + encodeURIComponent(country) : "");
-    return '<article class="card">' +
+    return '<a class="card' + (options.blocked ? " is-blocked" : "") + '" href="' + escapeHtml(href) + '">' +
       bannerHtml(deal) +
-      '<div class="brand">' + escapeHtml(deal.brand) + "</div>" +
-      "<h3>" + escapeHtml(deal.title) + "</h3>" +
-      '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
-      '<div class="row"><span class="badge chip">Checked ' + formatDate(deal.last_verified) + "</span></div>" +
-      status +
-      '<p class="note">' + escapeHtml(deal.email_rules || "") + "</p>" +
-      '<div class="foot"><a class="btn" href="' + href + '">See deal</a>' + paid + "</div>" +
-    "</article>";
+      logoTile(deal) +
+      '<div class="card-copy">' +
+        '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + priceBadge(deal) + paid + "</div>" +
+        "<h3>" + escapeHtml(deal.title) + "</h3>" +
+        chips +
+        eligibilityHtml(deal, options) +
+        '<p class="checked">' + checkedText(deal.last_verified) + "</p>" +
+      "</div>" +
+      '<span class="chevron" aria-hidden="true">›</span>' +
+    "</a>";
   }).join("");
   paintColoredLogos(target);
 }

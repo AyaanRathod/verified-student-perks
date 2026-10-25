@@ -20,11 +20,13 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {
-    "dev-tools",
+    "github-pack",
+    "ai",
+    "coding",
+    "cloud",
     "design",
-    "productivity",
-    "music-video",
-    "ai-tools",
+    "notes",
+    "learning",
     "shopping",
 }
 PRICE_TYPES = {"free", "discount"}
@@ -97,6 +99,7 @@ def validate_deals(deals, *, today: dt.date | None = None) -> list[str]:
         return ["deals file must be a non-empty list"]
 
     seen: set[str] = set()
+    featured_count = 0
     for index, deal in enumerate(deals, start=1):
         label = f"deal #{index}"
         if not isinstance(deal, dict):
@@ -106,6 +109,10 @@ def validate_deals(deals, *, today: dt.date | None = None) -> list[str]:
         if isinstance(deal_id, str) and deal_id.strip():
             label = deal_id
         errors.extend(_deal_errors(deal, label, seen, today))
+        if isinstance(deal, dict) and deal.get("featured") is True:
+            featured_count += 1
+    if featured_count > 4:
+        errors.append("more than 4 deals have featured: true")
     return errors
 
 
@@ -243,6 +250,16 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
         domains = deal.get("schools")
         if not isinstance(domains, list) or not domains or not all(_is_domain(item) for item in domains):
             err("schools must be a list of lowercase domains")
+
+    if "featured" in deal and deal.get("featured") is not None and deal.get("featured") not in (True, False):
+        err("featured must be true or false")
+
+    rank = deal.get("featured_rank")
+    if "featured_rank" in deal and rank is not None:
+        if isinstance(rank, bool) or not isinstance(rank, int) or rank < 1:
+            err("featured_rank must be a positive whole number")
+        elif deal.get("featured") is not True:
+            err("featured_rank is only allowed when featured is true")
 
     return errors
 

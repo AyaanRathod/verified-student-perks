@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your perks · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <header class="nav">
@@ -40,14 +40,16 @@
       <main>
         <div class="top"><h2 id="count">Perks</h2></div>
         <div class="grid" id="fits"></div>
-        <h2 id="blocked-title" hidden>Not for this email</h2>
-        <div class="grid" id="blocked"></div>
+        <details class="blocked" id="blocked-details" hidden>
+          <summary id="blocked-summary"></summary>
+          <div class="grid" id="blocked"></div>
+        </details>
       </main>
     </div>
   </div>
   <footer>Each perk says how it was verified. The brand makes the final check.</footer>
   <script src="deals.js?v=2"></script>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
   <script>
     var email = "";
     var picked = "";
@@ -98,7 +100,7 @@
       notice.textContent = "The school list did not load. Only a few schools are recognized right now. Try again later.";
     }
 
-    var categories = ["dev-tools", "design", "productivity", "music-video", "ai-tools", "shopping"];
+    var categories = ["github-pack", "ai", "coding", "cloud", "design", "notes", "learning", "shopping"];
     document.getElementById("categories").innerHTML = categories.map(function (name) {
       return '<label class="opt"><input type="checkbox" name="category" value="' + name + '" checked> ' + name + "</label>";
     }).join("");
@@ -119,7 +121,7 @@
       var domain = emailDomain(email);
       var school = schools ? findSchool(domain, schools) : null;
       var banner = document.getElementById("banner");
-      var title = document.getElementById("blocked-title");
+      var details = document.getElementById("blocked-details");
       var fitsBox = document.getElementById("fits");
       var blockedBox = document.getElementById("blocked");
       if (!email || !school) {
@@ -132,7 +134,7 @@
         banner.appendChild(home);
         document.getElementById("count").textContent = "Perks";
         fitsBox.innerHTML = "";
-        title.hidden = true;
+        details.hidden = true;
         blockedBox.innerHTML = "";
         return;
       }
@@ -152,10 +154,15 @@
       blocked = blocked.filter(function (deal) { return passesFilters(deal, false); });
       document.getElementById("count").textContent = fits.length + (fits.length === 1 ? " perk for this email" : " perks for this email");
       if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
-      else renderCards(fitsBox, fits, country);
-      title.hidden = blocked.length === 0;
-      if (blocked.length) renderCards(blockedBox, blocked, country);
-      else blockedBox.innerHTML = "";
+      else renderCards(fitsBox, fits, { country: country, schoolName: school.name, blocked: false });
+      if (!blocked.length) {
+        details.hidden = true;
+        blockedBox.innerHTML = "";
+      } else {
+        details.hidden = false;
+        document.getElementById("blocked-summary").textContent = blocked.length + (blocked.length === 1 ? " deal" : " deals") + " not available in " + place;
+        renderCards(blockedBox, blocked, { country: country, schoolName: school.name, blocked: true });
+      }
     }
 
     function selected(name) {
