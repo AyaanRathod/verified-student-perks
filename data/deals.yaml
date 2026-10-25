@@ -338,1219 +338,1122 @@
 - id: namecheap-pack
   brand: 'Namecheap'
   title: 'Namecheap: free .me domain and SSL certificate for 1 year'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. Renews at the standard yearly price after year one unless you cancel. Namecheap lists supported schools at nc.me/faq.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page. Renews at the standard yearly price after year one unless you cancel. Namecheap lists supported schools at nc.me/faq.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Namecheap'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://nc.me/landing/github'
+  - 'Use "Get Free Student Offer"'
   official_url: https://nc.me/landing/github
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("1 year domain name registration on the .me TLD." and "1 SSL certificate free for 1 year."). Partner page: https://nc.me/faq. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("1 year domain name registration on the .me TLD." and "1 SSL certificate free for 1 year."). Partner page: https://nc.me/faq. Claim page: https://nc.me/landing/github. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#DE3723'   # Simple Icons data v16.35.0
+  logo: namecheap.svg
+  banner_color: '#DE3723'
   logo_color: '#FFFFFF'
-  logo_text: 'Nc'   # prompt 10
+  logo_text: 'Nc'
 
-# proof: pack-default | source: https://education.github.com/pack | name.com/partner/github-students loads by script only, no country limit read; partner page not reached from the box
-# category after prompt 7: github-pack | also fits: domains
 - id: namecom-pack
   brand: 'Name.com'
   title: 'Name.com: one free domain (.live, .studio, .software, .app, .dev and more)'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. Length of the free period and renewal price are not stated on the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Name.com'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Name.com and follow its offer link'
+  - 'Finish sign-up on the Name.com page (https://www.name.com/partner/github-students)'
   official_url: https://www.name.com/partner/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Build your project on a select free domain with over 25 domain extensions like .live, .studio, .software, .app, and .dev."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Build your project on a select free domain with over 25 domain extensions like .live, .studio, .software, .app, and .dev."). Claim page: https://www.name.com/partner/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'N'   # prompt 10
+  logo: namecom.svg
+  banner_color: '#111827'
+  logo_text: 'N'
 
-# proof: pack-default | source: https://get.tech/github-student-developer-pack | get.tech/github-student-developer-pack: no country limit stated
-# category after prompt 7: github-pack | also fits: domains
 - id: tech-domain-pack
   brand: '.TECH Domains'
   title: '.TECH: one standard .tech domain free for 1 year'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find .TECH Domains'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://get.tech/github-student-developer-pack'
+  - 'Search your domain, then verify your GitHub account at checkout'
   official_url: https://get.tech/github-student-developer-pack
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("One standard .TECH domain free for 1 year."). Partner page: https://get.tech/github-student-developer-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
+  logo: null
+  banner_color: '#F1F5F9'
   logo_color: '#334155'
-  logo_text: '.T'   # prompt 10
+  logo_text: '.T'
 
-# proof: pack-default | source: https://education.github.com/pack | GitHub product, follows GitHub Education eligibility
-# category after prompt 7: github-pack | also fits: coding tools
 - id: github-pro-student
   brand: 'GitHub'
   title: 'GitHub Pro free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find GitHub'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://github.com/settings/education/benefits'
+  - 'Sign in and check that GitHub Pro shows as an active benefit'
+  official_url: https://github.com/settings/education/benefits
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free GitHub Pro while you are a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free GitHub Pro while you are a student."). Claim page: https://github.com/settings/education/benefits. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: github.svg          # GitHub allows its mark per https://github.com/logos
-  banner_color: '#181717'   # Simple Icons data v16.35.0
+  logo: github.svg
+  banner_color: '#181717'
   logo_color: '#FFFFFF'
 
-# proof: pack-default | source: https://education.github.com/pack | codedex.io pricing page loads by script only; partner page not reached from the box
-# category after prompt 7: github-pack | also fits: learning
 - id: codedex-pack
   brand: 'Codédex'
   title: 'Codédex Club free for 6 months'
-  category: productivity
+  category: learning
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Codédex'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Codédex and follow its offer link'
+  - 'Finish sign-up on the Codédex page (https://www.codedex.io/github-students)'
+  official_url: https://www.codedex.io/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Verified students receive 6 months of Codédex Club, a premium membership for free."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Verified students receive 6 months of Codédex Club, a premium membership for free."). Claim page: https://www.codedex.io/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'C'   # prompt 10
+  logo: codedex.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'C'
 
-# proof: pack-default | source: https://testmail.app/github-students/ | testmail.app/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: testmail-pack
   brand: 'testmail.app'
   title: 'testmail.app Essential plan free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find testmail.app'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://testmail.app/github-students/'
+  - 'Use "Sign up with GitHub"'
   official_url: https://testmail.app/github-students/
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free Essential plan while you''re a student."). Partner page: https://testmail.app/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'T'   # prompt 10
+  logo: testmail.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'T'
 
-# proof: pack-default | source: https://www.educative.io/github-students | educative.io/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: learning
 - id: educative-pack
   brand: 'Educative'
   title: 'Educative: 6 months free, then 30% off a subscription'
-  category: productivity
+  category: learning
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Educative'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://www.educative.io/github-students'
+  - 'Use "Claim Offer"'
   official_url: https://www.educative.io/github-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Dive into 6 months of free access to over 70 practical courses"). Partner page: https://www.educative.io/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#4951F5'   # Simple Icons data v16.35.0
+  logo: null
+  banner_color: '#4951F5'
   logo_color: '#FFFFFF'
-  logo_text: 'E'   # prompt 10
+  logo_text: 'E'
 
-# proof: pack-default | source: https://termius.com/education | termius.com/education: "Anyone with an active GitHub Student Developer Pack can get Termius for free"
-# category after prompt 7: github-pack | also fits: coding tools
 - id: termius-pack
   brand: 'Termius'
   title: 'Termius Pro and Team features free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Termius'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Termius and follow its offer link'
+  - 'Finish sign-up on the Termius page (https://termius.com/education)'
   official_url: https://termius.com/education
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free access to all Termius Pro and Termius Team features, while you''re a student."). Partner page: https://termius.com/education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#000000'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'T'   # prompt 10
+  logo: termius.svg
+  banner_color: '#000000'
+  logo_text: 'T'
 
-# proof: pack-default | source: https://education.github.com/pack | GitHub product, follows GitHub Education eligibility
-# category after prompt 7: github-pack | also fits: cloud
 - id: github-codespaces-pro
   brand: 'GitHub'
   title: 'GitHub Codespaces at Pro level while you are a student'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find GitHub'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://github.com/settings/education/benefits'
+  - 'Sign in and check that GitHub Pro (which includes the Codespaces hours) is active'
+  official_url: https://github.com/settings/education/benefits
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Pro level access to Codespaces to use anywhere in your account."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Pro level access to Codespaces to use anywhere in your account."). Claim page: https://github.com/settings/education/benefits. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: github.svg          # GitHub allows its mark per https://github.com/logos
-  banner_color: '#181717'   # Simple Icons data v16.35.0
+  logo: github.svg
+  banner_color: '#181717'
   logo_color: '#FFFFFF'
 
-# proof: pack-default | source: https://learn.microsoft.com/en-us/azure/education-hub/faq | Microsoft FAQ: outside the US you must be 16 or older, so in Canada this is for ages 16 and 17
-# category after prompt 7: github-pack | also fits: cloud
-- id: azure-students-starter-13-17
-  brand: 'Microsoft Azure'
-  title: 'Azure for Students Starter (ages 13 to 17): free App Service, Functions and more'
-  category: dev-tools
-  price_type: free
-  free_months: null
-  countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
-  ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. For students 13 to 17 on the Pack. Microsoft says students outside the US must be 16 or older.'
-  how_to_claim:
-  - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Microsoft Azure'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
-  affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("For students age 13-17. Free access to Azure App Services, Azure Functions, Notification Hubs, MySQL database from MySQL in-app, Application Insights, Azure DevOps."). Partner page: https://learn.microsoft.com/en-us/azure/education-hub/faq. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
-  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
-  last_verified: 2026-10-24
-  status: active
-  logo: null            # Microsoft: logos need an express licence
-  banner_color: '#0078D4'   # archived Simple Icons data v9.0.0 (Azure icon later removed)
-  logo_color: '#FFFFFF'
-  logo_text: 'Az'   # prompt 10
-
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: clerk-pack
   brand: 'Clerk'
   title: 'Clerk Pro plan free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Clerk'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://clerk.com/github-student-developer-pack'
+  - 'Use "Claim now"'
+  official_url: https://clerk.com/github-student-developer-pack
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Pro plan while you''re a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Pro plan while you''re a student."). Claim page: https://clerk.com/github-student-developer-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#6C47FF'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'C'   # prompt 10
+  logo: clerk.svg
+  banner_color: '#6C47FF'
+  logo_text: 'C'
 
-# proof: pack-default | source: https://sentry.io/for/education/ | sentry.io/for/education: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: sentry-education
   brand: 'Sentry'
   title: 'Sentry education plan free for 1 year (can renew)'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. The Sentry page lists newer limits than the Pack card (50K errors, 5GB logs, 5M spans, 500 replays, US$20 Seer credits a month).'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Sentry'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Sentry and follow its offer link'
+  - 'Finish sign-up on the Sentry page (https://sentry.io/for/education/)'
   official_url: https://sentry.io/for/education/
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Students enjoy: 50K errors, 100K transactions, 1GB attachments, 500 replays, Team features, 1 yr limit (can renew)"). Partner page: https://sentry.io/for/education/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#362D59'   # Simple Icons data v16.35.0
+  logo: sentry.svg
+  banner_color: '#362D59'
   logo_color: '#FFFFFF'
-  logo_text: 'S'   # prompt 10
+  logo_text: 'S'
 
-# proof: pack-default | source: https://appwrite.io/education | appwrite.io/education: "Any student enrolled in the GitHub Student Developer Pack can apply"
-# category after prompt 7: github-pack | also fits: cloud
 - id: appwrite-education
   brand: 'Appwrite'
   title: 'Appwrite Education plan (Pro-level resources, 2 projects) free for 6 months'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Appwrite'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://appwrite.io/education'
+  - 'Use "Sign up now"'
   official_url: https://appwrite.io/education
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free access to Appwrite''s Education plan (2 projects with equivalent resource limits as Appwrite Pro, worth $40/month) for six months."). Partner page: https://appwrite.io/education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#FD366E'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'Aw'   # prompt 10
+  logo: appwrite.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'Aw'
 
-# proof: pack-default | source: https://www.browserstack.com/github-students | browserstack.com/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: browserstack-pack
   brand: 'BrowserStack'
   title: 'BrowserStack Automate Mobile (1 parallel, 1 user) free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find BrowserStack'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://www.browserstack.com/github-students'
+  - 'Use "Sign Up with GitHub"'
   official_url: https://www.browserstack.com/github-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free Automate Mobile Plan for 1 parallel and 1 user for 1 year."). Partner page: https://www.browserstack.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'B'   # prompt 10
+  logo: browserstack.svg
+  banner_color: '#111827'
+  logo_text: 'B'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: design
 - id: bootstrap-studio-pack
   brand: 'Bootstrap Studio'
   title: 'Bootstrap Studio licence free while you are a student'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Bootstrap Studio'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://bootstrapstudio.io/pages/student-license'
+  - 'Apply with your student email and school website'
+  official_url: https://bootstrapstudio.io/pages/student-license
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("A free license for Bootstrap Studio while you are a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("A free license for Bootstrap Studio while you are a student."). Claim page: https://bootstrapstudio.io/pages/student-license. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'BS'   # prompt 10
+  logo: bootstrapstudio.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'BS'
 
-# proof: pack-default | source: https://www.localstack.cloud/localstack-for-students | localstack.cloud/localstack-for-students: no country limit stated
-# category after prompt 7: github-pack | also fits: cloud
 - id: localstack-students
   brand: 'LocalStack'
   title: 'LocalStack AWS emulator licence free for students'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find LocalStack'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find LocalStack and follow its offer link'
+  - 'Finish sign-up on the LocalStack page (https://www.localstack.cloud/localstack-for-students)'
   official_url: https://www.localstack.cloud/localstack-for-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free license to LocalStack’s most powerful AWS emulator in a ready-to-use cloud environment"). Partner page: https://www.localstack.cloud/localstack-for-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'LS'   # prompt 10
+  logo: localstack.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'LS'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: design
 - id: icons8-pack
   brand: 'Icons8'
   title: 'Icons8 subscription (icons, photos, illustrations, music) free for 3 months'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 3
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Icons8'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://icons8.com/github-students'
+  - 'Use "Sign in with GitHub"'
+  official_url: https://icons8.com/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free 3-month subscription that includes: icons, photos, illustrations, and music."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free 3-month subscription that includes: icons, photos, illustrations, and music."). Claim page: https://icons8.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#1FB141'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'I8'   # prompt 10
+  logo: icons8.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'I8'
 
-# proof: pack-default | source: https://deepnote.com/education | deepnote.com/education: no country limit stated
-# category after prompt 7: github-pack | also fits: notes & notebooks, AI
 - id: deepnote-pack
   brand: 'Deepnote'
   title: 'Deepnote Team plan free while you are a student'
-  category: dev-tools
+  category: notes
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then sign up with GitHub on Deepnote''s Pack page.'
   how_to_claim:
-  - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Deepnote'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Get approved for the GitHub Student Developer Pack'
+  - 'Open https://deepnote.com/github-student-pack'
+  - 'Use "Sign-up with Github" with the GitHub account that has the Pack'
+  official_url: https://deepnote.com/github-student-pack
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Our offer includes free use of the Deepnote Team plan while you are a student."). Partner page: https://deepnote.com/education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Our offer includes free use of the Deepnote Team plan while you are a student."). Partner page: https://deepnote.com/education. Claim page: https://deepnote.com/github-student-pack ("Deepnote is part of the Github student developer pack", "Sign-up with Github"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#3793EF'   # Simple Icons data v16.35.0
+  logo: deepnote.svg
+  banner_color: '#3793EF'
   logo_color: '#FFFFFF'
-  logo_text: 'D'   # prompt 10
+  logo_text: 'D'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box (hardware discounts may depend on shipping region, not checked)
-# category after prompt 7: github-pack | also fits: coding tools
 - id: arduino-cloud-pack
   brand: 'Arduino'
   title: 'Arduino Cloud free for 6 months, plus hardware discounts'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Arduino'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://www.arduino.cc/education/github-students/'
+  - 'Sign in with your GitHub student account to get the discount codes'
+  official_url: https://www.arduino.cc/education/github-students/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Arduino Cloud for 6 months and discounts on selected hardware."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Arduino Cloud for 6 months and discounts on selected hardware."). Claim page: https://www.arduino.cc/education/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#00878F'   # Simple Icons data v16.35.0
+  logo: null
+  banner_color: '#00878F'
   logo_color: '#FFFFFF'
-  logo_text: 'A'   # prompt 10
+  logo_text: 'A'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: cloud
 - id: zyte-scrapy-cloud-pack
   brand: 'Zyte (Scrapy Cloud)'
   title: 'Zyte Scrapy Cloud: 1 free unit forever'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Zyte (Scrapy Cloud)'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Zyte (Scrapy Cloud) and follow its offer link'
+  - 'Finish sign-up on the Zyte (Scrapy Cloud) page (https://www.zyte.com/scrapy-cloud-student-backpack/)'
+  official_url: https://www.zyte.com/scrapy-cloud-student-backpack/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("1 Free Forever Scrapy Cloud Unit - unlimited team members, projects or requests. Unlimited crawl time and 120 day data retention."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("1 Free Forever Scrapy Cloud Unit - unlimited team members, projects or requests. Unlimited crawl time and 120 day data retention."). Claim page: https://www.zyte.com/scrapy-cloud-student-backpack/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#B02CCE'   # Simple Icons data v16.35.0
+  logo: zyte.svg
+  banner_color: '#B02CCE'
   logo_color: '#FFFFFF'
-  logo_text: 'Z'   # prompt 10
+  logo_text: 'Z'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: lambdatest-pack
-  brand: 'LambdaTest'
-  title: 'LambdaTest Live plan free for 1 year'
-  category: dev-tools
+  brand: 'TestMu AI (formerly LambdaTest)'
+  title: 'TestMu AI (formerly LambdaTest) Live plan free for 1 year'
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find LambdaTest'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://www.testmuai.com/github-students/'
+  - 'Use "Sign Up with GitHub" (LambdaTest is now TestMu AI)'
+  official_url: https://www.testmuai.com/github-students/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free LambdaTest Live Plan for one year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free LambdaTest Live Plan for one year."). Claim page: https://www.testmuai.com/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'LT'   # prompt 10
+  logo: testmuai.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'TM'
 
-# proof: pack-default | source: https://newrelic.com/students | newrelic.com/students: no country limit stated
-# category after prompt 7: github-pack | also fits: cloud
 - id: new-relic-students
   brand: 'New Relic'
   title: 'New Relic free while you are a student'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find New Relic'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://newrelic.com/students'
+  - 'Create a New Relic account, then link GitHub Education under New Relic for Students'
   official_url: https://newrelic.com/students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free New Relic while you are a student. ($300/month value)"). Partner page: https://newrelic.com/students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#1CE783'   # Simple Icons data v16.35.0
-  logo_color: '#000000'
-  logo_text: 'NR'   # prompt 10
+  logo: newrelic.svg
+  banner_color: '#1CE783'
+  logo_text: 'NR'
 
-# proof: pack-default | source: https://codescene.com/github-students | codescene.com/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: codescene-pack
   brand: 'CodeScene'
   title: 'CodeScene student account for private GitHub repos'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find CodeScene'
-  - Follow the offer link and sign in to claim it
-  official_url: https://codescene.com/github-students
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find CodeScene and follow its offer link'
+  - 'Finish sign-up on the CodeScene page (https://codescene.com/resources/github-students)'
+  official_url: https://codescene.com/resources/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("A free Student account to analyze private GitHub repositories."). Partner page: https://codescene.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("A free Student account to analyze private GitHub repositories."). Partner page: https://codescene.com/github-students. Claim page: https://codescene.com/resources/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
+  logo: null
+  banner_color: '#F1F5F9'
   logo_color: '#334155'
-  logo_text: 'CS'   # prompt 10
+  logo_text: 'CS'
 
-# proof: pack-default | source: https://education.github.com/pack | visme.co education page has no Pack details; no country limit found
-# category after prompt 7: github-pack | also fits: design
 - id: visme-pack
   brand: 'Visme'
   title: 'Visme Starter plan free for 3 months'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 3
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. New Visme users only. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
-  - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Visme'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Get approved for the GitHub Student Developer Pack'
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Visme and follow its offer link'
+  - 'Create your Visme account on the Visme page (https://www.visme.co/github-students/); the 3 months start once the account is verified'
+  official_url: https://www.visme.co/github-students/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Get 3 free months free access to Visme''s Starter plan."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Get 3 free months free access to Visme''s Starter plan."). Partner page: https://www.visme.co/github-students/ ("This offer is available only for new users who are verified through the GitHub program as students."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
+  logo: null
+  banner_color: '#F1F5F9'
   logo_color: '#334155'
-  logo_text: 'V'   # prompt 10
+  logo_text: 'V'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: design
 - id: iconscout-pack
   brand: 'IconScout'
   title: 'IconScout: 60 premium icons a month free for 1 year'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find IconScout'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://iconscout.com/github-students'
+  - 'Use "Sign up with GitHub"'
+  official_url: https://iconscout.com/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free access to 60 premium icons from selected contributors every month for 1 year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free access to 60 premium icons from selected contributors every month for 1 year."). Claim page: https://iconscout.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
+  logo: null
+  banner_color: '#F1F5F9'
   logo_color: '#334155'
-  logo_text: 'IS'   # prompt 10
+  logo_text: 'IS'
 
-# proof: pack-default | source: https://polypane.app/github-students/ | polypane.app/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: design, coding tools
 - id: polypane-pack
   brand: 'Polypane'
   title: 'Polypane individual plan free for 1 year'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Polypane'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://polypane.app/github-students/'
+  - 'Use "Sign up with GitHub"'
   official_url: https://polypane.app/github-students/
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("You''ll get free use of Polypane''s individual plan for 1 year."). Partner page: https://polypane.app/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'P'   # prompt 10
+  logo: polypane.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'P'
 
-# proof: pack-default | source: https://hazeover.com/github-students.html | hazeover.com/github-students: no country limit stated. Mac only.
-# category after prompt 7: github-pack | also fits: productivity
 - id: hazeover-pack
   brand: 'HazeOver'
   title: 'HazeOver Mac app licence free'
-  category: productivity
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. Mac app only.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page. Mac app only.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find HazeOver'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://hazeover.com/github-students.html'
+  - 'Use "Sign in with GitHub" to get the licence key'
   official_url: https://hazeover.com/github-students.html
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free app license, including minor updates."). Partner page: https://hazeover.com/github-students.html. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'H'   # prompt 10
+  logo: hazeover.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'H'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: blackfire-pack
   brand: 'Blackfire'
   title: 'Blackfire Developer subscription free for students'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Blackfire'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Blackfire and follow its offer link'
+  - 'Finish sign-up on the Blackfire page (https://www.blackfire.io/students/)'
+  official_url: https://www.blackfire.io/students/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Developer subscription for students."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Developer subscription for students."). Claim page: https://www.blackfire.io/students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'Bf'   # prompt 10
+  logo: blackfire.svg
+  banner_color: '#111827'
+  logo_text: 'Bf'
 
-# proof: pack-default | source: https://education.travis-ci.com/ | education.travis-ci.com: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: travis-ci-pack
   brand: 'Travis CI'
   title: 'Travis CI private builds free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Travis CI'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.travis-ci.com/
+  - 'Open https://www.travis-ci.com/education/'
+  - 'Use "Sign In with GitHub"'
+  official_url: https://www.travis-ci.com/education/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Private builds for free while you''re a student."). Partner page: https://education.travis-ci.com/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Private builds for free while you''re a student."). Partner page: https://education.travis-ci.com/. Claim page: https://www.travis-ci.com/education/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#3EAAAF'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'TC'   # prompt 10
+  logo: travisci.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'TC'
 
-# proof: pack-default | source: https://education.github.com/pack | io.adafruit.com/github_student loads by script only; partner page not reached from the box (hardware discounts may depend on shipping region, not checked)
-# category after prompt 7: github-pack | also fits: coding tools
 - id: adafruit-io-pack
   brand: 'Adafruit'
   title: 'Adafruit IO+ free for 1 year, plus hardware discounts'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Adafruit'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Adafruit and follow its offer link'
+  - 'Finish sign-up on the Adafruit page (https://io.adafruit.com/github_student)'
+  official_url: https://io.adafruit.com/github_student
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("One year of Adafruit IO+ and discounts on selected hardware."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("One year of Adafruit IO+ and discounts on selected hardware."). Claim page: https://io.adafruit.com/github_student. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#000000'   # Simple Icons data v16.35.0
+  logo: null
+  banner_color: '#000000'
   logo_color: '#FFFFFF'
-  logo_text: 'Af'   # prompt 10
+  logo_text: 'Af'
 
-# proof: pack-default | source: https://pageclip.co/github-students | pageclip.co/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: pageclip-pack
   brand: 'Pageclip'
   title: 'Pageclip Basic plan free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Pageclip'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://pageclip.co/github-students'
+  - 'Use "Signup with GitHub"'
   official_url: https://pageclip.co/github-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free basic plan while you are a student."). Partner page: https://pageclip.co/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'Pc'   # prompt 10
+  logo: pageclip.svg
+  banner_color: '#111827'
+  logo_text: 'Pc'
 
-# proof: pack-default | source: https://education.github.com/pack | algoexpert.io/github-students loads by script only; partner page not reached from the box
-# category after prompt 7: github-pack | also fits: learning
 - id: algoexpert-pack
   brand: 'AlgoExpert'
   title: 'AlgoExpert: 20 free interview questions plus 10% off'
-  category: productivity
+  category: learning
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find AlgoExpert'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://www.algoexpert.io/github-students'
+  - 'Use "Claim Offer"'
+  official_url: https://www.algoexpert.io/github-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free access to 20 coding interview questions on AlgoExpert as well as a 10% discount on all AlgoExpert products."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free access to 20 coding interview questions on AlgoExpert as well as a 10% discount on all AlgoExpert products."). Claim page: https://www.algoexpert.io/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'AE'   # prompt 10
+  logo: algoexpert.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'AE'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: doppler-pack
   brand: 'Doppler'
   title: 'Doppler Team plan free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Doppler'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://www.doppler.com/secretsops-for-students'
+  - 'Use "Sign Up with GitHub"'
+  official_url: https://www.doppler.com/secretsops-for-students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Doppler Team subscription while the user is an active student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Doppler Team subscription while the user is an active student."). Claim page: https://www.doppler.com/secretsops-for-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'D'   # prompt 10
+  logo: doppler.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'D'
 
-# proof: pack-default | source: https://education.github.com/pack | imgbot.net: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: imgbot-pack
   brand: 'Imgbot'
   title: 'Imgbot image optimization for private repos free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Imgbot'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://imgbot.net/github-students/'
+  - 'Install Imgbot from the GitHub Marketplace link on the page'
+  official_url: https://imgbot.net/github-students/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free image optimization for all your public and private projects while you are a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free image optimization for all your public and private projects while you are a student."). Claim page: https://imgbot.net/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'Ib'   # prompt 10
+  logo: imgbot.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'Ib'
 
-# proof: pack-default | source: https://workingcopy.app/education | workingcopy.app/education: no country limit stated. iOS only.
-# category after prompt 7: github-pack | also fits: coding tools
 - id: working-copy-pack
   brand: 'Working Copy'
   title: 'Working Copy Pro features free while you are a student (iPhone and iPad)'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. iPhone and iPad app only.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Working Copy'
-  - Follow the offer link and sign in to claim it
-  official_url: https://workingcopy.app/education
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Working Copy and follow its offer link'
+  - 'Finish sign-up on the Working Copy page (https://workingcopy.app/education/)'
+  official_url: https://workingcopy.app/education/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("All Pro features for free while you are a student."). Partner page: https://workingcopy.app/education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("All Pro features for free while you are a student."). Partner page: https://workingcopy.app/education. Claim page: https://workingcopy.app/education/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'WC'   # prompt 10
+  logo: workingcopy.svg
+  banner_color: '#399CFC'
+  logo_color: '#FFFFFF'
+  logo_text: 'WC'
 
-# proof: pack-default | source: https://carto.com/help/getting-started/student-accounts | carto.com student accounts help page: no country limit stated (page says it applies to an older CARTO version)
-# category after prompt 7: github-pack | also fits: cloud
 - id: carto-pack
   brand: 'CARTO'
   title: 'CARTO account upgrades free for 2 years'
-  category: dev-tools
+  category: cloud
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 24
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find CARTO'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://app.carto.com/students'
+  - 'Sign in with GitHub (CARTO docs say to use this exact link)'
+  official_url: https://app.carto.com/students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free account upgrades with increased database storage, real time data, Location Data Services Credits, and premium features for 2 years."). Partner page: https://carto.com/help/getting-started/student-accounts. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free account upgrades with increased database storage, real time data, Location Data Services Credits, and premium features for 2 years."). Partner page: https://carto.com/help/getting-started/student-accounts. Claim page: https://app.carto.com/students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#EB1510'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'C'   # prompt 10
+  logo: carto.svg
+  banner_color: '#EB1510'
+  logo_text: 'C'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: astra-security-pack
   brand: 'Astra Security'
   title: 'Astra website firewall and malware scanner free for 6 months'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Astra Security'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Astra Security and follow its offer link'
+  - 'Finish sign-up on the Astra Security page (https://www.getastra.com/github-student-developer-pack)'
+  official_url: https://www.getastra.com/github-student-developer-pack
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("6 month access to website firewall & malware scanner"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("6 month access to website firewall & malware scanner"). Claim page: https://www.getastra.com/github-student-developer-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'As'   # prompt 10
+  logo: astra.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'As'
 
-# proof: pack-default | source: https://about.codecov.io/pricing/ | Codecov pricing FAQ names the GitHub Student Developer Pack; no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: codecov-pack
   brand: 'Codecov'
   title: 'Codecov free on public and private repos'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Codecov'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Codecov and follow its offer link'
+  - 'Finish sign-up on the Codecov page (https://about.codecov.io/for/education/)'
+  official_url: https://about.codecov.io/for/education/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free access to Codecov on public and private repositories."). Partner page: https://about.codecov.io/pricing/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free access to Codecov on public and private repositories."). Partner page: https://about.codecov.io/pricing/. Claim page: https://about.codecov.io/for/education/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F01F7A'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'Cc'   # prompt 10
+  logo: codecov.svg
+  banner_color: '#F01F7A'
+  logo_text: 'Cc'
 
-# proof: pack-default | source: https://www.git-tower.com/students | git-tower.com/students: no country limit stated. You can also apply with a school email.
-# category after prompt 7: github-pack | also fits: coding tools
 - id: tower-pro-students
   brand: 'Tower'
   title: 'Tower Pro Git client free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Tower'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://www.git-tower.com/students'
+  - 'Use "Sign In with GitHub"'
   official_url: https://www.git-tower.com/students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free license for Tower Pro while you are a student."). Partner page: https://www.git-tower.com/students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#00CAF4'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'T'   # prompt 10
+  logo: tower.svg
+  banner_color: '#00CAF4'
+  logo_text: 'T'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: design
 - id: todiagram-pack
   brand: 'ToDiagram'
   title: 'ToDiagram Pro plan (no AI assistant) free for students'
-  category: productivity
+  category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. Does not include the AI assistant.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page. Does not include the AI assistant.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find ToDiagram'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://todiagram.com/education'
+  - 'Use "Sign-up with GitHub"'
+  official_url: https://todiagram.com/education
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("ToDiagram Pro Plan including full editor access, no data limits, and up to 10 documents stored in the cloud."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("ToDiagram Pro Plan including full editor access, no data limits, and up to 10 documents stored in the cloud."). Claim page: https://todiagram.com/education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'TD'   # prompt 10
+  logo: todiagram.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'TD'
 
-# proof: pack-default | source: https://popsql.com/github-students | popsql.com/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: popsql-pack
   brand: 'PopSQL'
   title: 'PopSQL paid plan free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. The Pack card says Premium plan; the PopSQL page says Business plan.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page. The Pack card says Premium plan; the PopSQL page says Business plan.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find PopSQL'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://popsql.com/github-students'
+  - 'Use "Sign up with GitHub"'
   official_url: https://popsql.com/github-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free Premium subscription for PopSQL while you''re a student."). Partner page: https://popsql.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'PS'   # prompt 10
+  logo: popsql.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'PS'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: requestly-pack
   brand: 'Requestly'
   title: 'Requestly Professional plan free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Requestly'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://requestly.com/github-education/'
+  - 'Use "Sign in with Github"'
+  official_url: https://requestly.com/github-education/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Requestly Professional plan (worth $270) free for one year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Requestly Professional plan (worth $270) free for one year."). Claim page: https://requestly.com/github-education/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'R'   # prompt 10
+  logo: requestly.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'R'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: simple-analytics-pack
   brand: 'Simple Analytics'
   title: 'Simple Analytics Starter plan (100k page views a month) free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Simple Analytics'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://dashboard.simpleanalytics.com/students'
+  - 'Use "Sign in with GitHub"'
+  official_url: https://dashboard.simpleanalytics.com/students
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Starter plan free for one year, including 100k page views per month."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Starter plan free for one year, including 100k page views per month."). Claim page: https://dashboard.simpleanalytics.com/students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#FF4F64'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'SA'   # prompt 10
+  logo: simpleanalytics.svg
+  banner_color: '#FF4F64'
+  logo_text: 'SA'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: devcycle-pack
   brand: 'DevCycle'
   title: 'DevCycle Starter plan free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find DevCycle'
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack and find DevCycle'
   - Follow the offer link and sign in to claim it
   official_url: https://education.github.com/pack
   affiliate_url: null
@@ -1558,315 +1461,293 @@
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'DC'   # prompt 10
+  logo: devcycle.svg
+  banner_color: '#1D49F4'
+  logo_text: 'DC'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: poeditor-pack
   brand: 'POEditor'
   title: 'POEditor Plus plan free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find POEditor'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://poeditor.com/register/github_education'
+  - 'Use "Sign in with GitHub"'
+  official_url: https://poeditor.com/register/github_education
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Plus Plan for free for one year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Plus Plan for free for one year."). Claim page: https://poeditor.com/register/github_education. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'PO'   # prompt 10
+  logo: poeditor.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'PO'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: deepscan-pack
   brand: 'DeepScan'
   title: 'DeepScan free for 6 months while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find DeepScan'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find DeepScan and follow its offer link'
+  - 'Finish sign-up on the DeepScan page (https://deepscan.io/github-student-pack)'
+  official_url: https://deepscan.io/github-student-pack
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free 6-month trial while you are a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free 6-month trial while you are a student."). Claim page: https://deepscan.io/github-student-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'DS'   # prompt 10
+  logo: deepscan.svg
+  banner_color: '#111827'
+  logo_text: 'DS'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: sqlgate-pack
   brand: 'SQLGate'
   title: 'SQLGate Standard features free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find SQLGate'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://www.sqlgate.com/student-pack'
+  - 'Use "Sign in with GitHub"'
+  official_url: https://www.sqlgate.com/student-pack
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Access to most Standard Subscription features for 1 year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Access to most Standard Subscription features for 1 year."). Claim page: https://www.sqlgate.com/student-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'SG'   # prompt 10
+  logo: sqlgate.svg
+  banner_color: '#111827'
+  logo_text: 'SG'
 
-# proof: pack-default | source: https://www.honeybadger.io/github-students/ | honeybadger.io/github-students: no country limit stated
-# category after prompt 7: github-pack | also fits: coding tools
 - id: honeybadger-pack
   brand: 'Honeybadger'
   title: 'Honeybadger Small account free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Honeybadger'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Honeybadger and follow its offer link'
+  - 'Finish sign-up on the Honeybadger page (https://www.honeybadger.io/github-students/)'
   official_url: https://www.honeybadger.io/github-students/
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free Small account for 1 year."). Partner page: https://www.honeybadger.io/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#EA5937'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'HB'   # prompt 10
+  logo: honeybadger.svg
+  banner_color: '#EA5937'
+  logo_text: 'HB'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: xojo-pack
   brand: 'Xojo'
   title: 'Xojo Pro licence free while you are a student'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Xojo'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Xojo and follow its offer link'
+  - 'Finish sign-up on the Xojo page (https://www.xojo.com/githubstudent/)'
+  official_url: https://www.xojo.com/githubstudent/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Xojo Pro license free while you are a student."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Xojo Pro license free while you are a student."). Claim page: https://www.xojo.com/githubstudent/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'X'   # prompt 10
+  logo: xojo.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'X'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: configcat-pack
   brand: 'ConfigCat'
   title: 'ConfigCat: 1000 feature flags with unlimited users, free'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find ConfigCat'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://configcat.com/student/'
+  - 'Use "Sign up with GitHub"'
+  official_url: https://configcat.com/student/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("1000 feature flags, ∞ users for free."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("1000 feature flags, ∞ users for free."). Claim page: https://configcat.com/student/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'CC'   # prompt 10
+  logo: configcat.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'CC'
 
-# proof: pack-default | source: https://education.github.com/pack | vaadin.com/student-program redirected and did not load; partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: vaadin-pack
   brand: 'Vaadin'
   title: 'Vaadin Pro subscription licence free for students'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Vaadin'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://vaadin.com/student-program/'
+  - 'Sign in and verify your student status (page renders by script; Vaadin forum points here)'
+  official_url: https://vaadin.com/student-program/
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free Pro subscription license to access the commercial components and tools."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free Pro subscription license to access the commercial components and tools."). Claim page: https://vaadin.com/student-program/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#00B4F0'   # Simple Icons data v16.35.0
-  logo_color: '#FFFFFF'
-  logo_text: 'V'   # prompt 10
+  logo: vaadin.svg
+  banner_color: '#00B4F0'
+  logo_text: 'V'
 
-# proof: pack-default | source: https://themeisle.com/github-students/ | themeisle.com/github-students: "Anyone who has been verified as a student on GitHub"
-# category after prompt 7: github-pack | also fits: design
 - id: neve-agency-pack
   brand: 'Themeisle (Neve)'
   title: 'Neve Agency WordPress theme free for 1 year'
   category: design
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Themeisle (Neve)'
-  - Follow the offer link and sign in to claim it
+  - 'Open https://themeisle.com/github-students/'
+  - 'Use "Login with Github"'
   official_url: https://themeisle.com/github-students/
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Free year of Neve Agency WordPress theme exclusively for students."). Partner page: https://themeisle.com/github-students/. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'N'   # prompt 10
+  logo: themeisle.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'N'
 
-# proof: pack-default | source: https://education.github.com/pack | appfigures.com blocked the fetch (403); partner page not reached from the box
-# category after prompt 7: github-pack | also fits: coding tools
 - id: appfigures-pack
   brand: 'Appfigures'
   title: 'Appfigures analytics and reports free for 1 year'
-  category: dev-tools
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim it on the partner''s student page.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Appfigures'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Open https://appfigures.com/landing/github-student'
+  - 'Use "Get Started"'
+  official_url: https://appfigures.com/landing/github-student
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free access to universal analytics and performance reports for one year."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free access to universal analytics and performance reports for one year."). Claim page: https://appfigures.com/landing/github-student. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'Af'   # prompt 10
+  logo: appfigures.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'Af'
 
-# proof: pack-default | source: https://www.dashlane.com/github-students | dashlane.com/github-students: only for Pack students without an existing Dashlane account; no country limit stated
-# category after prompt 7: github-pack | also fits: productivity
 - id: dashlane-pack
   brand: 'Dashlane'
   title: 'Dashlane Premium free for 6 months'
-  category: productivity
+  category: coding
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 6
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
+  verification: github-education
   email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page. Only if you don''t already have a Dashlane account.'
   how_to_claim:
   - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find Dashlane'
-  - Follow the offer link and sign in to claim it
+  - 'Claim through your GitHub Student Developer Pack: open https://education.github.com/pack, find Dashlane and follow its offer link'
+  - 'Finish sign-up on the Dashlane page (https://www.dashlane.com/github-students)'
   official_url: https://www.dashlane.com/github-students
   affiliate_url: null
   source_note: 'sourced: https://education.github.com/pack ("Dashlane Premium free for 6 months."). Partner page: https://www.dashlane.com/github-students. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#0E353D'   # Simple Icons data v16.35.0
+  logo: dashlane.svg
+  banner_color: '#0E353D'
   logo_color: '#FFFFFF'
-  logo_text: 'D'   # prompt 10
+  logo_text: 'D'
 
-# proof: pack-default | source: https://education.github.com/pack | partner page not reached from the box
-# category after prompt 7: github-pack | also fits: learning
 - id: symfonycasts-pack
   brand: 'SymfonyCasts'
   title: 'SymfonyCasts subscription free for 3 months'
-  category: productivity
+  category: learning
+  github_pack: true
+  featured: false
   price_type: free
   free_months: 3
   countries: [CA, US]
-  countries_scope: global   # not read by the validator or site yet
   ca_school_email: accepted
-  verification: school-email
-  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then log in to SymfonyCasts with GitHub.'
   how_to_claim:
-  - Get approved for the GitHub Student Developer Pack
-  - 'Open education.github.com/pack and find SymfonyCasts'
-  - Follow the offer link and sign in to claim it
-  official_url: https://education.github.com/pack
+  - 'Get approved for the GitHub Student Developer Pack'
+  - 'Open https://symfonycasts.com/github-student'
+  - 'Log in or register on SymfonyCasts with your GitHub account to redeem the offer'
+  official_url: https://symfonycasts.com/github-student
   affiliate_url: null
-  source_note: 'sourced: https://education.github.com/pack ("Free 3-month subscription for students."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  source_note: 'sourced: https://education.github.com/pack ("Free 3-month subscription for students."). Claim page: https://symfonycasts.com/github-student ("free 3 month subscription", "Log in via GitHub to redeem the offer"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
   ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
   last_verified: 2026-10-24
   status: active
-  logo: null            # official logo terms not checked, text tile
-  banner_color: '#F1F5F9'   # neutral, brand not in Simple Icons
-  logo_color: '#334155'
-  logo_text: 'SC'   # prompt 10
+  logo: symfonycasts.svg
+  banner_color: '#FFFFFF'
+  logo_text: 'SC'
