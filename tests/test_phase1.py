@@ -67,6 +67,26 @@ class ValidateDealsTest(unittest.TestCase):
         )
         self.assertTrue(any("must be rejected" in error for error in errors))
 
+    def test_global_country_passes(self):
+        self.assertEqual(
+            validate_deals.validate_deals([deal(countries=["GLOBAL"])], today=dt.date(2026, 10, 22)),
+            [],
+        )
+
+    def test_global_mixed_with_a_code_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(countries=["GLOBAL", "CA"])],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("GLOBAL" in error for error in errors))
+
+    def test_country_name_fails(self):
+        errors = validate_deals.validate_deals(
+            [deal(countries=["Canada"])],
+            today=dt.date(2026, 10, 22),
+        )
+        self.assertTrue(any("countries" in error for error in errors))
+
     def test_bad_banner_color_fails(self):
         errors = validate_deals.validate_deals(
             [deal(banner_color="red")],

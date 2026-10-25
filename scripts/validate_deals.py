@@ -140,9 +140,11 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
 
     status = deal.get("status")
     countries = deal.get("countries")
-    if not isinstance(countries, list) or not all(isinstance(code, str) and len(code) == 2 and code.isupper() for code in countries):
-        err("countries must be a list of codes such as CA or US")
+    if not isinstance(countries, list) or not all(_is_country_entry(code) for code in countries):
+        err("countries must be a list of two-letter ISO codes or GLOBAL")
         countries = []
+    elif "GLOBAL" in countries and any(code != "GLOBAL" for code in countries):
+        err("GLOBAL cannot be combined with country codes")
 
     excluded = []
     if "not_available_in" in deal and deal["not_available_in"] is not None:
@@ -165,7 +167,7 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
     school = deal.get("ca_school_email")
     if status == "active" and school == "unknown":
         err("active deals need ca_school_email accepted or rejected")
-    if school == "accepted" and "CA" not in countries:
+    if school == "accepted" and "CA" not in countries and "GLOBAL" not in countries:
         err("ca_school_email accepted requires CA in countries")
     if "CA" in excluded and school != "rejected":
         err("Canada is excluded, so ca_school_email must be rejected")
@@ -243,6 +245,12 @@ def _deal_errors(deal: dict, label: str, seen: set[str], today: dt.date) -> list
             err("schools must be a list of lowercase domains")
 
     return errors
+
+
+def _is_country_entry(value) -> bool:
+    if value == "GLOBAL":
+        return True
+    return isinstance(value, str) and len(value) == 2 and value.isalpha() and value.isupper()
 
 
 def _is_domain(value) -> bool:

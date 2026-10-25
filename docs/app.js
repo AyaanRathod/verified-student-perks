@@ -1,3 +1,7 @@
+// Pinned on 2026-10-24. This was the latest commit on master that day.
+var HIPO_SCHOOL_LIST_COMMIT = "603e10f51b67c6553b9bca9aecc0db4c2417ed10";
+var schoolListFromFallback = false;
+
 function escapeHtml(value) {
   return String(value == null ? "" : value)
     .replace(/&/g, "&amp;")
@@ -159,7 +163,11 @@ function schoolListAllows(deal, domain) {
 
 function fitsCountry(deal, country) {
   if (country === "CA" && deal.ca_school_email === "unknown") return false;
-  return (deal.countries || []).indexOf(country) !== -1 && !(country === "CA" && deal.ca_school_email === "rejected");
+  var codes = deal.countries || [];
+  var listed = codes.indexOf(country) !== -1 || codes.indexOf("GLOBAL") !== -1;
+  var excluded = (deal.not_available_in || []).some(function (item) { return item.country === country; });
+  if (!listed || excluded) return false;
+  return !(country === "CA" && deal.ca_school_email === "rejected");
 }
 
 function isBlocked(deal, country) {
@@ -185,12 +193,17 @@ var FALLBACK_SCHOOLS = [
 ];
 
 function loadSchools() {
-  return fetch("https://cdn.jsdelivr.net/gh/Hipo/university-domains-list@603e10f51b67c6553b9bca9aecc0db4c2417ed10/world_universities_and_domains.json")
+  var url = "https://cdn.jsdelivr.net/gh/Hipo/university-domains-list@" + HIPO_SCHOOL_LIST_COMMIT + "/world_universities_and_domains.json";
+  schoolListFromFallback = false;
+  return fetch(url)
     .then(function (response) {
       if (!response.ok) throw new Error("school list unavailable");
       return response.json();
     })
-    .catch(function () { return FALLBACK_SCHOOLS; });
+    .catch(function () {
+      schoolListFromFallback = true;
+      return FALLBACK_SCHOOLS;
+    });
 }
 
 (function () {
