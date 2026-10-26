@@ -1753,3 +1753,272 @@
   logo: symfonycasts.svg
   banner_color: '#FFFFFF'
   logo_text: 'SC'
+
+- id: elevenlabs-students
+  brand: ElevenLabs
+  title: 'ElevenLabs Creator plan free for 3 months'
+  category: ai
+  price_type: free
+  free_months: 3
+  countries: [CA, US, GB, AU]
+  ca_school_email: accepted
+  verification: other
+  email_rules: 'University students 18 and over in the US, Canada, EU27, Australia and UK. You verify your student status on the ElevenLabs site. ElevenReader Ultra is a separate claim at elevenreader.io/students.'
+  how_to_claim: 
+  - Sign up or log in at elevenlabs.io
+  - Open elevenlabs.io/students and choose the student offer
+  - Verify your student status
+  - The Creator plan is free for 3 months
+  official_url: https://elevenlabs.io/students
+  affiliate_url: null
+  source_note: 'sourced: https://elevenlabs.io/students ("The ElevenLabs Creator plan, free for 3 months. Verify your student status to claim."). Countries from https://elevenlabs.io/blog/introducing-elevenlabs-for-students ("available to university students aged 18 and above in the US, Canada, EU27, Australia, and UK").'
+  ca_school_email_source: https://elevenlabs.io/blog/introducing-elevenlabs-for-students
+  last_verified: 2026-10-24
+  status: active
+  logo: elevenlabs.svg
+  banner_color: '#000000'
+  logo_color: '#FFFFFF'
+
+- id: granola-business-students
+  brand: Granola
+  title: 'Granola Business free for 12 months'
+  category: notes
+  price_type: free
+  free_months: 12
+  countries: [CA, US, GB]
+  ca_school_email: accepted
+  verification: other
+  email_rules: 'Currently enrolled students at accredited universities in the US, UK and Canada. You apply on the Granola students page. Marked LIMITED EDITION on the page.'
+  how_to_claim: 
+  - Open granola.ai/students
+  - Press Apply and fill in your student details
+  - Wait for approval, then use Granola Business free for 12 months
+  official_url: https://www.granola.ai/students
+  affiliate_url: null
+  source_note: 'sourced: https://www.granola.ai/students ("Available to currently enrolled students at accredited universities in the US, UK, and Canada.")'
+  ca_school_email_source: https://www.granola.ai/students
+  last_verified: 2026-10-24
+  watch_text: 12 months free
+  status: active
+  logo: null
+  banner_color: '#F1F5F9'
+
+- id: brock-copilot-chat
+  brand: Microsoft Copilot (Brock licence)
+  title: 'Microsoft Copilot with your Brock login'
+  category: ai
+  price_type: free
+  free_months: null
+  countries: [CA]
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: 'Brock University only. Listed by Brock Library as "Copilot (Brock University Access)". Sign in with your Brock Microsoft account.'
+  how_to_claim: 
+  - Open the Brock Library GenAI tools guide
+  - Choose Copilot (Brock University Access)
+  - Sign in with your Brock Microsoft account
+  official_url: https://researchguides.library.brocku.ca/GenAIStudents/choosing-the-right-tool
+  affiliate_url: null
+  source_note: 'sourced: https://researchguides.library.brocku.ca/GenAIStudents/choosing-the-right-tool ("Copilot (Brock University Access)")'
+  ca_school_email_source: https://researchguides.library.brocku.ca/GenAIStudents/choosing-the-right-tool
+  last_verified: 2026-10-24
+  status: active
+  schools: [brocku.ca]
+  logo: null
+  banner_color: '#F1F5F9'
+
+- id: heroku-pack
+  brand: Heroku
+  title: 'Heroku: US$13 a month in credit for 24 months'
+  category: cloud
+  price_type: free
+  free_months: 24
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Open the Heroku student page from the Pack, or https://www.heroku.com/github-students/
+  - Sign in with your GitHub student account to claim it
+  official_url: https://www.heroku.com/github-students/
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("Enjoy a credit of $13 USD per month for 24 months."); https://www.heroku.com/github-students/ ("platform credits worth $13 per month for 24 months"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: heroku-mark-ko-official.svg
+  banner_color: '#5A1BA9'
+
+- id: gitkraken-pack
+  brand: GitKraken
+  title: 'GitKraken Student plan: free for 6 months, then 75 to 80% off Pro'
+  category: coding
+  price_type: free
+  free_months: 6
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Open the GitKraken student page from the Pack, or https://www.gitkraken.com/github-student-developer-pack-bundle
+  - Sign in with your GitHub student account to claim it
+  official_url: https://www.gitkraken.com/github-student-developer-pack-bundle
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("The GitKraken Student plan: free for 6 months and then up to 80% off the Pro price as long as you''re a student."); https://www.gitkraken.com/github-student-developer-pack-bundle ("free for 6 months, then 75-80% off Pro"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: gitkraken.svg
+  banner_color: '#179287'
+  logo_color: '#FFFFFF'
+
+- id: datacamp-pack
+  brand: DataCamp
+  title: 'DataCamp: 3 months free'
+  category: learning
+  price_type: free
+  free_months: 3
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Claim through your GitHub Student Developer Pack
+  - Open education.github.com/pack, find DataCamp and follow its offer link
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("DataCamp has partnered with GitHub Education to offer three months of free access."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: datacamp.svg
+  banner_color: '#03EF62'
+  logo_color: '#000000'
+
+- id: datadog-pack
+  brand: Datadog
+  title: 'Datadog Pro, 10 servers, free for 2 years'
+  category: cloud
+  price_type: free
+  free_months: 24
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Claim through your GitHub Student Developer Pack
+  - Open education.github.com/pack, find Datadog and follow its offer link
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("Pro Account, including 10 servers. Free for 2 years."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: datadog.svg
+  banner_color: '#632CA6'
+  logo_color: '#FFFFFF'
+
+- id: bootdev-pack
+  brand: Boot.dev
+  title: 'Boot.dev: 3 months of full membership'
+  category: learning
+  price_type: free
+  free_months: 3
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Claim through your GitHub Student Developer Pack
+  - Open education.github.com/pack, find Boot.dev and follow its offer link
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("3 months of free access to Boot.dev''s complete interactive membership."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: null
+  banner_color: '#F1F5F9'
+
+- id: 1password-pack
+  brand: 1Password
+  title: '1Password free for 2 years, with Developer Tools'
+  category: coding
+  price_type: free
+  free_months: 24
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Open the 1Password student page from the Pack, or https://1password.com/developers/students
+  - Sign in with your GitHub student account to claim it
+  official_url: https://1password.com/developers/students
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("Get 1Password free for 2 years, including 1Password Developer Tools"); https://1password.com/developers/students ("Get two years of 1Password for free with the GitHub Student Developer Pack"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: 1password.svg
+  banner_color: '#145FE4'
+  logo_color: '#FFFFFF'
+
+- id: camber-student-pack
+  brand: Camber
+  title: 'Camber Student plan free while enrolled'
+  category: cloud
+  price_type: free
+  free_months: null
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Claim through your GitHub Student Developer Pack
+  - Open education.github.com/pack, find Camber and follow its offer link
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("Free Camber Student plan while you''re enrolled, including 40 CPU hours, 5 GPU hours, 50 GB of storage."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: null
+  banner_color: '#F1F5F9'
+
+- id: frontend-masters-pack
+  brand: Frontend Masters
+  title: 'Frontend Masters: 6 months of all courses'
+  category: learning
+  price_type: free
+  free_months: 6
+  countries: [CA, US]
+  ca_school_email: accepted
+  github_pack: true
+  verification: github-education
+  email_rules: 'Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.'
+  how_to_claim:
+  - Get approved for the GitHub Student Developer Pack
+  - Claim through your GitHub Student Developer Pack
+  - Open education.github.com/pack, find Frontend Masters and follow its offer link
+  official_url: https://education.github.com/pack
+  affiliate_url: null
+  source_note: 'sourced: https://education.github.com/pack ("Free 6-months access to all courses and workshops."). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student'
+  ca_school_email_source: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student
+  last_verified: 2026-10-25
+  status: active
+  logo: null
+  banner_color: '#F1F5F9'

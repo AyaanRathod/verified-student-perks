@@ -4,15 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body>
   <header class="nav">
     <a class="logo" href="index.html"><i>✓</i>PerkCheck</a>
     <nav class="links">
-      <span class="sample" id="deal-count"></span>
-      <a class="nav-text" href="results.html">Perks</a>
-      <a class="nav-text" href="#about">About</a>
+      <a class="nav-text" href="#browse">Browse</a>
       <a class="repo" href="https://github.com/AyaanRathod/verified-student-perks" aria-label="Star PerkCheck on GitHub"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
       <button class="mode" type="button" id="theme" aria-label="Switch color mode">☾</button>
     </nav>
@@ -20,12 +18,12 @@
   <main class="wrap">
     <section class="hero">
       <h1>Find out what your school email actually gets you.</h1>
-      <p class="sub">Student deals checked for Canada and the United States. Each deal shows the date of the last check.</p>
+      <p class="sub">Student deals checked for Canada and the United States. Google’s free AI Pro trial is for the United States. Canada is on the exclusion list.</p>
       <form class="form" id="email-form" action="results.html" method="get">
         <label class="visually-hidden" for="email">School email</label>
         <div class="email-row">
           <input class="email" id="email" type="email" required placeholder="name@brocku.ca" autocomplete="email" spellcheck="false">
-          <button class="btn" type="submit">Check my perks</button>
+          <button class="btn" type="submit"><span class="btn-long">Check my perks</span><span class="btn-short">Check</span></button>
         </div>
         <p id="school-hint" aria-live="polite"></p>
         <select id="country-pick" hidden>
@@ -33,46 +31,40 @@
           <option value="US">United States</option>
         </select>
       </form>
-      <div class="trust">
-        <div><b aria-hidden="true">CA</b><span>Each deal has a country tag and a source.</span></div>
-        <div>
-          <b aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
-              <path d="M3 10h18M8 3v4M16 3v4"></path>
-            </svg>
-          </b>
-          <span>Each deal shows the date of the last check.</span>
-        </div>
-        <div>
-          <a class="mark" href="https://github.com/AyaanRathod/verified-student-perks" aria-label="PerkCheck repository on GitHub">
-            <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true">
-              <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-            </svg>
-          </a>
-          <span>The deal file is public on GitHub.</span>
-        </div>
+    </section>
+    <ul class="proof">
+      <li>Every deal links its official page</li>
+      <li>Every card shows its check date</li>
+      <li>Canada availability on every card</li>
+      <li><a href="https://github.com/AyaanRathod/verified-student-perks">Open source deal file on GitHub</a></li>
+    </ul>
+    <section class="feat" id="browse">
+      <div class="section-head">
+        <h2>Browse by category</h2>
+        <button class="text-link" type="button" id="show-all">All</button>
       </div>
-      <article class="example">
-        <div class="lbl"><span>EXAMPLE FROM THE DEAL FILE</span><span class="badge no">Not in Canada</span></div>
-        <h2>Google AI Pro free for students?</h2>
-        <p>The free 12-month trial is for students in the United States. Canada is on the Google exclusion list.</p>
-        <p class="note">Source: the Google One help page, checked 2026-10-22.</p>
-      </article>
+      <div class="cat-tiles" id="home-cats"></div>
+      <div id="home-filter" hidden></div>
     </section>
-    <section class="feat" id="deals">
-      <h2>Checked deals</h2>
-      <p class="note">These rows come from <code>data/deals.yaml</code>. A paid link has a label. This list has no paid links yet.</p>
-      <div class="grid" id="home-deals"></div>
+    <section class="feat">
+      <div class="section-head">
+        <h2>Featured</h2>
+        <button class="text-link" type="button" id="see-featured">See all →</button>
+      </div>
+      <div class="home-featured" id="home-featured"></div>
     </section>
-    <section id="about" class="feat">
-      <h2>About this preview</h2>
-      <p class="note">This is an early website. It reads the checked deals in the repository. The email stays in this browser. It is not sent to a server. A result names your school and how each deal was checked. The brand makes the final check.</p>
+    <section class="feat">
+      <div class="section-head">
+        <h2>Newly checked this week</h2>
+        <button class="text-link" type="button" id="see-new">See all →</button>
+      </div>
+      <div class="home-new" id="home-new"></div>
     </section>
+    <p class="honest">Not every “student deal” works here. Google AI Pro’s free student trial is US only right now, so we show it as not available in Canada instead of hiding it. <a href="deal.html?id=google-ai-pro-students">Why we check →</a></p>
   </main>
   <footer>PerkCheck is free. A paid link is always labeled. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</footer>
-  <script src="deals.js?v=5"></script>
-  <script src="app.js?v=13"></script>
+  <script src="deals.js?v=6"></script>
+  <script src="app.js?v=14"></script>
   <script>
     var schools = null;
     var regionNames = new Intl.DisplayNames(["en"], { type: "region" });
@@ -133,8 +125,91 @@
     var activeDeals = (window.PERKCHECK_DEALS || []).filter(function (deal) {
       return deal.status === "active";
     });
-    document.getElementById("deal-count").textContent = activeDeals.length + " checked deals";
-    renderCards(document.getElementById("home-deals"), activeDeals);
+    var homeCats = document.getElementById("home-cats");
+    var homeFilter = document.getElementById("home-filter");
+    var shortName = {
+      "github-pack": "GitHub Pack",
+      ai: "AI",
+      coding: "Coding",
+      design: "Design",
+      notes: "Notes",
+      learning: "Learning",
+      cloud: "Cloud",
+      shopping: "Shopping"
+    };
+    var catIcon = {
+      "github-pack": '<path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-1.03-.01-1.87-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.04 1.53 1.04.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.84a9.6 9.6 0 0 1 2.51.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/>',
+      ai: '<path fill="currentColor" d="M12 2.2 13.5 8 19.3 9.5 13.5 11 12 16.8 10.5 11 4.7 9.5 10.5 8Z"/><path fill="currentColor" d="M18 14.2 18.7 16.3 20.8 17 18.7 17.7 18 19.8 17.3 17.7 15.2 17 17.3 16.3Z"/>',
+      coding: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"/>',
+      design: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 16.5 14.2 6.3a2.2 2.2 0 0 1 3.1 3.1L7.1 19.6H4Z"/>',
+      notes: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7 3.5h7.2L18 7.3V20.5H7Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M14 3.8V8h4.2M9.5 12h6M9.5 15.5h6"/>',
+      learning: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 6.5 12 3.5l9 3v11l-9-3-9 3Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 6.8v10.6"/>',
+      cloud: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7.2 17.5h9.2a3.6 3.6 0 0 0 .4-7.2 5 5 0 0 0-9.6-1.3A3.2 3.2 0 0 0 7.2 17.5Z"/>',
+      shopping: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M10.2 5.2h3.4L19.5 11l-6.6 6.6L6.5 11Z"/><circle cx="13.4" cy="8.6" r="1.15" fill="currentColor"/>'
+    };
+    function inCategory(deal, key) {
+      if (key === "github-pack") return deal.category === "github-pack" || deal.github_pack === true;
+      return deal.category === key;
+    }
+    function dealsIn(key) {
+      return activeDeals.filter(function (deal) { return inCategory(deal, key); });
+    }
+    function featuredDeals() {
+      return activeDeals.filter(function (deal) { return deal.featured; }).sort(function (a, b) {
+        return (a.featured_rank || 99) - (b.featured_rank || 99);
+      });
+    }
+    function freshDeals(limit) {
+      var newest = activeDeals.reduce(function (max, deal) {
+        return deal.last_verified > max ? deal.last_verified : max;
+      }, "");
+      var start = new Date(newest + "T00:00:00");
+      start.setDate(start.getDate() - 6);
+      var iso = start.toISOString().slice(0, 10);
+      var list = activeDeals.filter(function (deal) { return deal.last_verified >= iso; }).sort(function (a, b) {
+        return a.last_verified < b.last_verified ? 1 : -1;
+      });
+      return limit ? list.slice(0, limit) : list;
+    }
+    function showList(title, deals) {
+      homeFilter.hidden = false;
+      homeFilter.innerHTML = '<h2 class="filter-title">' + title + "</h2>";
+      var box = document.createElement("div");
+      box.className = "grid";
+      homeFilter.appendChild(box);
+      renderCards(box, deals, { country: "CA" });
+      homeFilter.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    document.getElementById("show-all").textContent = "All " + activeDeals.length + " →";
+    document.getElementById("show-all").addEventListener("click", function () {
+      showList("All " + activeDeals.length + " deals", activeDeals);
+    });
+    document.getElementById("see-featured").addEventListener("click", function () {
+      showList("All " + activeDeals.length + " deals", activeDeals);
+    });
+    document.getElementById("see-new").addEventListener("click", function () {
+      showList("Newly checked this week", freshDeals());
+    });
+    var order = ["github-pack", "ai", "coding", "design", "notes", "learning", "cloud", "shopping"];
+    var keys = order.filter(function (key) { return dealsIn(key).length; });
+    homeCats.innerHTML = keys.map(function (key) {
+      var count = dealsIn(key).length;
+      return '<button type="button" class="cat-tile" data-cat="' + key + '">' +
+        '<span class="cat-ico"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">' + (catIcon[key] || "") + "</svg></span>" +
+        "<span>" + (shortName[key] || CATEGORY_LABELS[key]) + "</span>" +
+        "<small>" + count + (count === 1 ? " perk" : " perks") + "</small></button>";
+    }).join("");
+    homeCats.addEventListener("click", function (event) {
+      var tile = event.target.closest("[data-cat]");
+      if (!tile) return;
+      var key = tile.getAttribute("data-cat");
+      Array.prototype.forEach.call(homeCats.children, function (node) {
+        node.setAttribute("aria-pressed", node === tile ? "true" : "false");
+      });
+      showList(shortName[key] || key, dealsIn(key));
+    });
+    renderCards(document.getElementById("home-featured"), featuredDeals(), { country: "CA", featured: true });
+    renderCards(document.getElementById("home-new"), freshDeals(6), { country: "CA", compact: true });
   </script>
 </body>
 </html>

@@ -26,6 +26,12 @@ function countryBadges(deal) {
   return html;
 }
 
+function priceLine(deal) {
+  if (deal.free_months) return "Free for " + deal.free_months + " months";
+  if (deal.price_type === "discount") return deal.discount || "Discount";
+  return "Free while you are a student";
+}
+
 function priceBadge(deal) {
   if (deal.price_type === "discount") return '<span class="badge disc">' + escapeHtml(deal.discount || "Discount") + "</span>";
   if (deal.free_months) return '<span class="badge tag">Free · ' + deal.free_months + " months</span>";
@@ -127,7 +133,7 @@ function hydrateLogoImages(root) {
   Array.prototype.forEach.call((root || document).querySelectorAll("[data-src]"), function (slot) {
     var tile = slot.classList.contains("logo-tile");
     var featured = !!slot.closest(".featured-row");
-    var want = tile ? (row && !featured) : (!row || featured);
+    var want = tile ? ((row && !featured) || !!slot.closest(".is-compact")) : (!row || featured);
     if (!want || slot.querySelector("img")) return;
     var img = document.createElement("img");
     img.src = slot.getAttribute("data-src");
@@ -248,16 +254,21 @@ function renderCards(target, deals, options) {
   target.innerHTML = (deals || []).map(function (deal) {
     var href = cardHref(deal, options);
     var chips = country ? "" : '<div class="row">' + countryBadges(deal) + "</div>";
+    var price = (options.featured || options.compact) ? "" : priceBadge(deal);
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
-    return '<a class="card' + (options.blocked ? " is-blocked" : "") + (options.featured ? " is-featured" : "") + '" href="' + escapeHtml(href) + '">' +
+    var stamp = "Checked " + escapeHtml(deal.last_verified || "");
+    var body = options.featured
+      ? '<div class="meta">' + eligibilityHtml(deal, options) + '<p class="checked">' + stamp + "</p></div>"
+      : options.compact
+        ? '<p class="quiet">' + escapeHtml(priceLine(deal)) + " · " + stamp + "</p>"
+        : chips + eligibilityHtml(deal, options) + '<p class="checked">' + checkedText(deal.last_verified) + "</p>";
+    return '<a class="card' + (options.blocked ? " is-blocked" : "") + (options.featured ? " is-featured" : "") + (options.compact ? " is-compact" : "") + '" href="' + escapeHtml(href) + '">' +
       bannerHtml(deal, options) +
       logoTile(deal, options) +
       '<div class="card-copy">' +
-        '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + priceBadge(deal) + paid + "</div>" +
+        '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + price + paid + "</div>" +
         "<h3>" + escapeHtml(deal.title) + "</h3>" +
-        chips +
-        eligibilityHtml(deal, options) +
-        '<p class="checked">' + checkedText(deal.last_verified) + "</p>" +
+        body +
       "</div>" +
       '<span class="chevron" aria-hidden="true">›</span>' +
     "</a>";
