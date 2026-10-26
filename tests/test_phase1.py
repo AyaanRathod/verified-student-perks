@@ -38,7 +38,7 @@ def deal(**overrides):
 class ValidateDealsTest(unittest.TestCase):
     def test_published_file(self):
         deals = validate_deals.load_yaml(ROOT / "data" / "deals.yaml")
-        self.assertEqual(validate_deals.validate_deals(deals, today=dt.date(2026, 10, 24)), [])
+        self.assertEqual(validate_deals.validate_deals(deals, today=dt.date(2026, 10, 25)), [])
 
     def test_github_pack_true_passes(self):
         # The flag is optional, and a real boolean true is valid.

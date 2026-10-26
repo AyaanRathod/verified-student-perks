@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mockup · Board</title>
+  <style>
+    :root {
+      --bg: #f4f7f6; --text: #111827; --muted: #4b5563; --faint: #6b7280;
+      --line: #e5e7eb; --card: #ffffff; --input: #f1f5f4;
+      --teal: #3a9282; --teal-soft: #e6f4f1; --teal-ink: #2b6f63;
+      --mark: rgba(58, 146, 130, .22);
+      --page: 1080px; --gutter: 24px;
+      color-scheme: light;
+    }
+    body.dark {
+      --bg: #0b1220; --text: #f8fafc; --muted: #cbd5e1; --faint: #94a3b8;
+      --line: #334155; --card: #111827; --input: #1e293b;
+      --teal-soft: #134e4a; --teal-ink: #99f6e4;
+      --mark: rgba(153, 246, 228, .28);
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    a { color: inherit; }
+    button, input { font-family: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .ground {
+      position: fixed; z-index: 0; right: -6vw; top: 36px; width: min(640px, 78vw); height: auto;
+      color: var(--mark); pointer-events: none;
+    }
+    .pick, .nav, main { position: relative; z-index: 1; }
+    .pick {
+      display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap;
+      padding: 8px max(var(--gutter), calc((100% - var(--page)) / 2));
+      background: #24312e; color: #fff; font-size: 13px;
+    }
+    body.dark .pick { background: #061018; }
+    .pick a { color: #fff; }
+    .nav {
+      height: 64px; display: flex; align-items: center; gap: 12px;
+      padding: 0 max(var(--gutter), calc((100% - var(--page)) / 2));
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      border-bottom: 1px solid var(--line); position: sticky; top: 0;
+      backdrop-filter: blur(10px);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; text-decoration: none; margin-right: auto; }
+    .logo i {
+      width: 32px; height: 32px; border-radius: 9px; background: var(--teal); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center; font-style: normal;
+    }
+    .mode { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+    .wrap { width: min(var(--page), calc(100% - 2 * var(--gutter))); margin: 0 auto; padding: 36px 0 72px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: 36px; align-items: center; }
+    h1 { margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; letter-spacing: -1.2px; max-width: 14ch; }
+    .sub { margin: 16px 0 0; max-width: 42ch; color: var(--muted); font-size: 18px; line-height: 1.45; }
+    .proof { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 22px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+    .proof li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+    .lead {
+      display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      overflow: hidden; text-decoration: none; box-shadow: 0 16px 40px rgba(17, 24, 39, .06);
+    }
+    body.dark .lead { box-shadow: none; }
+    .swatch { height: 168px; background: #181717; color: #fff; display: flex; align-items: flex-end; padding: 16px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .lead div { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .lead strong { font-size: 22px; line-height: 1.25; }
+    .lead p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .ok { color: #15803d; font-weight: 650; font-size: 14px; }
+    body.dark .ok { color: #86efac; }
+    .more { margin-top: 48px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 14px; }
+    .section-head h2 { margin: 0; font-size: 22px; }
+    .section-head a { color: var(--teal-ink); font-weight: 650; text-decoration: none; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card {
+      display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start;
+      padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none;
+    }
+    .mark { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
+    .card b { display: block; line-height: 1.3; }
+    .card p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
+    .ask {
+      margin-top: 36px; display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap;
+      padding: 16px 18px; border: 1px dashed var(--line); border-radius: 16px; background: color-mix(in srgb, var(--card) 80%, transparent);
+    }
+    .ask p { margin: 0; max-width: 52ch; color: var(--muted); }
+    .ask button {
+      min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--teal); color: #fff; font-weight: 650; cursor: pointer;
+    }
+    @media (max-width: 800px) {
+      .ground { top: 88px; right: -28vw; width: 115vw; }
+      .hero { grid-template-columns: 1fr; gap: 22px; }
+      h1 { max-width: none; }
+      .grid { grid-template-columns: 1fr; }
+      .swatch { height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="ground" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="178" fill="none" stroke="currentColor" stroke-width="1.25"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="1.5 7"/>
+    <path d="M118 208l58 58L292 132" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78 96h46M78 96v46M322 304h-46M322 304v-46" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+  </svg>
+  <p class="pick"><span>Mockup B · Board. One deal up front, a check mark behind the page.</span> <a href="shelf.html">See the Shelf mockup</a></p>
+  <header class="nav">
+    <a class="logo" href="board.html"><i>✓</i>PerkCheck</a>
+    <button class="mode" type="button" id="theme" aria-label="Switch color mode">☾</button>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>See the deal before you type an email.</h1>
+        <p class="sub">78 student deals, already checked. Browse the whole list. A school email only tells you which ones match your school.</p>
+        <ul class="proof">
+          <li>Official page on every deal</li>
+          <li>Check date on every card</li>
+          <li>Canada marked on every card</li>
+        </ul>
+      </div>
+      <a class="lead" href="#more">
+        <div class="swatch">GitHub · checked 2026-10-22</div>
+        <div>
+          <strong>Student Developer Pack, free while you are a student</strong>
+          <p>A bundle of developer tools from GitHub and partners.</p>
+          <span class="ok">✓ Works in Canada</span>
+        </div>
+      </a>
+    </section>
+    <section class="more" id="more">
+      <div class="section-head"><h2>Keep browsing</h2><a href="shelf.html">All 78</a></div>
+      <div class="grid">
+        <a class="card" href="#more"><span class="mark" style="background:#F24E1E">F</span><span><b>Figma Education</b><p>A design app for drawing website and app interfaces.</p><span class="ok">✓ Works in Canada</span></span></a>
+        <a class="card" href="#more"><span class="mark" style="background:#111">N</span><span><b>Notion Education Plus</b><p>A workspace for notes, documents, wikis, and tasks.</p><span class="ok">✓ Works in Canada</span></span></a>
+        <a class="card" href="#more"><span class="mark" style="background:#0572EC">1</span><span><b>1Password for 2 years</b><p>A password manager that stores logins and fills them in.</p><span class="ok">✓ Works in Canada</span></span></a>
+        <a class="card" href="#more"><span class="mark" style="background:#632CA6">D</span><span><b>Datadog Pro</b><p>A monitoring tool for app performance, servers, and logs.</p><span class="ok">✓ Works in Canada</span></span></a>
+        <a class="card" href="#more"><span class="mark" style="background:#05192D">D</span><span><b>DataCamp, 3 months</b><p>Online courses for data science, Python, and SQL.</p><span class="ok">✓ Works in Canada</span></span></a>
+        <a class="card" href="#more"><span class="mark" style="background:#222">B</span><span><b>Boot.dev, 3 months</b><p>An interactive site that teaches backend coding.</p><span class="ok">✓ Works in Canada</span></span></a>
+      </div>
+    </section>
+    <section class="ask">
+      <p>Have a school email? Use it when you want the list narrowed to your school. You can leave it blank and keep browsing.</p>
+      <button type="button">Check a school</button>
+    </section>
+  </main>
+  <script>
+    var theme = document.getElementById("theme");
+    function paint() {
+      var dark = document.body.classList.contains("dark");
+      theme.innerHTML = dark
+        ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+        : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M16 13.5A6.5 6.5 0 1 1 10.5 4 5 5 0 0 0 16 13.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+      theme.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+    if (localStorage.getItem("perkcheck-mock-theme") === "dark") document.body.classList.add("dark");
+    paint();
+    theme.addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("perkcheck-mock-theme", document.body.classList.contains("dark") ? "dark" : "light");
+      paint();
+    });
+  </script>
+</body>
+</html>
