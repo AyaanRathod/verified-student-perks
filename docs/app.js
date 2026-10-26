@@ -26,15 +26,19 @@ function countryBadges(deal) {
   return html;
 }
 
+function monthWord(count) {
+  return count === 1 ? "month" : "months";
+}
+
 function priceLine(deal) {
-  if (deal.free_months) return "Free for " + deal.free_months + " months";
+  if (deal.free_months) return "Free for " + deal.free_months + " " + monthWord(deal.free_months);
   if (deal.price_type === "discount") return deal.discount || "Discount";
   return "Free while you are a student";
 }
 
 function priceBadge(deal) {
   if (deal.price_type === "discount") return '<span class="badge disc">' + escapeHtml(deal.discount || "Discount") + "</span>";
-  if (deal.free_months) return '<span class="badge tag">Free · ' + deal.free_months + " months</span>";
+  if (deal.free_months) return '<span class="badge tag">Free · ' + deal.free_months + " " + monthWord(deal.free_months) + "</span>";
   return '<span class="badge tag">Free</span>';
 }
 

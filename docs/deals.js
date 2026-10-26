@@ -2477,5 +2477,405 @@ window.PERKCHECK_DEALS = [
     "status": "active",
     "logo": null,
     "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "elevenreader-ultra",
+    "brand": "ElevenReader",
+    "title": "ElevenReader Ultra free for 1 year",
+    "about": "An app that reads textbooks and notes out loud.",
+    "category": "ai",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "You must be 18 or older and verify a school-issued email. The account email has to match that school email. The page says eligibility depends on the school domain or country. Canada confirmed by maintainer (Ayaan) on 2026-10-25.",
+    "how_to_claim": [
+      "Open elevenreader.io/students and choose Get 1 year free",
+      "Sign up with your school-issued email",
+      "Verify that school email before the discount applies",
+      "Ultra stays free for one year, then renews at the regular price unless you cancel"
+    ],
+    "official_url": "https://elevenreader.io/students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://elevenreader.io/students (\"Verify your student status by clicking Get 1 year free on this page and sign up using your school-issued email address.\"). Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-25. The page says eligibility varies by school domain or country and does not exclude Canada.",
+    "ca_school_email_source": "https://elevenreader.io/students",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#000000"
+  },
+  {
+    "id": "craft-education",
+    "brand": "Craft",
+    "title": "Craft Education plan free for 1 year, renewable",
+    "about": "A notes app for writing and organizing documents.",
+    "category": "notes",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Currently enrolled students, faculty, and staff with a school-issued email. Verification lasts 12 months and can be renewed. Canada confirmed by maintainer (Ayaan) on 2026-10-25. The official page does not exclude Canada.",
+    "how_to_claim": [
+      "Sign up at craft.do/education with your school-issued email",
+      "Open the activation email and click the button",
+      "If you already have an account, change the email to your school address first",
+      "Re-verify at docs.craft.do/edu in the last 30 days before the year ends"
+    ],
+    "official_url": "https://www.craft.do/education",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.craft.do/education (\"If you are a currently enrolled student, faculty or staff member of an academic institution, you are eligible\") and https://support.craft.do/en/account-and-subscription/subscription-plans/education-plan. Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-25.",
+    "ca_school_email_source": "https://www.craft.do/education",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "autodesk-education",
+    "brand": "Autodesk",
+    "title": "Autodesk Education plan free for 1 year, renewable",
+    "about": "Design software such as AutoCAD, Fusion, and Revit.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Students at a qualified school. Autodesk says most institutions worldwide qualify, except countries under a US trade embargo. A school email alone is not enough. SheerID may ask for proof of enrollment. Canada confirmed by maintainer (Ayaan) on 2026-10-25.",
+    "how_to_claim": [
+      "Open the Autodesk education products page and sign in",
+      "Pick a product to start education verification",
+      "Confirm eligibility with SheerID, and upload proof of enrollment if asked",
+      "Use the software for one year, then renew while you are still eligible"
+    ],
+    "official_url": "https://www.autodesk.com/education/edu-software/overview",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.autodesk.com/education/edu-software/overview (\"The education plan gives eligible students and educators free, one-year, single-user access\"). Eligibility: https://www.autodesk.com/ca-en/support/account/education/admin/available-products (\"Most educational institutions worldwide qualify. Exceptions are institutions in countries subject to the United States trade embargo.\"). Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-25.",
+    "ca_school_email_source": "https://www.autodesk.com/ca-en/support/account/education/admin/available-products",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "autodesk.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#000000"
+  },
+  {
+    "id": "stripe-pack",
+    "brand": "Stripe",
+    "title": "Stripe: US$25 in credits toward fees",
+    "about": "A payments service for cards, billing, and payouts.",
+    "category": "coding",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "github_pack": true,
+    "verification": "github-education",
+    "email_rules": "Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Open the Stripe offer in your Pack",
+      "Use the US$25 credit on Stripe fees, including Payments and Billing"
+    ],
+    "official_url": "https://education.github.com/pack/redeem/stripe-student",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.github.com/pack/offers (\"Get $25 in Stripe credits to offset fees on products including Stripe Payments, Billing, and more.\"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "stripe.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#635BFF"
+  },
+  {
+    "id": "blockchair-pack",
+    "brand": "Blockchair",
+    "title": "Blockchair: 100,000 free API requests",
+    "about": "An API for searching blockchain and transaction data.",
+    "category": "coding",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "github_pack": true,
+    "verification": "github-education",
+    "email_rules": "Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Open the Blockchair offer from the Pack",
+      "Sign in with GitHub at blockchair.com/student-pack to get the API key"
+    ],
+    "official_url": "https://education.github.com/pack/redeem/blockchair-student",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.github.com/pack/offers (\"100,000 free requests.\") and https://blockchair.com/student-pack. Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#111827"
+  },
+  {
+    "id": "shopify-students",
+    "brand": "Shopify",
+    "title": "Shopify for students: 4 months free, then US$1 a month for 3 months",
+    "about": "A store builder for selling products online.",
+    "category": "shopping",
+    "price_type": "discount",
+    "discount": "4 months free, then US$1 a month for 3 months",
+    "free_months": 4,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Enrolled students at participating colleges and universities in Canada and the United States. You need the student email domain Shopify lists for that school. If your school is missing, you can request it on the page.",
+    "how_to_claim": [
+      "Open shopify.com/students and search for your school",
+      "Sign up with the student email domain listed for that school",
+      "Build the store free for 4 months",
+      "When you start selling, the plan is US$1 a month for 3 months"
+    ],
+    "official_url": "https://www.shopify.com/students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.shopify.com/students (\"Students currently enrolled at participating colleges and universities in the US and Canada.\" and \"Get 4 months free to build your store. When you are ready to sell, it is just $1/month for 3 months.\")",
+    "ca_school_email_source": "https://www.shopify.com/students",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "shopify.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#96BF48"
+  },
+  {
+    "id": "duolingo-super-unidays-ca",
+    "brand": "Duolingo",
+    "title": "Super Duolingo free for 2 months through UNiDAYS",
+    "about": "A language app for short daily practice lessons.",
+    "category": "learning",
+    "price_type": "free",
+    "free_months": 2,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "unidays",
+    "email_rules": "Canada offer on the UNiDAYS Canada page. Verify you are a student on UNiDAYS, then open the Duolingo offer.",
+    "how_to_claim": [
+      "Register at myunidays.com/CA/en-CA with a personal email",
+      "Verify your student status",
+      "Open the Duolingo offer and choose Get now"
+    ],
+    "official_url": "https://www.myunidays.com/CA/en-CA/partners/duolingo/view",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.myunidays.com/CA/en-CA/partners/duolingo/view (\"Duolingo 2 months free trial of Super Duolingo\"). This is the UNiDAYS Canada page.",
+    "ca_school_email_source": "https://www.myunidays.com/CA/en-CA/partners/duolingo/view",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "duolingo.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#58CC02"
+  },
+  {
+    "id": "microsoft-365-personal-student",
+    "brand": "Microsoft",
+    "title": "Microsoft 365 Personal, 50% off for students",
+    "about": "Word, Excel, PowerPoint, Outlook, and cloud storage.",
+    "category": "notes",
+    "price_type": "discount",
+    "discount": "50% off",
+    "free_months": null,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Checked on the Canada Microsoft 365 student page. Use a personal Microsoft account, not a school Microsoft 365 account, then prove you are a student with a school email or other proof.",
+    "how_to_claim": [
+      "Open the Canada Microsoft 365 college pricing page",
+      "Sign in with a personal Microsoft account and add a payment method",
+      "Submit a school email or other proof that you are a student",
+      "Use the link sent to that email to finish the order"
+    ],
+    "official_url": "https://www.microsoft.com/en-ca/microsoft-365/college-student-pricing",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.microsoft.com/en-ca/microsoft-365/college-student-pricing (\"Students save 50% on Microsoft 365 Personal\"). The dollar price was hidden on the page, so this row records the 50% only.",
+    "ca_school_email_source": "https://www.microsoft.com/en-ca/microsoft-365/college-student-pricing",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#D83B01"
+  },
+  {
+    "id": "cloudflare-students",
+    "brand": "Cloudflare",
+    "title": "Cloudflare Workers Paid fee waived for 12 months",
+    "about": "A network that hosts sites and blocks bad traffic.",
+    "category": "cloud",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "US"
+    ],
+    "not_available_in": [
+      {
+        "country": "CA",
+        "source": "https://www.cloudflare.com/students/"
+      }
+    ],
+    "ca_school_email": "rejected",
+    "verification": "school-email",
+    "email_rules": "The Cloudflare students page limits this offer to students in the United States over 18 with a verified .edu billing email. Canada is not included.",
+    "how_to_claim": [
+      "Create a free Cloudflare account",
+      "Add a payment method and set the billing email to a .edu address",
+      "Add the Workers Paid plan",
+      "Confirm the redemption email"
+    ],
+    "official_url": "https://www.cloudflare.com/students/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.cloudflare.com/students/ (\"The current offering is available only to students in the United States over the age of 18 who have a verified .edu billing email address.\"). Shown as not available in Canada.",
+    "last_verified": "2026-10-25",
+    "watch_text": "United States only",
+    "status": "active",
+    "logo": "cloudflare.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#F38020"
+  },
+  {
+    "id": "mongodb-atlas-pack",
+    "brand": "MongoDB",
+    "title": "MongoDB Atlas: US$50 credit and a free certification",
+    "about": "A cloud database for storing app data.",
+    "category": "cloud",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "github_pack": true,
+    "verification": "github-education",
+    "email_rules": "Part of the GitHub Student Developer Pack. Get approved for GitHub Education first. The Atlas code expires if you do not apply it within 90 days, and Atlas asks for a card or PayPal.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Open mongodb.com/students and verify with your GitHub account",
+      "Generate the Atlas code when you are ready to use it",
+      "Apply the US$50 credit to one Atlas organization"
+    ],
+    "official_url": "https://www.mongodb.com/students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.mongodb.com/students (\"Get free certification and $50 of Atlas Credit\" through the GitHub Student Developer Pack). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "mongodb.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#00684A"
+  },
+  {
+    "id": "scrimba-pack",
+    "brand": "Scrimba",
+    "title": "Scrimba Pro free for 1 month",
+    "about": "Interactive courses for learning to code in the browser.",
+    "category": "learning",
+    "price_type": "free",
+    "free_months": 1,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "github_pack": true,
+    "verification": "github-education",
+    "email_rules": "Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then sign in to Scrimba with that same GitHub account. One trial per account.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Log in to Scrimba with Continue with GitHub, using that account",
+      "Open the upgrade button and confirm the GitHub Student 30-day trial"
+    ],
+    "official_url": "https://education.github.com/pack/offers",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.github.com/pack/offers (\"Enjoy 1 month of free access to Full access to Scrimba Pro courses, projects, and coding challenges, which includes 40+ courses.\"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": "scrimba.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#2B283A"
+  },
+  {
+    "id": "interview-cake-pack",
+    "brand": "Interview Cake",
+    "title": "Interview Cake full course free for 1 week",
+    "about": "Practice questions for coding interviews.",
+    "category": "learning",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "github_pack": true,
+    "verification": "github-education",
+    "email_rules": "Part of the GitHub Student Developer Pack. Get approved for GitHub Education first, then claim this offer from the Pack page.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Open the Interview Cake offer in your Pack",
+      "Use the full course for 1 week"
+    ],
+    "official_url": "https://www.interviewcake.com/github-students",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.github.com/pack/offers (\"Access to the full coding interview prep course for 1 week.\"). Canadian school email: https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#F1F5F9"
+  },
+  {
+    "id": "solidworks-design-standard",
+    "brand": "SOLIDWORKS",
+    "title": "SOLIDWORKS Design Standard free for 1 year",
+    "about": "3D CAD for parts, assemblies, and drawings.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Qualified students. The students page says the free software is for every student, everywhere. Canada confirmed by maintainer (Ayaan) on 2026-10-25. Design Standard is the free product. It needs a Windows PC. Access lasts 1 year, and you may be asked for proof of enrollment when you renew. This row is not the paid Premium or xDesign plans.",
+    "how_to_claim": [
+      "Open the SOLIDWORKS Design Standard for Students page and start the free signup",
+      "Enter your school name and the rest of the form",
+      "Download the installer and use the serial number from the signup",
+      "Use it for 1 year, then sign up again if you are still a student"
+    ],
+    "official_url": "https://www.solidworks.com/product/students/design-standard",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.solidworks.com/product/students (\"free for every student, everywhere\") and https://www.solidworks.com/product/students/design-standard (\"You receive 1 year of access. If you are still a qualified student at the end of your 1-year access, you may sign up again\"). Canada eligibility confirmed by maintainer (Ayaan) on 2026-10-25.",
+    "ca_school_email_source": "https://www.solidworks.com/product/students",
+    "last_verified": "2026-10-25",
+    "status": "active",
+    "logo": null,
+    "banner_color": "#E31937"
   }
 ];
