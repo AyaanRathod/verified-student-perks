@@ -40,7 +40,11 @@ function safeLogoFile(value) {
   return /^[a-z0-9.-]+\.svg$/i.test(value || "") ? value : "";
 }
 
-function bannerHtml(deal) {
+function rowLayout() {
+  return window.matchMedia("(max-width: 800px)").matches;
+}
+
+function bannerHtml(deal, options) {
   var background = safeHex(deal.banner_color) || "#F1F5F9";
   var brand = escapeHtml(deal.brand);
   var file = safeLogoFile(deal.logo);
@@ -48,39 +52,89 @@ function bannerHtml(deal) {
     return '<div class="card-banner" style="background:' + background + '"><span class="banner-name">' + brand + "</span></div>";
   }
   var fill = safeHex(deal.logo_color);
+  var showNow = !options || !rowLayout() || options.featured;
   if (fill) {
     return '<div class="card-banner logo" style="background:' + background + '" data-logo="' + escapeHtml(file) + '" data-fill="' + fill + '" data-alt="' + brand + ' logo"></div>';
   }
-  return '<div class="card-banner logo" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo"></div>';
+  if (!showNow) {
+    return '<div class="card-banner logo" style="background:' + background + '" data-src="logos/' + escapeHtml(file) + '" data-alt="' + brand + ' logo"></div>';
+  }
+  return '<div class="card-banner logo" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo" loading="lazy" decoding="async"></div>';
+}
+
+var logoTextCache = {};
+var logoObserver = null;
+
+function loadLogoText(file) {
+  if (!logoTextCache[file]) {
+    logoTextCache[file] = fetch("logos/" + file).then(function (response) {
+      if (!response.ok) throw new Error("logo");
+      return response.text();
+    });
+  }
+  return logoTextCache[file];
+}
+
+function paintSlot(slot) {
+  if (!slot || slot.getAttribute("data-painted") === "1") return;
+  if (getComputedStyle(slot).display === "none") return;
+  var file = slot.getAttribute("data-logo");
+  var fill = slot.getAttribute("data-fill");
+  if (!safeLogoFile(file) || !safeHex(fill)) return;
+  slot.setAttribute("data-painted", "1");
+  loadLogoText(file).then(function (text) {
+    var parsed = new DOMParser().parseFromString(text, "image/svg+xml");
+    var svg = parsed.querySelector("svg");
+    if (!svg || parsed.querySelector("parsererror")) return;
+    parsed.querySelectorAll("script").forEach(function (node) { node.remove(); });
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", slot.getAttribute("data-alt") || "");
+    svg.setAttribute("fill", fill);
+    svg.style.color = fill;
+    svg.style.height = slot.classList.contains("logo-tile") ? "32px" : (slot.closest(".deal") ? "96px" : "64px");
+    svg.style.width = "auto";
+    svg.style.maxWidth = "70%";
+    svg.querySelectorAll("*").forEach(function (node) {
+      var current = node.getAttribute("fill");
+      if (current && current !== "none") node.setAttribute("fill", fill);
+    });
+    slot.replaceChildren(svg);
+  }).catch(function () {
+    slot.removeAttribute("data-painted");
+  });
 }
 
 function paintColoredLogos(root) {
   if (!root) return;
-  Array.prototype.forEach.call(root.querySelectorAll(".card-banner[data-logo], .logo-tile[data-logo]"), function (slot) {
-    var file = slot.getAttribute("data-logo");
-    var fill = slot.getAttribute("data-fill");
-    if (!safeLogoFile(file) || !safeHex(fill)) return;
-    fetch("logos/" + file).then(function (response) {
-      if (!response.ok) throw new Error("logo");
-      return response.text();
-    }).then(function (text) {
-      var parsed = new DOMParser().parseFromString(text, "image/svg+xml");
-      var svg = parsed.querySelector("svg");
-      if (!svg || parsed.querySelector("parsererror")) return;
-      parsed.querySelectorAll("script").forEach(function (node) { node.remove(); });
-      svg.setAttribute("role", "img");
-      svg.setAttribute("aria-label", slot.getAttribute("data-alt") || "");
-      svg.setAttribute("fill", fill);
-      svg.style.color = fill;
-      svg.style.height = slot.classList.contains("logo-tile") ? "32px" : (slot.closest(".deal") ? "96px" : "64px");
-      svg.style.width = "auto";
-      svg.style.maxWidth = "70%";
-      svg.querySelectorAll("*").forEach(function (node) {
-        var current = node.getAttribute("fill");
-        if (current && current !== "none") node.setAttribute("fill", fill);
+  if (!logoObserver) {
+    logoObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        paintSlot(entry.target);
+        logoObserver.unobserve(entry.target);
       });
-      slot.replaceChildren(svg);
-    }).catch(function () {});
+    }, { rootMargin: "200px" });
+  }
+  Array.prototype.forEach.call(root.querySelectorAll("[data-logo]"), function (slot) {
+    if (slot.getAttribute("data-painted") === "1") return;
+    if (getComputedStyle(slot).display === "none") return;
+    logoObserver.observe(slot);
+  });
+}
+
+function hydrateLogoImages(root) {
+  var row = rowLayout();
+  Array.prototype.forEach.call((root || document).querySelectorAll("[data-src]"), function (slot) {
+    var tile = slot.classList.contains("logo-tile");
+    var featured = !!slot.closest(".featured-row");
+    var want = tile ? (row && !featured) : (!row || featured);
+    if (!want || slot.querySelector("img")) return;
+    var img = document.createElement("img");
+    img.src = slot.getAttribute("data-src");
+    img.alt = slot.getAttribute("data-alt") || "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    slot.appendChild(img);
   });
 }
 
@@ -129,7 +183,7 @@ function cardStatusHtml(deal, country) {
   return escapeHtml(text);
 }
 
-function logoTile(deal) {
+function logoTile(deal, options) {
   var background = safeHex(deal.banner_color) || "#F1F5F9";
   var brand = escapeHtml(deal.brand);
   var file = safeLogoFile(deal.logo);
@@ -141,7 +195,11 @@ function logoTile(deal) {
   if (fill) {
     return '<div class="logo-tile" style="background:' + background + '" data-logo="' + escapeHtml(file) + '" data-fill="' + fill + '" data-alt="' + brand + ' logo"></div>';
   }
-  return '<div class="logo-tile" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo"></div>';
+  var showNow = rowLayout() && !(options && options.featured);
+  if (!showNow) {
+    return '<div class="logo-tile" style="background:' + background + '" data-src="logos/' + escapeHtml(file) + '" data-alt="' + brand + ' logo"></div>';
+  }
+  return '<div class="logo-tile" style="background:' + background + '"><img src="logos/' + escapeHtml(file) + '" alt="' + brand + ' logo" loading="lazy" decoding="async"></div>';
 }
 
 function countryLabel(code) {
@@ -192,8 +250,8 @@ function renderCards(target, deals, options) {
     var chips = country ? "" : '<div class="row">' + countryBadges(deal) + "</div>";
     var paid = deal.affiliate_url ? '<span class="paid">Paid link</span>' : "";
     return '<a class="card' + (options.blocked ? " is-blocked" : "") + (options.featured ? " is-featured" : "") + '" href="' + escapeHtml(href) + '">' +
-      bannerHtml(deal) +
-      logoTile(deal) +
+      bannerHtml(deal, options) +
+      logoTile(deal, options) +
       '<div class="card-copy">' +
         '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + priceBadge(deal) + paid + "</div>" +
         "<h3>" + escapeHtml(deal.title) + "</h3>" +
@@ -204,6 +262,7 @@ function renderCards(target, deals, options) {
       '<span class="chevron" aria-hidden="true">›</span>' +
     "</a>";
   }).join("");
+  hydrateLogoImages(target);
   paintColoredLogos(target);
 }
 
@@ -283,5 +342,190 @@ function loadSchools() {
   button.addEventListener("click", function () {
     document.body.classList.toggle("dark");
     localStorage.setItem("perkcheck-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    button.dataset.tip = document.body.classList.contains("dark") ? "Switch to light mode" : "Switch to dark mode";
+  });
+})();
+
+var logoResizeTimer = 0;
+window.addEventListener("resize", function () {
+  window.clearTimeout(logoResizeTimer);
+  logoResizeTimer = window.setTimeout(function () {
+    hydrateLogoImages(document);
+    paintColoredLogos(document);
+  }, 150);
+});
+
+(function () {
+  var nav = document.querySelector(".nav");
+  var links = nav && nav.querySelector(".links");
+  if (!nav || !links) return;
+
+  var page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  if (!page || page === "index.html") {
+    var home = nav.querySelector("a.logo");
+    if (home) home.setAttribute("aria-current", "page");
+  }
+  Array.prototype.forEach.call(links.querySelectorAll("a[href]"), function (link) {
+    var href = (link.getAttribute("href") || "").split("#")[0].split("?")[0];
+    if (href && href === page) link.setAttribute("aria-current", "page");
+  });
+
+  var repo = nav.querySelector(".repo");
+  if (repo) {
+    repo.classList.add("tip");
+    repo.dataset.tip = "GitHub";
+  }
+  var theme = document.getElementById("theme");
+  if (theme) {
+    theme.classList.add("tip");
+    theme.dataset.tip = document.body.classList.contains("dark") ? "Switch to light mode" : "Switch to dark mode";
+  }
+
+  var mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+  var shortcut = mac ? "⌘K" : "Ctrl K";
+  var opener = document.createElement("button");
+  opener.type = "button";
+  opener.className = "search-open";
+  opener.setAttribute("aria-label", "Search deals");
+  opener.setAttribute("aria-keyshortcuts", mac ? "Meta+K" : "Control+K");
+  opener.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg><span class="search-short">Search</span><span class="search-label">Search deals</span><kbd>' + shortcut + "</kbd>";
+  nav.insertBefore(opener, links);
+
+  var palette = document.createElement("div");
+  palette.className = "palette";
+  palette.hidden = true;
+  palette.innerHTML = '<div class="palette-panel" role="dialog" aria-modal="true" aria-label="Search deals"><input class="palette-input" type="search" placeholder="Search by brand or perk" aria-autocomplete="list" aria-controls="palette-list" aria-expanded="false"><p class="palette-status" aria-live="polite"></p><ul class="palette-list" id="palette-list" role="listbox"></ul><p class="palette-hint"><kbd>↑</kbd><kbd>↓</kbd> move <kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div>';
+  document.body.appendChild(palette);
+
+  var input = palette.querySelector(".palette-input");
+  var list = palette.querySelector(".palette-list");
+  var status = palette.querySelector(".palette-status");
+  var items = [];
+  var active = 0;
+  var lastFocus = null;
+
+  function deals() {
+    return window.PERKCHECK_DEALS || [];
+  }
+
+  function go(href) {
+    closePalette();
+    if (href) location.href = href;
+  }
+
+  function commands() {
+    return [
+      { label: "Home", hint: "Email check", href: "index.html" },
+      { label: "Perks", hint: "Deals for your school", href: "results.html" }
+    ];
+  }
+
+  function matchingDeals(query) {
+    var needle = query.toLowerCase();
+    return deals().filter(function (deal) {
+      var category = CATEGORY_LABELS[deal.category] || deal.category || "";
+      return [deal.brand, deal.title, category, deal.id].join(" ").toLowerCase().indexOf(needle) !== -1;
+    }).slice(0, 8);
+  }
+
+  function renderPalette() {
+    var query = input.value.trim();
+    var rows = query ? matchingDeals(query).map(function (deal) {
+      return {
+        label: deal.brand,
+        hint: deal.title,
+        href: "deal.html?id=" + encodeURIComponent(deal.id)
+      };
+    }) : commands();
+    items = rows;
+    active = 0;
+    if (!rows.length) {
+      list.innerHTML = "";
+      status.textContent = 'No deal matches "' + query + '".';
+      input.removeAttribute("aria-activedescendant");
+      return;
+    }
+    status.textContent = query ? rows.length + (rows.length === 1 ? " matching deal" : " matching deals") : "Jump to a page, or type a deal.";
+    list.innerHTML = rows.map(function (row, index) {
+      return '<li role="option" id="palette-opt-' + index + '" aria-selected="' + (index === 0 ? "true" : "false") + '"><span>' + escapeHtml(row.label) + '</span><small>' + escapeHtml(row.hint) + "</small></li>";
+    }).join("");
+    input.setAttribute("aria-activedescendant", "palette-opt-0");
+  }
+
+  function move(step) {
+    if (!items.length) return;
+    active = (active + step + items.length) % items.length;
+    Array.prototype.forEach.call(list.children, function (node, index) {
+      node.setAttribute("aria-selected", index === active ? "true" : "false");
+    });
+    input.setAttribute("aria-activedescendant", "palette-opt-" + active);
+    if (list.children[active]) list.children[active].scrollIntoView({ block: "nearest" });
+  }
+
+  function openPalette() {
+    lastFocus = document.activeElement;
+    palette.hidden = false;
+    document.body.style.overflow = "hidden";
+    input.setAttribute("aria-expanded", "true");
+    renderPalette();
+    input.focus();
+    input.select();
+  }
+
+  function closePalette() {
+    palette.hidden = true;
+    document.body.style.overflow = "";
+    input.setAttribute("aria-expanded", "false");
+    input.value = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  opener.addEventListener("click", openPalette);
+  palette.addEventListener("click", function (event) {
+    if (event.target === palette) closePalette();
+  });
+  input.addEventListener("input", renderPalette);
+  list.addEventListener("mousemove", function (event) {
+    var option = event.target.closest("[role='option']");
+    if (!option) return;
+    move(Array.prototype.indexOf.call(list.children, option) - active);
+  });
+  list.addEventListener("mousedown", function (event) {
+    var option = event.target.closest("[role='option']");
+    if (!option) return;
+    event.preventDefault();
+    var index = Array.prototype.indexOf.call(list.children, option);
+    if (items[index]) go(items[index].href);
+  });
+  document.addEventListener("keydown", function (event) {
+    var key = event.key.toLowerCase();
+    var command = (event.metaKey || event.ctrlKey) && key === "k";
+    var slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey;
+    var typing = document.activeElement && /^(input|textarea|select)$/i.test(document.activeElement.tagName);
+    if (command) {
+      event.preventDefault();
+      if (palette.hidden) openPalette();
+      else closePalette();
+      return;
+    }
+    if (slash && palette.hidden && !typing) {
+      event.preventDefault();
+      openPalette();
+      return;
+    }
+    if (palette.hidden) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closePalette();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      move(1);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      move(-1);
+    } else if (event.key === "Enter" && items[active]) {
+      event.preventDefault();
+      go(items[active].href);
+    }
   });
 })();

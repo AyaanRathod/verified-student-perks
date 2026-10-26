@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
   <header class="nav">
@@ -23,15 +23,15 @@
       <p class="sub">Student deals checked for Canada and the United States. Each deal shows the date of the last check.</p>
       <form class="form" id="email-form" action="results.html" method="get">
         <label class="visually-hidden" for="email">School email</label>
-        <input class="email" id="email" type="email" required placeholder="Enter your school email (name@brocku.ca)" autocomplete="email">
+        <div class="email-row">
+          <input class="email" id="email" type="email" required placeholder="name@brocku.ca" autocomplete="email" spellcheck="false">
+          <button class="btn" type="submit">Check my perks</button>
+        </div>
         <p id="school-hint" aria-live="polite"></p>
         <select id="country-pick" hidden>
           <option value="CA">Canada</option>
           <option value="US">United States</option>
         </select>
-        <div class="frow">
-          <button class="btn" type="submit">Check my perks</button>
-        </div>
       </form>
       <div class="trust">
         <div><b aria-hidden="true">CA</b><span>Each deal has a country tag and a source.</span></div>
@@ -72,7 +72,7 @@
   </main>
   <footer>PerkCheck is free. A paid link is always labeled. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</footer>
   <script src="deals.js?v=5"></script>
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=13"></script>
   <script>
     var schools = null;
     var regionNames = new Intl.DisplayNames(["en"], { type: "region" });
