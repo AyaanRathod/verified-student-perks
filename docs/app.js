@@ -248,6 +248,12 @@ function eligibilityHtml(deal, options) {
   return '<p class="elig ' + kind + '">' + (kind === "ok" ? '<span class="elig-mark" aria-hidden="true">✓</span> ' : "") + escapeHtml(text) + "</p>";
 }
 
+function aboutHtml(deal) {
+  var text = String((deal && deal.about) || "").trim();
+  if (!text) return "";
+  return '<p class="about">' + escapeHtml(text) + "</p>";
+}
+
 function renderCards(target, deals, options) {
   options = options || {};
   var country = options.country || "";
@@ -264,13 +270,16 @@ function renderCards(target, deals, options) {
         : chips + eligibilityHtml(deal, options) + '<p class="checked">' + checkedText(deal.last_verified) + "</p>";
     return '<a class="card' + (options.blocked ? " is-blocked" : "") + (options.featured ? " is-featured" : "") + (options.compact ? " is-compact" : "") + '" href="' + escapeHtml(href) + '">' +
       bannerHtml(deal, options) +
-      logoTile(deal, options) +
-      '<div class="card-copy">' +
-        '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + price + paid + "</div>" +
-        "<h3>" + escapeHtml(deal.title) + "</h3>" +
-        body +
+      '<div class="card-top">' +
+        logoTile(deal, options) +
+        '<div class="card-copy">' +
+          '<div class="brand-line"><span class="brand">' + escapeHtml(deal.brand) + "</span>" + price + paid + "</div>" +
+          "<h3>" + escapeHtml(deal.title) + "</h3>" +
+          aboutHtml(deal) +
+          '<div class="card-body">' + body + "</div>" +
+        "</div>" +
+        '<span class="chevron" aria-hidden="true">›</span>' +
       "</div>" +
-      '<span class="chevron" aria-hidden="true">›</span>' +
     "</a>";
   }).join("");
   hydrateLogoImages(target);

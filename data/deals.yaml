@@ -13,10 +13,12 @@
 #   schools: limit a deal to these school email domains (campus licences)
 #   featured: true or false. At most 4 deals in this file may be featured.
 #   featured_rank: a positive whole number, only when featured is true
+#   about: one sentence on what the product is. Shown on each card.
 
 - id: github-student-pack
   brand: GitHub
   title: Student Developer Pack, free developer tools while you're a student
+  about: "A bundle of developer tools from GitHub and partners."
   category: github-pack
   github_pack: true
   featured: true
@@ -46,6 +48,7 @@
 - id: google-ai-pro-students
   brand: Google
   title: Free 12-month Google AI Pro trial for students
+  about: "Google's plan for Gemini, a chatbot for writing and code."
   category: ai
   price_type: free
   free_months: 12
@@ -73,6 +76,7 @@
 - id: amazon-prime-young-adults-ca
   brand: Amazon
   title: Prime for Young Adults on Amazon.ca, free for an initial period
+  about: "Amazon Prime for faster delivery and streaming video."
   category: shopping
   price_type: free
   free_months: null
@@ -98,6 +102,7 @@
 - id: openai-codex-students
   brand: OpenAI
   title: 'Codex student credits: US$100 (2,500 credits)'
+  about: "OpenAI's coding agent that writes and edits code."
   category: ai
   price_type: free
   free_months: 12
@@ -121,6 +126,7 @@
 - id: github-copilot-student
   brand: GitHub
   title: Copilot Student (free while GitHub Education verified)
+  about: "GitHub's AI assistant that suggests code as you type."
   category: github-pack
   github_pack: true
   price_type: free
@@ -146,6 +152,7 @@
 - id: azure-for-students
   brand: Microsoft Azure
   title: 'Azure for Students: US$100 credit, no card'
+  about: "Microsoft's cloud for running apps and storing data."
   category: cloud
   price_type: free
   free_months: 12
@@ -169,6 +176,7 @@
 - id: figma-education
   brand: Figma
   title: Figma Education Professional + FigJam + Dev Mode
+  about: "A design app for drawing website and app interfaces."
   category: design
   featured: true
   featured_rank: 2
@@ -195,6 +203,7 @@
 - id: notion-education-plus
   brand: Notion
   title: Notion Education Plus
+  about: "A workspace for notes, documents, wikis, and tasks."
   category: notes
   featured: true
   featured_rank: 3
@@ -221,6 +230,7 @@
 - id: unity-student
   brand: Unity
   title: 'Unity Student: Unity Pro + student assets'
+  about: "A game engine for building 2D and 3D games."
   category: coding
   price_type: free
   free_months: 12
@@ -245,6 +255,7 @@
 - id: aws-student-rewards-skill-builder
   brand: AWS
   title: 'Builder Center Student Rewards: Skill Builder Premium + badge credits'
+  about: "Amazon's site for courses on Amazon Web Services."
   category: cloud
   price_type: free
   free_months: 12
@@ -268,6 +279,7 @@
 - id: jetbrains-pack
   brand: JetBrains
   title: JetBrains student licence (IntelliJ IDEA, PyCharm, etc.) via GitHub Pack
+  about: "Desktop editors for Java, Python, and other languages."
   category: coding
   price_type: free
   free_months: null
@@ -292,6 +304,7 @@
 - id: zed-student
   brand: Zed
   title: 'Zed Student: Zed Pro + US$10/mo AI credits'
+  about: "A code editor for writing software on your computer."
   category: coding
   price_type: free
   free_months: 12
@@ -316,6 +329,7 @@
 - id: framer-education
   brand: Framer
   title: 'Framer Education: Basic site plan + 1,000 AI credits/mo'
+  about: "A website builder for designing and publishing sites."
   category: design
   price_type: free
   free_months: 12
@@ -340,6 +354,7 @@
 - id: namecheap-pack
   brand: 'Namecheap'
   title: 'Namecheap: free .me domain and SSL certificate for 1 year'
+  about: "A registrar for buying and managing website domains."
   category: cloud
   github_pack: true
   featured: false
@@ -367,6 +382,7 @@
 - id: namecom-pack
   brand: 'Name.com'
   title: 'Name.com: one free domain (.live, .studio, .software, .app, .dev and more)'
+  about: "A registrar where you register a website's domain name."
   category: cloud
   github_pack: true
   featured: false
@@ -393,6 +409,7 @@
 - id: tech-domain-pack
   brand: '.TECH Domains'
   title: '.TECH: one standard .tech domain free for 1 year'
+  about: "A domain ending used as a website address."
   category: cloud
   github_pack: true
   featured: false
@@ -420,6 +437,7 @@
 - id: github-pro-student
   brand: 'GitHub'
   title: 'GitHub Pro free while you are a student'
+  about: "GitHub's paid plan for hosting code with other people."
   category: coding
   github_pack: true
   featured: false
@@ -446,6 +464,7 @@
 - id: codedex-pack
   brand: 'Codédex'
   title: 'Codédex Club free for 6 months'
+  about: "An interactive site that teaches coding in short lessons."
   category: learning
   github_pack: true
   featured: false
@@ -472,6 +491,7 @@
 - id: testmail-pack
   brand: 'testmail.app'
   title: 'testmail.app Essential plan free while you are a student'
+  about: "A service that gives you inboxes for testing app email."
   category: coding
   github_pack: true
   featured: false
@@ -498,6 +518,7 @@
 - id: educative-pack
   brand: 'Educative'
   title: 'Educative: 6 months free, then 30% off a subscription'
+  about: "Text-based coding courses you complete in the browser."
   category: learning
   github_pack: true
   featured: false
@@ -525,6 +546,7 @@
 - id: termius-pack
   brand: 'Termius'
   title: 'Termius Pro and Team features free while you are a student'
+  about: "An SSH client for connecting to remote servers."
   category: coding
   github_pack: true
   featured: false
@@ -551,6 +573,7 @@
 - id: github-codespaces-pro
   brand: 'GitHub'
   title: 'GitHub Codespaces at Pro level while you are a student'
+  about: "GitHub's cloud environments for coding in the browser."
   category: cloud
   github_pack: true
   featured: false
@@ -577,6 +600,7 @@
 - id: clerk-pack
   brand: 'Clerk'
   title: 'Clerk Pro plan free while you are a student'
+  about: "A service that adds sign-in and user accounts to an app."
   category: coding
   github_pack: true
   featured: false
@@ -603,6 +627,7 @@
 - id: sentry-education
   brand: 'Sentry'
   title: 'Sentry education plan free for 1 year (can renew)'
+  about: "A tool that reports crashes and errors from your apps."
   category: coding
   github_pack: true
   featured: false
@@ -630,6 +655,7 @@
 - id: appwrite-education
   brand: 'Appwrite'
   title: 'Appwrite Education plan (Pro-level resources, 2 projects) free for 6 months'
+  about: "An open-source backend for accounts, databases, and files."
   category: cloud
   github_pack: true
   featured: false
@@ -656,6 +682,7 @@
 - id: browserstack-pack
   brand: 'BrowserStack'
   title: 'BrowserStack Automate Mobile (1 parallel, 1 user) free for 1 year'
+  about: "Cloud testing for websites on real phones and browsers."
   category: coding
   github_pack: true
   featured: false
@@ -682,6 +709,7 @@
 - id: bootstrap-studio-pack
   brand: 'Bootstrap Studio'
   title: 'Bootstrap Studio licence free while you are a student'
+  about: "A desktop app for building Bootstrap websites visually."
   category: design
   github_pack: true
   featured: false
@@ -708,6 +736,7 @@
 - id: localstack-students
   brand: 'LocalStack'
   title: 'LocalStack AWS emulator licence free for students'
+  about: "A local emulator of Amazon Web Services for app testing."
   category: cloud
   github_pack: true
   featured: false
@@ -734,6 +763,7 @@
 - id: icons8-pack
   brand: 'Icons8'
   title: 'Icons8 subscription (icons, photos, illustrations, music) free for 3 months'
+  about: "A library of icons, photos, illustrations, and music."
   category: design
   github_pack: true
   featured: false
@@ -760,6 +790,7 @@
 - id: deepnote-pack
   brand: 'Deepnote'
   title: 'Deepnote Team plan free while you are a student'
+  about: "A browser notebook for writing data analysis code."
   category: notes
   github_pack: true
   featured: false
@@ -787,6 +818,7 @@
 - id: arduino-cloud-pack
   brand: 'Arduino'
   title: 'Arduino Cloud free for 6 months, plus hardware discounts'
+  about: "Arduino's online service for programming boards."
   category: coding
   github_pack: true
   featured: false
@@ -814,6 +846,7 @@
 - id: zyte-scrapy-cloud-pack
   brand: 'Zyte (Scrapy Cloud)'
   title: 'Zyte Scrapy Cloud: 1 free unit forever'
+  about: "A cloud host for Scrapy, a Python web-crawling tool."
   category: cloud
   github_pack: true
   featured: false
@@ -841,6 +874,7 @@
 - id: lambdatest-pack
   brand: 'TestMu AI (formerly LambdaTest)'
   title: 'TestMu AI (formerly LambdaTest) Live plan free for 1 year'
+  about: "A cloud service for testing a site in many browsers."
   category: coding
   github_pack: true
   featured: false
@@ -867,6 +901,7 @@
 - id: new-relic-students
   brand: 'New Relic'
   title: 'New Relic free while you are a student'
+  about: "A monitoring service for how your apps and servers run."
   category: cloud
   github_pack: true
   featured: false
@@ -893,6 +928,7 @@
 - id: codescene-pack
   brand: 'CodeScene'
   title: 'CodeScene student account for private GitHub repos'
+  about: "A tool that finds hard-to-change parts of a codebase."
   category: coding
   github_pack: true
   featured: false
@@ -920,6 +956,7 @@
 - id: visme-pack
   brand: 'Visme'
   title: 'Visme Starter plan free for 3 months'
+  about: "An online tool for presentations and infographics."
   category: design
   github_pack: true
   featured: false
@@ -947,6 +984,7 @@
 - id: iconscout-pack
   brand: 'IconScout'
   title: 'IconScout: 60 premium icons a month free for 1 year'
+  about: "A library of icons you can download for design work."
   category: design
   github_pack: true
   featured: false
@@ -974,6 +1012,7 @@
 - id: polypane-pack
   brand: 'Polypane'
   title: 'Polypane individual plan free for 1 year'
+  about: "A browser that shows a site at many screen sizes."
   category: design
   github_pack: true
   featured: false
@@ -1000,6 +1039,7 @@
 - id: hazeover-pack
   brand: 'HazeOver'
   title: 'HazeOver Mac app licence free'
+  about: "A Mac app that dims windows behind the one in front."
   category: coding
   github_pack: true
   featured: false
@@ -1026,6 +1066,7 @@
 - id: blackfire-pack
   brand: 'Blackfire'
   title: 'Blackfire Developer subscription free for students'
+  about: "A PHP profiler that shows which parts of an app are slow."
   category: coding
   github_pack: true
   featured: false
@@ -1052,6 +1093,7 @@
 - id: travis-ci-pack
   brand: 'Travis CI'
   title: 'Travis CI private builds free while you are a student'
+  about: "A service that builds and tests code when you push it."
   category: coding
   github_pack: true
   featured: false
@@ -1078,6 +1120,7 @@
 - id: adafruit-io-pack
   brand: 'Adafruit'
   title: 'Adafruit IO+ free for 1 year, plus hardware discounts'
+  about: "Adafruit's service for storing electronics project data."
   category: coding
   github_pack: true
   featured: false
@@ -1105,6 +1148,7 @@
 - id: pageclip-pack
   brand: 'Pageclip'
   title: 'Pageclip Basic plan free while you are a student'
+  about: "A form backend that stores submissions from a website."
   category: coding
   github_pack: true
   featured: false
@@ -1131,6 +1175,7 @@
 - id: algoexpert-pack
   brand: 'AlgoExpert'
   title: 'AlgoExpert: 20 free interview questions plus 10% off'
+  about: "A site of coding interview questions with explanations."
   category: learning
   github_pack: true
   featured: false
@@ -1157,6 +1202,7 @@
 - id: doppler-pack
   brand: 'Doppler'
   title: 'Doppler Team plan free while you are a student'
+  about: "A manager for an app's API keys and other secrets."
   category: coding
   github_pack: true
   featured: false
@@ -1183,6 +1229,7 @@
 - id: imgbot-pack
   brand: 'Imgbot'
   title: 'Imgbot image optimization for private repos free while you are a student'
+  about: "A GitHub bot that compresses images in a repository."
   category: coding
   github_pack: true
   featured: false
@@ -1209,6 +1256,7 @@
 - id: working-copy-pack
   brand: 'Working Copy'
   title: 'Working Copy Pro features free while you are a student (iPhone and iPad)'
+  about: "An iPhone and iPad Git client for cloning repositories."
   category: coding
   github_pack: true
   featured: false
@@ -1236,6 +1284,7 @@
 - id: carto-pack
   brand: 'CARTO'
   title: 'CARTO account upgrades free for 2 years'
+  about: "A platform for storing location data and making maps."
   category: cloud
   github_pack: true
   featured: false
@@ -1262,6 +1311,7 @@
 - id: astra-security-pack
   brand: 'Astra Security'
   title: 'Astra website firewall and malware scanner free for 6 months'
+  about: "Software that blocks site attacks and scans for malware."
   category: coding
   github_pack: true
   featured: false
@@ -1288,6 +1338,7 @@
 - id: codecov-pack
   brand: 'Codecov'
   title: 'Codecov free on public and private repos'
+  about: "A service that shows how much of your code is tested."
   category: coding
   github_pack: true
   featured: false
@@ -1314,6 +1365,7 @@
 - id: tower-pro-students
   brand: 'Tower'
   title: 'Tower Pro Git client free while you are a student'
+  about: "A desktop Git client for reviewing and pushing code."
   category: coding
   github_pack: true
   featured: false
@@ -1340,6 +1392,7 @@
 - id: todiagram-pack
   brand: 'ToDiagram'
   title: 'ToDiagram Pro plan (no AI assistant) free for students'
+  about: "A tool that turns JSON and similar data into a diagram."
   category: design
   github_pack: true
   featured: false
@@ -1366,6 +1419,7 @@
 - id: popsql-pack
   brand: 'PopSQL'
   title: 'PopSQL paid plan free while you are a student'
+  about: "A browser SQL editor for writing and sharing queries."
   category: coding
   github_pack: true
   featured: false
@@ -1392,6 +1446,7 @@
 - id: requestly-pack
   brand: 'Requestly'
   title: 'Requestly Professional plan free for 1 year'
+  about: "A tool that intercepts and edits browser requests."
   category: coding
   github_pack: true
   featured: false
@@ -1418,6 +1473,7 @@
 - id: simple-analytics-pack
   brand: 'Simple Analytics'
   title: 'Simple Analytics Starter plan (100k page views a month) free for 1 year'
+  about: "A site analytics tool that counts visits without cookies."
   category: coding
   github_pack: true
   featured: false
@@ -1444,6 +1500,7 @@
 - id: devcycle-pack
   brand: 'DevCycle'
   title: 'DevCycle Starter plan free for 1 year'
+  about: "A service for turning parts of an app on or off."
   category: coding
   github_pack: true
   featured: false
@@ -1470,6 +1527,7 @@
 - id: poeditor-pack
   brand: 'POEditor'
   title: 'POEditor Plus plan free for 1 year'
+  about: "A tool for the text an app shows in each language."
   category: coding
   github_pack: true
   featured: false
@@ -1496,6 +1554,7 @@
 - id: deepscan-pack
   brand: 'DeepScan'
   title: 'DeepScan free for 6 months while you are a student'
+  about: "A checker that finds bugs in JavaScript and TypeScript."
   category: coding
   github_pack: true
   featured: false
@@ -1522,6 +1581,7 @@
 - id: sqlgate-pack
   brand: 'SQLGate'
   title: 'SQLGate Standard features free for 1 year'
+  about: "A desktop app for connecting to databases and running SQL."
   category: coding
   github_pack: true
   featured: false
@@ -1548,6 +1608,7 @@
 - id: honeybadger-pack
   brand: 'Honeybadger'
   title: 'Honeybadger Small account free for 1 year'
+  about: "An error tracker that alerts you when a web app crashes."
   category: coding
   github_pack: true
   featured: false
@@ -1574,6 +1635,7 @@
 - id: xojo-pack
   brand: 'Xojo'
   title: 'Xojo Pro licence free while you are a student'
+  about: "A tool for building desktop, web, and mobile apps."
   category: coding
   github_pack: true
   featured: false
@@ -1600,6 +1662,7 @@
 - id: configcat-pack
   brand: 'ConfigCat'
   title: 'ConfigCat: 1000 feature flags with unlimited users, free'
+  about: "A service that switches features without a new deploy."
   category: coding
   github_pack: true
   featured: false
@@ -1626,6 +1689,7 @@
 - id: vaadin-pack
   brand: 'Vaadin'
   title: 'Vaadin Pro subscription licence free for students'
+  about: "A Java framework for building a web app's interface."
   category: coding
   github_pack: true
   featured: false
@@ -1652,6 +1716,7 @@
 - id: neve-agency-pack
   brand: 'Themeisle (Neve)'
   title: 'Neve Agency WordPress theme free for 1 year'
+  about: "A WordPress theme that sets a site's layout and look."
   category: design
   github_pack: true
   featured: false
@@ -1678,6 +1743,7 @@
 - id: appfigures-pack
   brand: 'Appfigures'
   title: 'Appfigures analytics and reports free for 1 year'
+  about: "A service that tracks app downloads, sales, and reviews."
   category: coding
   github_pack: true
   featured: false
@@ -1704,6 +1770,7 @@
 - id: dashlane-pack
   brand: 'Dashlane'
   title: 'Dashlane Premium free for 6 months'
+  about: "A password manager that saves and fills in your logins."
   category: coding
   github_pack: true
   featured: false
@@ -1731,6 +1798,7 @@
 - id: symfonycasts-pack
   brand: 'SymfonyCasts'
   title: 'SymfonyCasts subscription free for 3 months'
+  about: "Video courses that teach the Symfony PHP framework."
   category: learning
   github_pack: true
   featured: false
@@ -1757,6 +1825,7 @@
 - id: elevenlabs-students
   brand: ElevenLabs
   title: 'ElevenLabs Creator plan free for 3 months'
+  about: "A tool that turns text into speech and copies voices."
   category: ai
   price_type: free
   free_months: 3
@@ -1782,6 +1851,7 @@
 - id: granola-business-students
   brand: Granola
   title: 'Granola Business free for 12 months'
+  about: "A notes app that listens to meetings and writes them up."
   category: notes
   price_type: free
   free_months: 12
@@ -1806,6 +1876,7 @@
 - id: brock-copilot-chat
   brand: Microsoft Copilot (Brock licence)
   title: 'Microsoft Copilot with your Brock login'
+  about: "Microsoft's chatbot for questions, writing, and code."
   category: ai
   price_type: free
   free_months: null
@@ -1830,6 +1901,7 @@
 - id: heroku-pack
   brand: Heroku
   title: 'Heroku: US$13 a month in credit for 24 months'
+  about: "A platform for deploying and running web apps online."
   category: cloud
   price_type: free
   free_months: 24
@@ -1854,6 +1926,7 @@
 - id: gitkraken-pack
   brand: GitKraken
   title: 'GitKraken Student plan: free for 6 months, then 75 to 80% off Pro'
+  about: "A desktop Git client that shows your commit history."
   category: coding
   price_type: free
   free_months: 6
@@ -1879,6 +1952,7 @@
 - id: datacamp-pack
   brand: DataCamp
   title: 'DataCamp: 3 months free'
+  about: "Online courses for data science, Python, and SQL."
   category: learning
   price_type: free
   free_months: 3
@@ -1904,6 +1978,7 @@
 - id: datadog-pack
   brand: Datadog
   title: 'Datadog Pro, 10 servers, free for 2 years'
+  about: "A monitoring tool for app performance, servers, and logs."
   category: cloud
   price_type: free
   free_months: 24
@@ -1929,6 +2004,7 @@
 - id: bootdev-pack
   brand: Boot.dev
   title: 'Boot.dev: 3 months of full membership'
+  about: "An interactive site that teaches backend coding."
   category: learning
   price_type: free
   free_months: 3
@@ -1953,6 +2029,7 @@
 - id: 1password-pack
   brand: 1Password
   title: '1Password free for 2 years, with Developer Tools'
+  about: "A password manager that stores logins and fills them in."
   category: coding
   price_type: free
   free_months: 24
@@ -1978,6 +2055,7 @@
 - id: camber-student-pack
   brand: Camber
   title: 'Camber Student plan free while enrolled'
+  about: "A cloud platform with CPU time, GPU time, and storage."
   category: cloud
   price_type: free
   free_months: null
@@ -2002,6 +2080,7 @@
 - id: frontend-masters-pack
   brand: Frontend Masters
   title: 'Frontend Masters: 6 months of all courses'
+  about: "Video courses in front-end and full-stack web development."
   category: learning
   price_type: free
   free_months: 6

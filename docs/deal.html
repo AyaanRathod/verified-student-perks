@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deal · PerkCheck</title>
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=23">
 </head>
 <body>
   <header class="nav">
@@ -17,8 +17,8 @@
   </header>
   <main class="wrap page" id="deal"></main>
   <footer>PerkCheck does not store your email.</footer>
-  <script src="deals.js?v=6"></script>
-  <script src="app.js?v=14"></script>
+  <script src="deals.js?v=9"></script>
+  <script src="app.js?v=16"></script>
   <script>
     var params = new URLSearchParams(location.search);
     var id = params.get("id");
@@ -39,6 +39,7 @@
           bannerHtml(deal) +
           '<div class="brand">' + escapeHtml(deal.brand) + "</div>" +
           "<h1>" + escapeHtml(deal.title) + "</h1>" +
+          aboutHtml(deal) +
           '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
           '<div class="row"><span class="badge chip">Checked ' + formatDate(deal.last_verified) + "</span></div>" +
           (country ? '<p class="status">' + cardStatusHtml(deal, country) + "</p>" : "") +
