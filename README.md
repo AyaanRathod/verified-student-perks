@@ -64,7 +64,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
     </td>
     <td valign="top">
       <h3>🤖 Nightly bot</h3>
-      A GitHub Action re-checks every deal page each night and flags anything broken.
+      A GitHub Action opens every deal page each night. One issue lists broken pages, missing watch text, and sites that block the check. A clean run closes that issue.
     </td>
     <td valign="top">
       <h3>🏷️ Honest paid links</h3>
@@ -93,7 +93,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
 <table>
   <tr>
     <td align="center" width="25%"><h3>1️⃣</h3><b>Data</b><br><sub>Every deal lives in one public file, <code>deals.yaml</code></sub></td>
-    <td align="center" width="25%"><h3>2️⃣</h3><b>Nightly check</b><br><sub>GitHub Actions opens each official page and flags anything broken</sub></td>
+    <td align="center" width="25%"><h3>2️⃣</h3><b>Nightly check</b><br><sub>GitHub Actions opens each official page. One issue lists broken pages, text changes, and sites to open by hand</sub></td>
     <td align="center" width="25%"><h3>3️⃣</h3><b>Monday search</b><br><sub>The Grok bot searches for new deals. Actions watches the source list for new links</sub></td>
     <td align="center" width="25%"><h3>4️⃣</h3><b>You check</b><br><sub>Enter your email and get perks that fit you</sub></td>
   </tr>
@@ -106,15 +106,17 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
 ```mermaid
 flowchart TD
     A["data/deals.yaml<br/>deals, countries, sources"] --> B["Nightly bot check<br/>GitHub Action requests every official_url"]
-    B -->|page broken or watch_text missing| C["GitHub issue<br/>deal needs a look"]
+    B -->|page broken or watch_text missing| C["One GitHub issue<br/>body updated each night"]
+    B -->|site blocks the check| P["Same issue<br/>open the page by hand"]
+    P --> D
     S["Grok bot, every Monday<br/>searches the web for new deals"] --> I["Candidate issue<br/>not published yet"]
     W["data/sources.yaml"] --> M["Monday Action<br/>fetches known source pages"]
     M -->|new links| I
     I --> D["You open the official page<br/>and add a checked row"]
     C --> D
     D -->|updates| A
-    B -->|all good| E["Site build<br/>reads deals.yaml at build time"]
-    A --> E
+    B -->|nothing left to review| Q["Issue closed"]
+    A --> E["Site build<br/>reads deals.yaml at build time"]
     E --> F["Student checks their school email<br/>domain matched in the browser"]
     F --> G["Perks for that school<br/>filtered by country and trial length"]
     G -->|something wrong?| H["Report broken deal button<br/>opens a GitHub issue"]
@@ -168,9 +170,11 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 | Field | Required | Meaning |
 |---|---|---|
 | `id` | yes | Short unique slug, e.g. `github-student-pack` |
-| `brand` | yes | Brand name as text (no logos) |
+| `brand` | yes | Brand name |
 | `title` | yes | One-line benefit |
+| `about` | no | One sentence on what the product is. Shown on each card |
 | `category` | yes | `github-pack`, `ai`, `coding`, `cloud`, `design`, `notes`, `learning`, `shopping` |
+| `github_pack` | no | `true` when the perk is part of the GitHub Student Developer Pack |
 | `featured` | no | `true` or `false`. At most 4 deals in the file may be featured |
 | `featured_rank` | no | Positive whole number. Only when `featured` is `true` |
 | `price_type` | yes | `free` or `discount` |
@@ -181,13 +185,18 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 | `verification` | yes | `school-email`, `sheerid`, `unidays`, `student-beans`, `id-upload`, `github-education`, `other` |
 | `email_rules` | no | Notes such as "any school-issued email" |
 | `ca_school_email` | yes | `accepted`, `rejected`, or `unknown`. `accepted` means a Canadian university `.ca` email can be used. Active deals cannot be `unknown`. |
+| `ca_school_email_source` | when accepted | https page that shows a Canadian school email works |
+| `schools` | no | Limit the deal to these lowercase email domains |
 | `how_to_claim` | yes | 3 to 5 short steps |
 | `official_url` | yes | The brand's own page, never an aggregator |
 | `affiliate_url` | no | Paid link, shown with a "Paid link" label |
 | `source_note` | yes | Where the eligibility info came from |
-| `last_verified` | yes | Date checked, `YYYY-MM-DD` |
-| `watch_text` | no | Phrase the bot watches for on the official page |
+| `last_verified` | yes | Date checked, `YYYY-MM-DD`. When a site blocks the bot and this date is more than 30 days old, the night check marks it due for a hand check |
+| `watch_text` | no | Phrase that must stay on the official page. If the page loads and the phrase is missing, the night check reports a text change |
 | `status` | yes | `active`, `needs-review`, `expired` |
+| `logo` | no | File name in `docs/logos/`, or null |
+| `banner_color` | yes for active | Banner background, `#RRGGBB` |
+| `logo_color` | no | Fill for a single-colour logo, `#RRGGBB` |
 
 </details>
 
@@ -196,7 +205,7 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 ## 🗺️ Roadmap
 
 - [x] **Week 1:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
-- [ ] **Still open:** 30 to 50 hand-checked deals. 13 are checked.
+- [x] **Hand-checked deals:** the file has 91 deals. The first goal was 30 to 50.
 - [x] **Week 2:** email check, filters, deal pages, and the live GitHub Pages site
 - [x] **Report broken deal** button. It opens a GitHub issue.
 - [ ] **Week 3, still open:** weekly review
