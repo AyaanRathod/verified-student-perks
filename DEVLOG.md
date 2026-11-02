@@ -155,3 +155,49 @@ Put a number in a note only when the number is real.
 
 - Check more deals on the official pages.
 - The goal is 30 to 50 checked deals. The file has 13 deals today.
+
+## 2026-11-01: link check
+
+**Work**
+
+- I changed the night link check in `scripts/check_links.py`.
+- Each page request waits up to 30 seconds.
+- A timeout or a connection error gets one more try.
+- The pause before that second try is 3 seconds.
+- The script puts each result in one of four groups: `broken`, `changed`, `manual`, or `manual_overdue`.
+- A page is `broken` when the status is 400 or higher and the page is a normal error.
+- A page is `changed` when it loads and the `watch_text` is missing.
+- A page is `manual` when the site blocks the script.
+- The block signs are HTTP 401, 403, 429, or 503, plus a Cloudflare challenge, a Cloudflare or Akamai server name, or the text "Just a moment...", "Attention Required", or "Access Denied".
+- A timeout or a connection reset after the second try is also `manual`.
+- `manual_overdue` uses the same rule.
+- It applies when `last_verified` is more than 30 days before the check date.
+- The report has three sections: Broken links, Page text changed, and Check these by hand.
+- The count "need a look" adds broken, changed, and overdue rows.
+- A fresh manual row stays in the hand section and stays out of that count.
+- The report ends with a fingerprint.
+- The fingerprint is the SHA-1 of the sorted deal ids in the broken, changed, and overdue lists.
+- The night Action keeps one open issue with the title "Link check: deals need review".
+- The Action writes a comment only when the fingerprint changes.
+- When the count is 0, the Action writes "All clear. Nothing needs review." and closes the issue.
+- I changed the Cloudflare `watch_text` to "available only to students in the United States".
+- That phrase is on the Cloudflare students page.
+- The Cloudflare `last_verified` date stays 2026-10-25.
+
+**Result**
+
+- `python -m pytest -q` passes 32 tests.
+- `python tests/test_phase1.py` prints `OK`.
+- `python scripts/validate_deals.py data/deals.yaml` prints `91 deals ok`.
+- A local run opened 91 deal pages.
+- The report says 1 page needs a look.
+- `google-ai-pro-students` is under "Page text changed".
+- The missing text is "excluding Albania, Bolivia, Canada".
+- IconScout, Appfigures, and Autodesk are under "Check these by hand".
+- Codex and SOLIDWORKS opened from this PC, so they are not on that list.
+
+**Next**
+
+- Commit these four files.
+- Run the "Nightly link check" workflow from the Actions tab.
+- Read issue 3 after that run.
