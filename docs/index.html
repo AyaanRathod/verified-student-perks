@@ -177,7 +177,7 @@
       var box = document.createElement("div");
       box.className = "grid";
       homeFilter.appendChild(box);
-      renderCards(box, deals, { country: "CA" });
+      renderCards(box, deals, {});
       homeFilter.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     document.getElementById("show-all").textContent = "All " + activeDeals.length + " →";
@@ -208,8 +208,8 @@
       });
       showList(shortName[key] || key, dealsIn(key));
     });
-    renderCards(document.getElementById("home-featured"), featuredDeals(), { country: "CA", featured: true });
-    renderCards(document.getElementById("home-new"), freshDeals(6), { country: "CA", compact: true });
+    renderCards(document.getElementById("home-featured"), featuredDeals(), { featured: true });
+    renderCards(document.getElementById("home-new"), freshDeals(6), { compact: true });
   </script>
 </body>
 </html>
