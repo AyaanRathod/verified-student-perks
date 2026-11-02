@@ -2749,7 +2749,7 @@ window.PERKCHECK_DEALS = [
     "affiliate_url": null,
     "source_note": "sourced: https://www.cloudflare.com/students/ (\"The current offering is available only to students in the United States over the age of 18 who have a verified .edu billing email address.\"). Shown as not available in Canada.",
     "last_verified": "2026-10-25",
-    "watch_text": "United States only",
+    "watch_text": "available only to students in the United States",
     "status": "active",
     "logo": "cloudflare.svg",
     "logo_color": "#FFFFFF",
@@ -2877,5 +2877,391 @@ window.PERKCHECK_DEALS = [
     "status": "active",
     "logo": null,
     "banner_color": "#E31937"
+  },
+  {
+    "id": "miro-education",
+    "brand": "Miro",
+    "title": "Miro Education plan free for 2 years",
+    "about": "An online whiteboard for notes, diagrams and group work.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 24,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Students at a school accredited in its own country by a government agency. Apply on the Miro education page and give a link to proof, such as a school ID or a school web page that shows your status. Miro can take up to 10 days to reply. Student Education teams last 2 years.",
+    "how_to_claim": [
+      "Open the Miro education page and choose Apply as student",
+      "Fill in the form with your school details",
+      "Add a link to proof of student status, such as a school ID",
+      "Wait for the email from Miro, then open your new Education team"
+    ],
+    "official_url": "https://miro.com/education-whiteboard/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://miro.com/education-whiteboard/ (\"Student\", \"Free\", \"2 years\") and https://help.miro.com/hc/en-us/articles/360017730473-Education-plan (FAQ \"Is Education plan available for educational institutions outside the US?\", terms: \"Must be a qualifying educational institution accredited in the country of residence by an authorized governmental agency\"). Canada and the US both count because the rule is accreditation in your own country.",
+    "ca_school_email_source": "https://help.miro.com/hc/en-us/articles/360017730473-Education-plan",
+    "last_verified": "2026-11-01",
+    "watch_text": "Must be a qualifying educational institution accredited in the country of residence",
+    "status": "active",
+    "logo": "miro.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#050038"
+  },
+  {
+    "id": "sketch-education",
+    "brand": "Sketch",
+    "title": "Sketch free for 1 year for students",
+    "about": "Mac app and web app for interface design and prototypes.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Students 16 or older. Needs a Mac on macOS 15 or newer. Start a free trial Workspace, then send the education application form with proof of student status. You can use Sketch free for 30 days while Sketch checks it. Home learning and self-education do not qualify.",
+    "how_to_claim": [
+      "Download Sketch and start a trial Workspace (no card needed)",
+      "Open the education application form from the Sketch for Education page",
+      "Pick your country and give your school details as proof",
+      "Keep using the trial until Sketch confirms your free year"
+    ],
+    "official_url": "https://www.sketch.com/store/education/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.sketch.com/education/ (\"Get Sketch for free as a student or educator\", \"get one year of access\") and https://www.sketch.com/support/subscriptions/education/exclusions/. The application form at https://www.sketch.com/store/education/ lists Canada and United States of America in its country field (checked 2026-11-01).",
+    "ca_school_email_source": "https://www.sketch.com/store/education/",
+    "last_verified": "2026-11-01",
+    "watch_text": "Get Sketch for free as a student or educator",
+    "status": "active",
+    "logo": "sketch.svg",
+    "logo_color": "#000000",
+    "banner_color": "#F7B500"
+  },
+  {
+    "id": "axure-rp-students",
+    "brand": "Axure",
+    "title": "Axure RP free for 1 year, renewable each year of study",
+    "about": "Software for clickable wireframes and app prototypes.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "id-upload",
+    "email_rules": "Students in a degree program at an accredited school, college or university. Upload proof of current enrollment that shows your name. Reapply each year you are still enrolled. Not for commercial use.",
+    "how_to_claim": [
+      "Open the Axure student request form",
+      "Enter your name, email and school",
+      "Upload proof of current enrollment that shows your name",
+      "Wait for the subscription email, then sign in to Axure RP with that account"
+    ],
+    "official_url": "https://cart.axure.com/edu?type=student",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.axure.com/edu (\"More than 130,000 Axure RP subscriptions have been provided to students and teachers around the world\", \"request a one-year Axure RP subscription each year you are enrolled in school\"). The page and form do not name countries or limit them; the request form has no country field.",
+    "ca_school_email_source": "https://www.axure.com/edu",
+    "last_verified": "2026-11-01",
+    "watch_text": "request a one-year Axure RP subscription each year you are enrolled in school",
+    "status": "active",
+    "logo": "axure.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#111827"
+  },
+  {
+    "id": "onshape-student",
+    "brand": "Onshape",
+    "title": "Onshape Student plan free while you study",
+    "about": "Browser-based 3D CAD for parts and assemblies.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Free for students using it for school. Any email works, a .edu address is not needed. Eligibility is based on educational use and may be checked again later. After graduation the account moves to the Free plan or a paid plan.",
+    "how_to_claim": [
+      "Open the Onshape education sign-up page",
+      "Fill in the form and choose the student option",
+      "Confirm your email address",
+      "Sign in to Onshape in your browser or the mobile app"
+    ],
+    "official_url": "https://www.onshape.com/en/education/sign-up",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.onshape.com/en/education/plans (\"The Student Plan is free for students\", \"No, students and educators can register with any email address\") and https://www.onshape.com/en/education/sign-up (\"Millions of students and educators worldwide use Onshape\"). No country limit is named on either page.",
+    "ca_school_email_source": "https://www.onshape.com/en/education/sign-up",
+    "last_verified": "2026-11-01",
+    "watch_text": "The Student Plan is free for students",
+    "status": "active",
+    "logo": "onshape.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#000000"
+  },
+  {
+    "id": "qt-educational-license",
+    "brand": "Qt",
+    "title": "Qt commercial tools free for 12 months for students",
+    "about": "C++ and QML tools for desktop and mobile apps.",
+    "category": "coding",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "Students at a university, college or similar school, with an active school email. Qt checks the email domain against known schools when you send the form. Renew every 12 months. For learning only, not commercial use.",
+    "how_to_claim": [
+      "Open the Qt Educational License page and go to the application form",
+      "Enter your school email and pick your country",
+      "Verify your email and set a Qt Account password",
+      "Install Qt and sign in with that account"
+    ],
+    "official_url": "https://www.qt.io/development/qt-educational-license",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.qt.io/development/qt-educational-license (\"The licenses are free of charge\", \"12 months. After that, you can renew the license through the same process\"). The application form on that page lists Canada and United States in its country field (checked 2026-11-01).",
+    "ca_school_email_source": "https://www.qt.io/development/qt-educational-license",
+    "last_verified": "2026-11-01",
+    "watch_text": "The licenses are free of charge",
+    "status": "active",
+    "logo": "qt.svg",
+    "logo_color": "#000000",
+    "banner_color": "#41CD52"
+  },
+  {
+    "id": "archicad-education",
+    "brand": "Graphisoft",
+    "title": "Archicad free for 1 year, renewable to the end of your studies",
+    "about": "BIM software for designing buildings.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "id-upload",
+    "email_rules": "For students in architecture, design, construction and related fields. Upload official proof of enrollment that shows your field of study, enrollment year and full name. Valid for one year and can be extended free while you are a student.",
+    "how_to_claim": [
+      "Open the Graphisoft education page for your country",
+      "Choose Download for free and create a MyArchicad account",
+      "Upload proof of enrollment that shows your study field and name",
+      "Wait for approval, then download Archicad with the license"
+    ],
+    "official_url": "https://www.graphisoft.com/en-us/plans-and-products/education/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.graphisoft.com/en-us/plans-and-products/education/ (\"We offer free access to GRAPHISOFT products - available globally to students, teachers, and educational institutions\", \"Valid for one year and can be extended till the end of your studies free of charge\"). The same offer is on the Canada page https://www.graphisoft.com/en-ca/plans-and-products/education/.",
+    "ca_school_email_source": "https://www.graphisoft.com/en-ca/plans-and-products/education/",
+    "last_verified": "2026-11-01",
+    "watch_text": "Valid for one year and can be extended till the end of your studies free of charge",
+    "status": "active",
+    "logo": "archicad.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#2D50A5"
+  },
+  {
+    "id": "vectorworks-education",
+    "brand": "Vectorworks",
+    "title": "Vectorworks Design Suite free educational licence",
+    "about": "Design software for buildings and landscapes.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Students and educators in the markets Vectorworks serves. Canada and the US each have their own education page with the free licence. Request it in the Vectorworks student portal, which needs a Vectorworks account. The page does not say how long the licence lasts.",
+    "how_to_claim": [
+      "Open the Vectorworks education page and choose Get Started",
+      "Sign in or create a Vectorworks account in the student portal",
+      "Fill in the student licence request with your school details",
+      "Download Vectorworks Design Suite once the licence is approved"
+    ],
+    "official_url": "https://customers.vectorworks.net/education",
+    "affiliate_url": null,
+    "source_note": "sourced: https://www.vectorworks.net/en-CA/education and https://www.vectorworks.net/en-US/education (\"Students and educators in select global markets can download a free educational licence of Vectorworks Design Suite software\"). Both the Canada and US pages show the offer and link to the student portal.",
+    "ca_school_email_source": "https://www.vectorworks.net/en-CA/education",
+    "last_verified": "2026-11-01",
+    "watch_text": "can download a free educational licence of Vectorworks Design Suite",
+    "status": "active",
+    "logo": "vectorworks.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#000000"
+  },
+  {
+    "id": "solid-edge-student",
+    "brand": "Siemens",
+    "title": "Solid Edge Student Edition free download",
+    "about": "3D CAD for parts, assemblies, sheet metal and drawings.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Free for any active student, for course work. Fill in the download form. Files made in this edition do not open in the paid versions, and 2D drawings carry a watermark.",
+    "how_to_claim": [
+      "Open the Solid Edge Student Edition download page",
+      "Fill in the form and pick your country",
+      "Download and install the Student Edition",
+      "Use it for course work and school projects"
+    ],
+    "official_url": "https://resources.sw.siemens.com/en-US/download-solid-edge-student-edition/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://resources.sw.siemens.com/en-US/download-solid-edge-student-edition/ (\"This free download: Is available to any active student\"). The form country field lists Canada and United States (checked 2026-11-01).",
+    "ca_school_email_source": "https://resources.sw.siemens.com/en-US/download-solid-edge-student-edition/",
+    "last_verified": "2026-11-01",
+    "watch_text": "Is available to any active student",
+    "status": "active",
+    "logo": "siemens.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#009999"
+  },
+  {
+    "id": "bentley-education",
+    "brand": "Bentley Systems",
+    "title": "Bentley Education software free for students",
+    "about": "Civil design tools such as MicroStation.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": null,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "school-email",
+    "email_rules": "The form asks you to confirm you are 18 or older. A school email from a recognized school verifies you fastest. If you do not have one, upload a student ID or another proof document. For learning only.",
+    "how_to_claim": [
+      "Open the Bentley Education sign-up page",
+      "Pick your country and enter your school email",
+      "Enter the verification code from the email and set a password",
+      "Download the software you need from the Software section"
+    ],
+    "official_url": "https://education.bentley.com/edu-sign-up/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://education.bentley.com/edu-sign-up/ (\"Signing up for an education account gives you quick access to all the free software and learning resources you need\"). The sign-up form country field lists Canada and United States (checked 2026-11-01).",
+    "ca_school_email_source": "https://education.bentley.com/edu-sign-up/",
+    "last_verified": "2026-11-01",
+    "watch_text": "gives you quick access to all the free software and learning resources you need",
+    "status": "active",
+    "logo": "bentley.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#333333"
+  },
+  {
+    "id": "google-ai-plus-student-trial",
+    "brand": "Google",
+    "title": "Google AI Plus free for 12 months for students",
+    "about": "Gemini AI features plus 400 GB of Google storage.",
+    "category": "ai",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "not_available_in": [
+      {
+        "country": "US",
+        "source": "https://support.google.com/googleone/answer/17422238"
+      }
+    ],
+    "ca_school_email": "accepted",
+    "verification": "sheerid",
+    "email_rules": "Higher-education students in a country where Google AI Plus is available, excluding Hong Kong, Macau, Tunisia and the United States. Verified through SheerID. Needs a personal Gmail account, age 18 or older, and a payment method at sign-up. Converts to a paid plan when the trial ends.",
+    "how_to_claim": [
+      "Open one.google.com/ai-student signed in to your personal Gmail account",
+      "Choose the 12-month Google AI Plus student trial",
+      "Verify your student status through SheerID",
+      "Add a payment method and finish sign-up, then set a reminder before month 12"
+    ],
+    "official_url": "https://one.google.com/ai-student",
+    "affiliate_url": null,
+    "source_note": "sourced: https://support.google.com/googleone/answer/17422238 (\"Be a student at a higher education institution in a country or region where Google AI Plus is available (excluding Hong Kong, Macau, Tunisia, and the United States).\") Canada is on the same page's list of supported countries.",
+    "ca_school_email_source": "https://support.google.com/googleone/answer/17422238",
+    "last_verified": "2026-10-27",
+    "watch_text": "excluding Hong Kong, Macau, Tunisia, and the United States",
+    "status": "active",
+    "logo": "google-g.svg",
+    "banner_color": "#FFFFFF"
+  },
+  {
+    "id": "adobe-substance-3d-education",
+    "brand": "Adobe",
+    "title": "Substance 3D Collection free for 12 months, renewable",
+    "about": "Adobe's 3D texturing, materials and modeling apps.",
+    "category": "design",
+    "price_type": "free",
+    "free_months": 12,
+    "countries": [
+      "CA"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "other",
+    "email_rules": "Students and teachers at higher-education institutions. Not available in Adobe's restricted countries. Licence lasts 12 months and can be renewed.",
+    "how_to_claim": [
+      "Open substance3d.adobe.com/education",
+      "Fill in the education licence request form with your school details",
+      "Sign in with your Adobe ID and install the apps once approved"
+    ],
+    "official_url": "https://substance3d.adobe.com/education/",
+    "affiliate_url": null,
+    "source_note": "sourced: https://substance3d.adobe.com/education/ (\"Substance 3D Collection apps are available for free for students and teachers in higher education institutions.\") The licence \"is also not currently available to users in Restricted Countries\" and the request form lists Canada.",
+    "ca_school_email_source": "https://substance3d.adobe.com/education/",
+    "last_verified": "2026-10-27",
+    "watch_text": "available for free for students and teachers in higher education institutions",
+    "status": "active",
+    "logo": "adobe.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#FF0000"
+  },
+  {
+    "id": "gorails-pack",
+    "brand": "GoRails",
+    "title": "GoRails free for 3 months with the GitHub Student Pack",
+    "about": "Ruby on Rails video lessons and screencasts.",
+    "category": "learning",
+    "github_pack": true,
+    "price_type": "free",
+    "free_months": 3,
+    "countries": [
+      "CA",
+      "US"
+    ],
+    "ca_school_email": "accepted",
+    "verification": "github-education",
+    "email_rules": "Students approved for the GitHub Student Developer Pack.",
+    "how_to_claim": [
+      "Get approved for the GitHub Student Developer Pack",
+      "Open the GoRails offer on the Pack offers page and follow the link",
+      "Sign in with GitHub to unlock 3 months of access"
+    ],
+    "official_url": "https://education.github.com/pack/offers",
+    "affiliate_url": null,
+    "source_note": "sourced: https://gorails.com/github-students (\"3 months of free access to GoRails for students enrolled in the GitHub Student Developer Pack\")",
+    "ca_school_email_source": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "last_verified": "2026-10-27",
+    "watch_text": "3 months of free access to GoRails",
+    "status": "active",
+    "logo": "gorails.svg",
+    "logo_color": "#334155",
+    "banner_color": "#F1F5F9"
   }
 ];
