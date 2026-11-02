@@ -1,7 +1,11 @@
 import datetime as dt
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -201,25 +205,119 @@ class ValidateDealsTest(unittest.TestCase):
 
 
 class CheckLinksTest(unittest.TestCase):
-    def test_missing_watch_text_is_a_failure(self):
-        reason = check_links.judge_response(
+    def test_cloudflare_challenge_is_manual(self):
+        today = dt.date(2026, 11, 1)
+        kind, _message = check_links.classify(
+            {"id": "sample-deal", "last_verified": today - dt.timedelta(days=10)},
+            403,
+            "<title>Just a moment...</title>",
+            {"server": "cloudflare", "cf-mitigated": "challenge"},
+            today=today,
+        )
+        self.assertEqual(kind, "manual")
+
+    def test_old_manual_is_overdue(self):
+        today = dt.date(2026, 11, 1)
+        kind, message = check_links.classify(
+            {"id": "sample-deal", "last_verified": today - dt.timedelta(days=40)},
+            403,
+            "<title>Just a moment...</title>",
+            {"server": "cloudflare", "cf-mitigated": "challenge"},
+            today=today,
+        )
+        self.assertEqual(kind, "manual_overdue")
+        self.assertIn("due for a hand check", message)
+
+    def test_plain_403_without_bot_signs_is_broken(self):
+        kind, message = check_links.classify(
+            {"id": "sample-deal"},
+            403,
+            "",
+            {"server": "nginx"},
+        )
+        self.assertEqual(kind, "broken")
+        self.assertIn("HTTP 403", message)
+
+    def test_404_is_broken(self):
+        kind, message = check_links.classify({"id": "sample-deal"}, 404, "", {})
+        self.assertEqual(kind, "broken")
+        self.assertIn("HTTP 404", message)
+
+    def test_missing_watch_text_is_changed(self):
+        kind, message = check_links.classify(
             {"id": "sample-deal", "watch_text": "Student pack"},
             200,
             "<html>nothing here</html>",
+            {},
         )
-        self.assertIn("watch_text", reason)
-
-    def test_http_error(self):
-        reason = check_links.judge_response({"id": "sample-deal"}, 404, "")
-        self.assertIn("HTTP 404", reason)
+        self.assertEqual(kind, "changed")
+        self.assertIn("watch_text not found: Student pack", message)
 
     def test_match_is_clean(self):
-        reason = check_links.judge_response(
+        result = check_links.classify(
             {"id": "sample-deal", "watch_text": "Student pack"},
             200,
             "The Student Pack is here",
+            {},
         )
-        self.assertIsNone(reason)
+        self.assertIsNone(result)
+
+    def test_timeout_then_ok_passes(self):
+        calls = {"n": 0}
+
+        def fetch(_url):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise requests.Timeout("timed out")
+            return 200, "Student pack is here", {}
+
+        deal = {
+            "id": "sample-deal",
+            "official_url": "https://brand.test/students",
+            "status": "active",
+            "watch_text": "Student pack",
+        }
+        with patch.object(check_links, "RETRY_PAUSE_SECONDS", 0):
+            grouped = check_links.check_deals([deal], fetch, pause_seconds=0)
+        self.assertEqual(calls["n"], 2)
+        self.assertEqual(grouped["broken"], [])
+        self.assertEqual(grouped["changed"], [])
+        self.assertEqual(grouped["manual"], [])
+        self.assertEqual(grouped["manual_overdue"], [])
+
+    def test_report_sections_and_fingerprint(self):
+        grouped = {
+            "broken": ["b-deal: HTTP 404"],
+            "changed": ["c-deal: watch_text not found: Hello"],
+            "manual": [
+                "m-deal: blocks automated checks (HTTP 403, cloudflare); last checked by hand 2026-10-19"
+            ],
+            "manual_overdue": [
+                "o-deal: blocks automated checks (HTTP 403, cloudflare); last checked by hand 2026-09-01, due for a hand check"
+            ],
+        }
+        reordered = {
+            "manual_overdue": list(reversed(grouped["manual_overdue"])),
+            "manual": list(reversed(grouped["manual"])),
+            "changed": list(reversed(grouped["changed"])),
+            "broken": list(reversed(grouped["broken"])),
+        }
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "link-report.md"
+            check_links.write_report(path, grouped, 4)
+            text = path.read_text(encoding="utf-8")
+            check_links.write_report(path, reordered, 4)
+            again = path.read_text(encoding="utf-8")
+        self.assertLess(text.index("## Broken links"), text.index("## Page text changed"))
+        self.assertLess(text.index("## Page text changed"), text.index("## Check these by hand"))
+        self.assertIn("Nightly check looked at 4 deal page(s). 3 need a look.", text)
+        self.assertIn("These sites block automated checks.", text)
+        self.assertLess(text.index("o-deal:"), text.index("m-deal:"))
+        self.assertIn("<!-- fingerprint:", text)
+        self.assertEqual(
+            text[text.index("<!-- fingerprint:") :],
+            again[again.index("<!-- fingerprint:") :],
+        )
 
 
 class CheckSourcesTest(unittest.TestCase):

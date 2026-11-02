@@ -2330,7 +2330,7 @@
   affiliate_url: null
   source_note: 'sourced: https://www.cloudflare.com/students/ ("The current offering is available only to students in the United States over the age of 18 who have a verified .edu billing email address."). Shown as not available in Canada.'
   last_verified: 2026-10-25
-  watch_text: United States only
+  watch_text: available only to students in the United States
   status: active
   logo: cloudflare.svg
   logo_color: '#FFFFFF'

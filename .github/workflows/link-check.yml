@@ -22,17 +22,20 @@ jobs:
       - id: check
         run: python scripts/check_links.py
       - name: Open or update issue
-        if: steps.check.outputs.failed != '0'
         uses: actions/github-script@v7
         env:
           ISSUE_TITLE: "Link check: deals need review"
           ISSUE_LABEL: link-check
           REPORT_PATH: data/inbox/link-report.md
+          FAILED: ${{ steps.check.outputs.failed }}
+          FINGERPRINT: ${{ steps.check.outputs.fingerprint }}
         with:
           script: |
             const fs = require('fs');
             const title = process.env.ISSUE_TITLE;
             const label = process.env.ISSUE_LABEL;
+            const failed = Number(process.env.FAILED || '0');
+            const fingerprint = process.env.FINGERPRINT || '';
             const body = fs.readFileSync(process.env.REPORT_PATH, 'utf8').slice(0, 60000);
             const { owner, repo } = context.repo;
             try {
@@ -44,8 +47,25 @@ jobs:
               owner, repo, state: 'open', labels: label, per_page: 30,
             });
             const found = existing.data.find((issue) => issue.title === title);
-            if (found) {
-              await github.rest.issues.createComment({ owner, repo, issue_number: found.number, body });
-            } else {
+            function oldFingerprint(issue) {
+              const match = String(issue.body || '').match(/<!-- fingerprint: ([0-9a-f]+) -->/);
+              return match ? match[1] : '';
+            }
+            if (failed > 0 && !found) {
               await github.rest.issues.create({ owner, repo, title, body, labels: [label] });
+            } else if (failed > 0 && found) {
+              await github.rest.issues.update({ owner, repo, issue_number: found.number, body });
+              if (oldFingerprint(found) !== fingerprint) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: found.number, body });
+              }
+            } else if (failed === 0 && found) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: found.number,
+                body: 'All clear. Nothing needs review.',
+              });
+              await github.rest.issues.update({
+                owner, repo, issue_number: found.number,
+                state: 'closed',
+                state_reason: 'completed',
+              });
             }
