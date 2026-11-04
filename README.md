@@ -25,7 +25,7 @@
 <p align="center"><b>⭐ If this looks useful, a star helps other students find it.</b></p>
 
 > [!NOTE]
-> **The site is live.** [PerkCheck](https://ayaanrathod.github.io/verified-student-perks/) checks a school email in the browser. 13 deals are hand-checked. The goal is 30 to 50.
+> **The site is live.** [PerkCheck](https://ayaanrathod.github.io/verified-student-perks/) lets you browse deals first, then check a school email in the browser. 103 deals are hand-checked. A card says which country it fits only after that email check.
 
 ---
 
@@ -205,7 +205,7 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 ## 🗺️ Roadmap
 
 - [x] **Week 1:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
-- [x] **Hand-checked deals:** the file has 91 deals. The first goal was 30 to 50.
+- [x] **Hand-checked deals:** the file has 103 deals. The first goal was 30 to 50.
 - [x] **Week 2:** email check, filters, deal pages, and the live GitHub Pages site
 - [x] **Report broken deal** button. It opens a GitHub issue.
 - [ ] **Week 3, still open:** weekly review

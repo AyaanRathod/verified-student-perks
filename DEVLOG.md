@@ -201,3 +201,29 @@ Put a number in a note only when the number is real.
 - Commit these four files.
 - Run the "Nightly link check" workflow from the Actions tab.
 - Read issue 3 after that run.
+
+## 2026-11-03: more deals and home cards
+
+**Work**
+
+- I added 12 deals from `data/deals-new-2026-11-01.yaml` to `data/deals.yaml`.
+- The new rows include Miro, Sketch, Axure, Onshape, Qt, Archicad, Vectorworks, Solid Edge, Bentley, Google AI Plus, Adobe Substance 3D, and GoRails.
+- I put logo files for those brands in `docs/logos/`.
+- Each new deal points at its logo file.
+- Google AI Plus reuses `google-g.svg`.
+- Solid Edge uses `siemens.svg`.
+- The published-file test date is `2026-11-01`, so the new `last_verified` dates pass.
+- On the home page, featured cards, newly checked cards, and category browse no longer pass `country: "CA"`.
+- A card says "Works in Canada" or "Works in United States" only after a school email check on the results page.
+- Browse cards can still show the CA and US chips from the deal file.
+
+**Result**
+
+- `python scripts/validate_deals.py data/deals.yaml` prints `103 deals ok`.
+- `python -m pytest -q` passes 32 tests.
+- The home page no longer shows "Works in Canada" by default.
+
+**Next**
+
+- Keep the night link check issue current.
+- Check any deal that the bot lists for a hand check.
