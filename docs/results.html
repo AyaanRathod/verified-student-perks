@@ -83,6 +83,12 @@
       email = storedEmail();
     }
 
+    // Browse without an email stays on the home page. Results need a school email.
+    readVisit();
+    if (!email) {
+      window.location.replace("index.html#browse");
+    }
+
     function showSchoolListNotice() {
       var notice = document.getElementById("school-list-notice");
       if (!schoolListFromFallback) {
