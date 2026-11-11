@@ -1,0 +1,22 @@
+<svg version="1.2" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+ <title>logo</title>
+ <defs>
+  <linearGradient id="c" y2="100%" gradientTransform="rotate(25)">
+   <stop stop-color="#ed5239" offset="0"/>
+   <stop stop-color="#ec29ca" offset="1"/>
+  </linearGradient>
+  <linearGradient id="b" y2="100%" gradientTransform="rotate(25)">
+   <stop stop-color="#ff2ff8" offset="0"/>
+   <stop stop-color="#9073fc" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a" y2="100%" gradientTransform="rotate(25)">
+   <stop stop-color="#1f9dec" offset="0"/>
+   <stop stop-color="#3eddb9" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g fill-rule="evenodd">
+  <path d="m40 0h220v220h-220z" fill="url(#c)"/>
+  <path d="m20 20h220v220h-220z" fill="url(#b)"/>
+  <path d="m0 40h220v220h-220z" fill="url(#a)"/>
+ </g>
+</svg>

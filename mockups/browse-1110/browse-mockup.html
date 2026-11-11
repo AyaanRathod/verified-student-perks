@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PerkCheck browse mockup</title>
+<!--
+  Browse mockup for PerkCheck. Uses a copy of docs/deals.js (103 real deals) and docs/logos.
+  Open it straight from disk or serve the folder. Try: ?cat=design , ?filter=us,pack , ?sort=newest , ?q=figma
+  This file is a reference for the look and the behaviour. Logo colouring is simplified here
+  (CSS filter); the real site keeps its own logo code in app.js.
+-->
+<style>
+:root{
+  --bg:#f7f9f8;--text:#111827;--muted:#4b5563;--faint:#6b7280;--line:#e5e7eb;--card:#fff;--input:#f1f5f4;
+  --teal:#3a9282;--teal-soft:#e6f4f1;--teal-ink:#2b6f63;--amber:#b45309;--amber-soft:#fef3c7;
+  --shadow:0 1px 2px rgba(17,24,39,.04),0 8px 24px rgba(17,24,39,.06);--page:1100px;--gutter:24px;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:150px}
+body{margin:0;font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:clip}
+button,input,select{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 max(var(--gutter),calc((100% - var(--page))/2));background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.logo{display:flex;align-items:center;gap:10px;font-weight:650;font-size:20px;text-decoration:none}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--teal);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal}
+.nav-links{display:flex;gap:18px;font-size:15px;color:var(--muted)}
+.nav-links a{text-decoration:none}.nav-links a[aria-current]{color:var(--text);font-weight:600}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gutter)}
+.browse-head{padding:28px 0 6px}
+.browse-head h1{font-size:30px;letter-spacing:-.02em;margin:0 0 6px}
+.browse-head p{margin:0;color:var(--muted)}
+
+/* sticky category bar */
+.catbar{position:sticky;top:64px;z-index:4;background:rgba(247,249,248,.92);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line);margin:14px 0 0;padding:10px 0}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
+.chips::-webkit-scrollbar{display:none}
+.cat{flex:none;scroll-snap-align:start;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px 0 9px;border-radius:999px;
+  border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:14px;white-space:nowrap;transition:background .15s,border-color .15s}
+.cat:hover{border-color:#b9d9d2}
+.cat svg{width:18px;height:18px;color:var(--teal)}
+.cat .n{font-size:12px;font-weight:650;color:var(--faint);background:var(--input);border-radius:999px;padding:2px 7px;min-width:24px;text-align:center}
+.cat[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:#fff}
+.cat[aria-pressed="true"] svg{color:#fff}
+.cat[aria-pressed="true"] .n{background:rgba(255,255,255,.18);color:#fff}
+.cat.zero{opacity:.45}
+
+/* tools row */
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 0 4px}
+.search{flex:1 1 260px;position:relative}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--faint)}
+.search input{width:100%;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 12px 0 38px;font-size:15px}
+.fchips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.fchips::-webkit-scrollbar{display:none}
+.fchip{flex:none;min-height:44px;padding:0 13px;border-radius:12px;border:1px dashed #cfd8d5;background:transparent;cursor:pointer;font-size:14px;font-weight:550;color:var(--muted);white-space:nowrap}
+.fchip[aria-pressed="true"]{border-style:solid;border-color:var(--teal);background:var(--teal-soft);color:var(--teal-ink)}
+.fchip[aria-pressed="true"]::before{content:"✓ ";font-weight:700}
+.sort{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--faint)}
+.sort select{height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 10px;font-weight:600;color:var(--text)}
+.status{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:6px 0 0;color:var(--faint);font-size:14px;min-height:28px}
+.count-wrap{display:flex;align-items:center;gap:12px}
+.clear{border:0;background:none;color:var(--teal-ink);font-weight:600;cursor:pointer;padding:6px 0;min-height:44px}
+
+/* category header */
+.cat-head{display:flex;gap:16px;align-items:center;margin:18px 0 6px;padding:20px;border-radius:18px;background:linear-gradient(120deg,#e6f4f1,#f4faf8 60%,#fff);border:1px solid #d5ebe5}
+.cat-head .ico{width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--teal);box-shadow:var(--shadow);flex:none}
+.cat-head .ico svg{width:26px;height:26px}
+.cat-head h2{margin:0;font-size:24px;letter-spacing:-.01em}
+.cat-head p{margin:4px 0 0;color:var(--muted)}
+.cat-head .facts{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.fact{background:#fff;border:1px solid #d5ebe5;border-radius:10px;padding:6px 10px;font-size:13px;color:var(--teal-ink);font-weight:600;white-space:nowrap}
+
+/* shelves */
+.shelf{margin:26px 0 8px}
+.shelf-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.shelf-head h2{margin:0;font-size:20px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.shelf-head h2 svg{width:20px;height:20px;color:var(--teal)}
+.shelf-head .blurb{color:var(--faint);font-size:14px}
+.shelf-head .see{margin-left:auto;border:0;background:none;color:var(--teal-ink);font-weight:650;cursor:pointer;font-size:14px;min-height:44px;white-space:nowrap}
+.row-wrap{position:relative}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:232px;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.row>*{scroll-snap-align:start}
+.arrow{position:absolute;top:58px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px}
+.arrow.prev{left:-14px}.arrow.next{right:-14px}
+.arrow[hidden]{display:none}
+
+/* deal card */
+.deal{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;min-width:0}
+.deal:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(17,24,39,.05),0 14px 30px rgba(17,24,39,.10)}
+.banner{height:104px;display:flex;align-items:center;justify-content:center;position:relative}
+.banner img{max-height:46px;max-width:62%;object-fit:contain}
+.banner .letter{font-size:40px;font-weight:750;color:#fff;opacity:.95}
+.banner .letter.dark{color:#111827}
+.new{position:absolute;top:8px;left:8px;background:#fff;color:var(--teal-ink);font-size:11px;font-weight:700;padding:3px 7px;border-radius:999px;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.brand{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title{font-weight:650;font-size:15px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:39px}
+.foot{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:4px}
+.pill{font-size:12px;font-weight:650;padding:3px 8px;border-radius:999px;background:var(--input);color:var(--muted);white-space:nowrap}
+.pill.free{background:var(--teal-soft);color:var(--teal-ink)}
+.pill.disc{background:var(--amber-soft);color:var(--amber)}
+.pill.no{background:#fef2f2;color:#b91c1c}
+.pill.pack{background:#111827;color:#fff}
+
+/* featured */
+.featured{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{display:grid;grid-template-columns:120px 1fr;border-radius:18px;overflow:hidden;text-decoration:none;color:#fff;min-height:150px;box-shadow:var(--shadow);transition:transform .15s}
+.feat:hover{transform:translateY(-2px)}
+.feat .fl{display:flex;align-items:center;justify-content:center}
+.feat .fl img{max-width:64px;max-height:56px}
+.feat .fr{padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;background:rgba(0,0,0,.18)}
+.feat .k{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.feat .t{font-weight:700;font-size:17px;line-height:1.25}
+.feat .a{font-size:13px;opacity:.85;line-height:1.35}
+.feat .foot .pill{background:rgba(255,255,255,.18);color:#fff}
+
+/* grid view */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.grid .about{font-size:13px;color:var(--muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.empty{text-align:center;padding:48px 20px;border:1px dashed #cfd8d5;border-radius:18px;margin-top:18px;background:#fff}
+.empty h3{margin:0 0 6px}.empty p{margin:0 0 14px;color:var(--muted)}
+.empty button{min-height:44px;padding:0 16px;border-radius:12px;border:0;background:var(--teal);color:#fff;font-weight:650;cursor:pointer}
+footer{margin:56px 0 0;padding:28px var(--gutter);border-top:1px solid var(--line);color:var(--faint);font-size:13px;text-align:center}
+
+@media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.featured{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){
+  :root{--gutter:16px}
+  html{scroll-padding-top:130px}
+  .nav-links{display:none}
+  .browse-head{padding:20px 0 0}.browse-head h1{font-size:24px}
+  .tools{padding-top:12px}
+  .search{flex-basis:100%}
+  .fchips{flex:1 1 auto;margin-right:calc(-1*var(--gutter));padding-right:var(--gutter)}
+  .catbar{margin:12px calc(-1*var(--gutter)) 0;padding:8px 0}
+  .chips{padding:0 var(--gutter);scroll-padding:0 var(--gutter)}
+  .cat-head{padding:16px;gap:12px}.cat-head .facts{margin-left:0;justify-content:flex-start;width:100%}
+  .cat-head{flex-wrap:wrap}
+  .featured{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--gutter);scrollbar-width:none;margin:0 calc(-1*var(--gutter));padding:4px var(--gutter) 10px}
+  .featured::-webkit-scrollbar{display:none}
+  .feat{grid-template-columns:88px 1fr}.feat .fl img{max-width:48px}
+  .featured>*{scroll-snap-align:start}
+  .row{grid-auto-columns:68%;margin:0 calc(-1*var(--gutter));padding:4px var(--gutter) 12px;scroll-padding:0 var(--gutter)}
+  .arrow{display:none}
+  .shelf-head .blurb{display:none}
+  .grid{grid-template-columns:1fr;gap:10px}
+  .grid .deal{flex-direction:row;align-items:stretch}
+  .grid .banner{width:84px;height:auto;min-height:96px;flex:none}
+  .grid .banner img{max-width:60%;max-height:34px}
+  .grid .banner .letter{font-size:28px}
+  .grid .new{top:6px;left:6px;font-size:10px;padding:2px 5px}
+  .grid .body{padding:10px 12px}
+  .grid .about{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#"><i>✓</i>PerkCheck</a>
+  <nav class="nav-links" aria-label="Main"><a href="#">Home</a><a href="#browse" aria-current="page">Browse</a><a href="#">GitHub</a></nav>
+</header>
+
+<main class="wrap" id="browse">
+  <div class="browse-head">
+    <h1>Browse student deals</h1>
+    <p id="head-line"></p>
+  </div>
+
+  <div class="catbar"><div class="chips" id="cats" role="toolbar" aria-label="Categories"></div></div>
+
+  <div class="tools">
+    <label class="search"><span class="visually-hidden">Search deals</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Search Figma, cloud credits, notes..." autocomplete="off">
+    </label>
+    <div class="fchips" id="filters" role="group" aria-label="Filters"></div>
+  </div>
+  <div class="status"><span class="count-wrap"><span id="count" aria-live="polite"></span><button class="clear" id="clear" type="button" hidden>Clear all</button></span><label class="sort">Sort
+      <select id="sort">
+        <option value="best">Best first</option>
+        <option value="newest">Newest checked</option>
+        <option value="longest">Longest free</option>
+        <option value="az">A to Z</option>
+      </select>
+    </label></div>
+
+  <div id="view"></div>
+</main>
+<footer>Mockup with real PerkCheck data (docs/deals.js). Each deal appears once per view. Logos belong to their owners.</footer>
+
+<script src="deals.js"></script>
+<script>
+(function(){
+var CATS=[
+ {key:"ai",label:"AI",line:"Chat, voice and coding assistants."},
+ {key:"coding",label:"Coding",line:"Editors, IDEs, testing and developer services."},
+ {key:"design",label:"Design",line:"UI, prototyping, 3D, CAD and architecture tools."},
+ {key:"cloud",label:"Cloud",line:"Hosting, credits, databases and domains."},
+ {key:"learning",label:"Learning",line:"Courses and practice for code and languages."},
+ {key:"notes",label:"Notes",line:"Notes, docs and notebooks."},
+ {key:"shopping",label:"Shopping",line:"Memberships and store tools."}
+];
+var ICON={
+ all:'<path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/>',
+ ai:'<path fill="currentColor" d="M12 2.2 13.5 8 19.3 9.5 13.5 11 12 16.8 10.5 11 4.7 9.5 10.5 8Z"/><path fill="currentColor" d="M18 14.2 18.7 16.3 20.8 17 18.7 17.7 18 19.8 17.3 17.7 15.2 17 17.3 16.3Z"/>',
+ coding:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"/>',
+ design:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 16.5 14.2 6.3a2.2 2.2 0 0 1 3.1 3.1L7.1 19.6H4Z"/>',
+ notes:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7 3.5h7.2L18 7.3V20.5H7Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M14 3.8V8h4.2M9.5 12h6M9.5 15.5h6"/>',
+ learning:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 6.5 12 3.5l9 3v11l-9-3-9 3Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 6.8v10.6"/>',
+ cloud:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7.2 17.5h9.2a3.6 3.6 0 0 0 .4-7.2 5 5 0 0 0-9.6-1.3A3.2 3.2 0 0 0 7.2 17.5Z"/>',
+ shopping:'<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M10.2 5.2h3.4L19.5 11l-6.6 6.6L6.5 11Z"/><circle cx="13.4" cy="8.6" r="1.15" fill="currentColor"/>'
+};
+var FILTERS=[
+ {key:"free",label:"Free"},{key:"discount",label:"Discount"},
+ {key:"ca",label:"Works in Canada"},{key:"us",label:"Works in US"},{key:"pack",label:"GitHub Pack"}
+];
+function svg(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(ICON[k]||"")+'</svg>'}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+
+var ALL=(window.PERKCHECK_DEALS||[]).filter(function(d){return d.status==="active"});
+function home(d){return d.category==="github-pack"?"coding":d.category}
+function inPack(d){return d.github_pack===true||d.category==="github-pack"}
+function worksIn(d,c){
+  var listed=(d.countries||[]).indexOf(c)!==-1||(d.countries||[]).indexOf("GLOBAL")!==-1||d.countries_scope==="global";
+  var out=(d.not_available_in||[]).some(function(x){return x.country===c});
+  if(c==="CA"&&d.ca_school_email==="rejected")out=true;
+  return listed&&!out;
+}
+var newest=ALL.reduce(function(m,d){return d.last_verified>m?d.last_verified:m},"");
+var cut=new Date(newest+"T00:00:00");cut.setDate(cut.getDate()-6);var cutIso=cut.toISOString().slice(0,10);
+function isNew(d){return d.last_verified>=cutIso}
+function freeRank(d){if(d.price_type!=="free")return -1;return d.free_months==null?999:d.free_months}
+
+var state=read();
+function read(){
+  var p=new URLSearchParams(location.search);
+  var cat=p.get("cat")||"all";if(cat!=="all"&&!CATS.some(function(c){return c.key===cat}))cat="all";
+  var f=(p.get("filter")||"").split(",").filter(function(k){return FILTERS.some(function(x){return x.key===k})});
+  var sort=p.get("sort")||"best";if(["best","newest","longest","az"].indexOf(sort)===-1)sort="best";
+  return {cat:cat,filters:f,sort:sort,q:p.get("q")||""};
+}
+function write(push){
+  var p=new URLSearchParams();
+  if(state.cat!=="all")p.set("cat",state.cat);
+  if(state.filters.length)p.set("filter",state.filters.join(","));
+  if(state.sort!=="best")p.set("sort",state.sort);
+  if(state.q)p.set("q",state.q);
+  var url=location.pathname+(p.toString()?"?"+p.toString():"")+"#browse";
+  history[push?"pushState":"replaceState"](null,"",url);
+}
+function passes(d){
+  var f=state.filters;
+  if(f.indexOf("free")!==-1&&f.indexOf("discount")===-1&&d.price_type!=="free")return false;
+  if(f.indexOf("discount")!==-1&&f.indexOf("free")===-1&&d.price_type!=="discount")return false;
+  if(f.indexOf("ca")!==-1&&!worksIn(d,"CA"))return false;
+  if(f.indexOf("us")!==-1&&!worksIn(d,"US"))return false;
+  if(f.indexOf("pack")!==-1&&!inPack(d))return false;
+  if(state.q){
+    var hay=[d.brand,d.title,d.about,(CATS.filter(function(c){return c.key===home(d)})[0]||{}).label].join(" ").toLowerCase();
+    var words=state.q.toLowerCase().split(/\s+/).filter(Boolean);
+    if(!words.every(function(w){return hay.indexOf(w)!==-1}))return false;
+  }
+  return true;
+}
+function sorted(list){
+  var by={
+    best:function(a,b){return (a.price_type==="free"?0:1)-(b.price_type==="free"?0:1)||(a.featured?a.featured_rank||9:99)-(b.featured?b.featured_rank||9:99)||(b.last_verified>a.last_verified?1:b.last_verified<a.last_verified?-1:0)||a.brand.localeCompare(b.brand)},
+    newest:function(a,b){return (b.last_verified>a.last_verified?1:b.last_verified<a.last_verified?-1:0)||a.brand.localeCompare(b.brand)},
+    longest:function(a,b){return freeRank(b)-freeRank(a)||a.brand.localeCompare(b.brand)},
+    az:function(a,b){return a.brand.localeCompare(b.brand)||a.title.localeCompare(b.title)}
+  }[state.sort];
+  return list.slice().sort(by);
+}
+function priceText(d){
+  if(d.price_type==="discount"){var t=d.discount||"Discount";return t.length<=12?t:"Discount"}
+  if(d.free_months)return "Free · "+d.free_months+" mo";
+  return "Free while student";
+}
+function logo(d,big){
+  var bg=d.banner_color||"#F1F5F9";
+  var f=d.logo_color==="#FFFFFF"?"brightness(0) invert(1)":d.logo_color==="#000000"?"brightness(0)":d.logo_color?"brightness(0) opacity(.78)":"none";
+  if(d.logo)return '<img src="logos/'+esc(d.logo)+'" alt="" loading="lazy" style="filter:'+f+'">';
+  var light=/^#(f|e|d)/i.test(bg);
+  return '<span class="letter'+(light?" dark":"")+'">'+esc(d.brand.charAt(0))+'</span>';
+}
+function pills(d){
+  var h='<span class="pill '+(d.price_type==="free"?"free":"disc")+'">'+esc(priceText(d))+'</span>';
+  h+=worksIn(d,"CA")?'<span class="pill">CA</span>':'<span class="pill no">Not in CA</span>';
+  h+=worksIn(d,"US")?'<span class="pill">US</span>':'<span class="pill no">Not in US</span>';
+  if(inPack(d))h+='<span class="pill pack">Pack</span>';
+  return h;
+}
+function card(d,withAbout){
+  return '<a class="deal" href="deal.html?id='+encodeURIComponent(d.id)+'">'+
+    '<div class="banner" style="background:'+esc(d.banner_color||"#F1F5F9")+'">'+logo(d)+(isNew(d)?'<span class="new">NEW</span>':"")+'</div>'+
+    '<div class="body"><span class="brand">'+esc(d.brand)+'</span><span class="title">'+esc(d.title)+'</span>'+
+    (withAbout&&d.about?'<span class="about">'+esc(d.about)+'</span>':"")+
+    '<div class="foot">'+pills(d)+'</div></div></a>';
+}
+function featCard(d){
+  return '<a class="feat" href="deal.html?id='+encodeURIComponent(d.id)+'" style="background:'+esc(d.banner_color||"#334155")+'">'+
+   '<div class="fl">'+logo(d,true)+'</div><div class="fr"><span class="k">Featured · '+esc(d.brand)+'</span><span class="t">'+esc(d.title.split(",")[0])+'</span><span class="a">'+esc(d.about||"")+'</span><div class="foot">'+pills(d)+'</div></div></a>';
+}
+
+var catsEl=document.getElementById("cats"),filtersEl=document.getElementById("filters"),view=document.getElementById("view");
+var qEl=document.getElementById("q"),sortEl=document.getElementById("sort"),countEl=document.getElementById("count"),clearEl=document.getElementById("clear");
+
+function draw(){
+  var pool=ALL.filter(passes);
+  // category chips with live counts
+  var chips=[{key:"all",label:"All"}].concat(CATS);
+  catsEl.innerHTML=chips.map(function(c){
+    var n=c.key==="all"?pool.length:pool.filter(function(d){return home(d)===c.key}).length;
+    return '<button type="button" class="cat'+(n||state.cat===c.key?"":" zero")+'" data-cat="'+c.key+'" aria-pressed="'+(state.cat===c.key)+'">'+svg(c.key)+'<span>'+c.label+'</span><span class="n">'+n+'</span></button>';
+  }).join("");
+  filtersEl.innerHTML=FILTERS.map(function(f){
+    return '<button type="button" class="fchip" data-f="'+f.key+'" aria-pressed="'+(state.filters.indexOf(f.key)!==-1)+'">'+f.label+'</button>';
+  }).join("");
+  var on=catsEl.querySelector('[aria-pressed="true"]');
+  if(on)catsEl.scrollLeft=on.offsetLeft-catsEl.offsetLeft-(catsEl.clientWidth-on.offsetWidth)/2;
+  qEl.value=state.q;sortEl.value=state.sort;
+  var busy=state.filters.length||state.q||state.sort!=="best";
+  clearEl.hidden=!busy;
+  document.getElementById("head-line").textContent=ALL.length+" deals checked for Canada and the US. "+ALL.filter(function(d){return d.price_type==="free"}).length+" are free.";
+
+  var list=state.cat==="all"?pool:pool.filter(function(d){return home(d)===state.cat});
+  var catInfo=CATS.filter(function(c){return c.key===state.cat})[0];
+  var where=catInfo?" in "+catInfo.label:"";
+  countEl.textContent=list.length+(list.length===1?" deal":" deals")+where+(state.q?' matching "'+state.q+'"':"");
+
+  if(!list.length){
+    view.innerHTML='<div class="empty"><h3>No deals match</h3><p>Nothing'+esc(where)+' fits '+esc(describe())+'.</p><button type="button" data-clear>Clear filters</button></div>';
+    return;
+  }
+  // flat grid: a category, a search, or any non-default sort
+  if(catInfo||state.q||state.sort!=="best"){
+    var head="";
+    if(catInfo){
+      var all=ALL.filter(function(d){return home(d)===catInfo.key});
+      var fr=all.filter(function(d){return d.price_type==="free"}).length;
+      var both=all.filter(function(d){return worksIn(d,"CA")&&worksIn(d,"US")}).length;
+      head='<section class="cat-head"><div class="ico">'+svg(catInfo.key)+'</div><div><h2>'+catInfo.label+'</h2><p>'+catInfo.line+'</p></div>'+
+        '<div class="facts"><span class="fact">'+all.length+' deals</span><span class="fact">'+fr+' free</span><span class="fact">'+both+' work in CA and US</span></div></section>';
+    }
+    view.innerHTML=head+'<div class="grid">'+sorted(list).map(function(d){return card(d,true)}).join("")+'</div>';
+    return;
+  }
+  // All view: Featured, then one shelf per category. Each deal appears once on the page.
+  var featured=pool.filter(function(d){return d.featured}).sort(function(a,b){return (a.featured_rank||9)-(b.featured_rank||9)}).slice(0,4);
+  var shown={};featured.forEach(function(d){shown[d.id]=1});
+  var html="";
+  if(featured.length)html+='<section class="shelf"><div class="shelf-head"><h2>Featured</h2><span class="blurb">Big ones most students should claim first</span></div><div class="featured">'+featured.map(featCard).join("")+'</div></section>';
+  CATS.forEach(function(c){
+    var inCat=pool.filter(function(d){return home(d)===c.key});
+    var rest=sorted(inCat.filter(function(d){return !shown[d.id]}));
+    if(!rest.length)return;
+    var top=rest.slice(0,10);
+    html+='<section class="shelf" aria-labelledby="sh-'+c.key+'"><div class="shelf-head"><h2 id="sh-'+c.key+'">'+svg(c.key)+c.label+'</h2><span class="blurb">'+c.line+'</span>'+
+      '<button type="button" class="see" data-cat="'+c.key+'">See all '+inCat.length+' →</button></div>'+
+      '<div class="row-wrap"><button class="arrow prev" type="button" aria-label="Scroll '+c.label+' left" hidden>‹</button><div class="row">'+top.map(function(d){return card(d,false)}).join("")+'</div>'+
+      '<button class="arrow next" type="button" aria-label="Scroll '+c.label+' right"'+(top.length>4?"":" hidden")+'>›</button></div></section>';
+  });
+  view.innerHTML=html;
+  Array.prototype.forEach.call(view.querySelectorAll(".row"),syncArrows);
+}
+function describe(){
+  var parts=state.filters.map(function(k){return FILTERS.filter(function(f){return f.key===k})[0].label});
+  if(state.q)parts.push('"'+state.q+'"');
+  return parts.join(" + ")||"these filters";
+}
+function syncArrows(row){
+  var w=row.parentNode;var prev=w.querySelector(".prev"),next=w.querySelector(".next");
+  prev.hidden=row.scrollLeft<8;next.hidden=row.scrollLeft+row.clientWidth>=row.scrollWidth-8;
+}
+function setCat(cat){
+  state.cat=cat;write(true);draw();
+  var top=document.getElementById("browse").getBoundingClientRect().top+scrollY-64;
+  if(scrollY>top)window.scrollTo({top:top,behavior:"smooth"});
+}
+catsEl.addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(b)setCat(b.dataset.cat)});
+view.addEventListener("click",function(e){
+  var s=e.target.closest(".see");if(s){setCat(s.dataset.cat);return}
+  if(e.target.closest("[data-clear]")){clearAll();return}
+  var a=e.target.closest(".arrow");if(a){var row=a.parentNode.querySelector(".row");row.scrollBy({left:(a.classList.contains("next")?1:-1)*row.clientWidth*.9,behavior:"smooth"})}
+});
+view.addEventListener("scroll",function(e){if(e.target.classList&&e.target.classList.contains("row"))syncArrows(e.target)},true);
+filtersEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-f]");if(!b)return;var k=b.dataset.f,i=state.filters.indexOf(k);
+  if(i===-1)state.filters.push(k);else state.filters.splice(i,1);write(false);draw();
+});
+var t=0;qEl.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){state.q=qEl.value.trim();write(false);draw()},150)});
+sortEl.addEventListener("change",function(){state.sort=sortEl.value;write(false);draw()});
+function clearAll(){state.filters=[];state.q="";state.sort="best";write(false);draw()}
+clearEl.addEventListener("click",clearAll);
+window.addEventListener("popstate",function(){state=read();draw()});
+draw();
+})();
+</script>
+</body>
+</html>

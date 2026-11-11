@@ -1,4 +1,5 @@
 import datetime as dt
+import re
 import sys
 import tempfile
 import unittest
@@ -318,6 +319,16 @@ class CheckLinksTest(unittest.TestCase):
             text[text.index("<!-- fingerprint:") :],
             again[again.index("<!-- fingerprint:") :],
         )
+
+
+class BrowseCategoriesTest(unittest.TestCase):
+    def test_yaml_categories_appear_in_browse_js(self):
+        deals = validate_deals.load_yaml(ROOT / "data" / "deals.yaml")
+        used = {deal["category"] for deal in deals if deal.get("category") != "github-pack"}
+        text = (ROOT / "docs" / "browse.js").read_text(encoding="utf-8")
+        keys = set(re.findall(r'key:\s*"([a-z-]+)"', text))
+        missing = sorted(used - keys)
+        self.assertEqual(missing, [], f"browse.js is missing categories: {missing}")
 
 
 class CheckSourcesTest(unittest.TestCase):

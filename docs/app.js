@@ -519,7 +519,7 @@ window.addEventListener("resize", function () {
     var visit = getVisit();
     return [
       { label: "Home", hint: "Email check and browse", href: "index.html" },
-      { label: "Browse", hint: "All deals without an email", href: "index.html#browse" },
+      { label: "Browse all deals", hint: "Every checked deal", href: "index.html#browse" },
       visit.email
         ? { label: "My perks", hint: "Deals for your school email", href: perksHref() }
         : { label: "Check my perks", hint: "Enter a school email first", href: "index.html" }
