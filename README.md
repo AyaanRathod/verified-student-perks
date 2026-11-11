@@ -4,8 +4,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0F766E?style=for-the-badge" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/status-early%20development-F59E0B?style=for-the-badge" alt="Status: early development">
-  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-14B8A6?style=for-the-badge" alt="PRs welcome"></a>
+  <img src="https://img.shields.io/badge/status-live-14B8A6?style=for-the-badge" alt="Status: live">
   <img src="https://img.shields.io/badge/made%20in-Canada%20🇨🇦-D52B1E?style=for-the-badge" alt="Made in Canada">
 </p>
 
@@ -13,19 +12,15 @@
   <a href="#-why-this-exists">Why</a> •
   <a href="#-features">Features</a> •
   <a href="#%EF%B8%8F-how-it-works">How it works</a> •
-  <a href="#-roadmap">Roadmap</a> •
-  <a href="#-contributing">Contribute</a> •
-  <a href="#-if-youre-a-recruiter-reading-this">Recruiters</a>
+  <a href="#-contributing">Contribute</a>
 </p>
 
 <h3 align="center">Student perks that actually work for <i>you</i>.<br>Checked by country 🇨🇦 🇺🇸 and school email ✉️, with a date on every deal.</h3>
 
 <p align="center"><a href="https://ayaanrathod.github.io/verified-student-perks/"><b>Open the live site</b></a></p>
 
-<p align="center"><b>⭐ If this looks useful, a star helps other students find it.</b></p>
-
 > [!NOTE]
-> **The site is live.** [PerkCheck](https://ayaanrathod.github.io/verified-student-perks/) lets you browse deals first, then check a school email in the browser. 103 deals are hand-checked. A card says which country it fits only after that email check.
+> **[PerkCheck](https://ayaanrathod.github.io/verified-student-perks/) is live.** Browse the catalog by category, search and filter, then check a school email in the browser. 103 deals are hand-checked. A card names the country fit after that email check. Nothing is stored.
 
 ---
 
@@ -45,16 +40,16 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
 <table>
   <tr>
     <td width="33%" valign="top">
+      <h3>📚 Browse first</h3>
+      Sticky categories, shelves, search, filters and shareable links. GitHub Pack is a filter, not a fake category.
+    </td>
+    <td width="33%" valign="top">
       <h3>✉️ Email checker</h3>
       Type your school email and see the perks recorded for that school. Runs in your browser, and nothing is stored.
     </td>
     <td width="33%" valign="top">
       <h3>🇨🇦 Country tags</h3>
       Every deal is marked CA and/or US, with a clear <b>Not in CA</b> badge and a source when it's excluded.
-    </td>
-    <td width="33%" valign="top">
-      <h3>⏳ Trial-length filter</h3>
-      Find perks free for 3, 6 or 12+ months, and filter free vs discounted.
     </td>
   </tr>
   <tr>
@@ -64,7 +59,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
     </td>
     <td valign="top">
       <h3>🤖 Nightly bot</h3>
-      A GitHub Action opens every deal page each night. One issue lists broken pages, missing watch text, and sites that block the check. A clean run closes that issue.
+      A GitHub Action opens every deal page each night. One issue lists broken pages, missing watch text, and sites that block the check.
     </td>
     <td valign="top">
       <h3>🏷️ Honest paid links</h3>
@@ -73,17 +68,15 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
   </tr>
 </table>
 
-<sub>The email checker, country tags, trial filter, last-verified date, nightly check, and paid-link label are in the project today.</sub>
-
 ---
 
 ## 📸 Sneak peek
 
-<p align="center"><i>The live site is <a href="https://ayaanrathod.github.io/verified-student-perks/">ayaanrathod.github.io/verified-student-perks</a>. These pictures are the early layout. Students use the site in <code>docs/</code>.</i></p>
+<p align="center"><i>Live site: <a href="https://ayaanrathod.github.io/verified-student-perks/">ayaanrathod.github.io/verified-student-perks</a></i></p>
 
 <p align="center">
-  <img src="assets/mockup-home.png" alt="Home page, early mockup" width="49%">
-  <img src="assets/mockup-results.png" alt="Results page, early mockup" width="49%">
+  <img src="assets/mockup-home.png" alt="Home page" width="49%">
+  <img src="assets/mockup-results.png" alt="Results page" width="49%">
 </p>
 
 ---
@@ -95,7 +88,7 @@ PerkCheck tags every deal with where it's **confirmed** to work, links the offic
     <td align="center" width="25%"><h3>1️⃣</h3><b>Data</b><br><sub>Every deal lives in one public file, <code>deals.yaml</code></sub></td>
     <td align="center" width="25%"><h3>2️⃣</h3><b>Nightly check</b><br><sub>GitHub Actions opens each official page. One issue lists broken pages, text changes, and sites to open by hand</sub></td>
     <td align="center" width="25%"><h3>3️⃣</h3><b>Monday search</b><br><sub>The Grok bot searches for new deals. Actions watches the source list for new links</sub></td>
-    <td align="center" width="25%"><h3>4️⃣</h3><b>You check</b><br><sub>Enter your email and get perks that fit you</sub></td>
+    <td align="center" width="25%"><h3>4️⃣</h3><b>You check</b><br><sub>Browse the catalog, or enter your email for perks that fit you</sub></td>
   </tr>
 </table>
 
@@ -117,13 +110,13 @@ flowchart TD
     D -->|updates| A
     B -->|nothing left to review| Q["Issue closed"]
     A --> E["Site build<br/>reads deals.yaml at build time"]
-    E --> F["Student checks their school email<br/>domain matched in the browser"]
-    F --> G["Perks for that school<br/>filtered by country and trial length"]
+    E --> F["Student browses or checks a school email<br/>domain matched in the browser"]
+    F --> G["Perks filtered by category, country and trial length"]
     G -->|something wrong?| H["Report broken deal button<br/>opens a GitHub issue"]
     H --> D
 ```
 
-- **Email check:** the site matches your email's domain (like `brocku.ca`) against [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list) at commit [`603e10f51b67c6553b9bca9aecc0db4c2417ed10`](https://github.com/Hipo/university-domains-list/tree/603e10f51b67c6553b9bca9aecc0db4c2417ed10), right in your browser. A result names the school and how that deal was checked. Each brand's own verifier makes the final call.
+- **Email check:** the site matches your email's domain (like `brocku.ca`) against [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list) at commit [`603e10f51b67c6553b9bca9aecc0db4c2417ed10`](https://github.com/Hipo/university-domains-list/tree/603e10f51b67c6553b9bca9aecc0db4c2417ed10), right in your browser. Each brand's own verifier makes the final call.
 - **Reports:** every deal gets a **Report broken deal** button that opens a GitHub issue.
 - **No database:** the site is built straight from `deals.yaml`.
 
@@ -131,16 +124,15 @@ flowchart TD
 
 ---
 
-## 🛠️ How I'm building this
+## 🛠️ How this was built
 
-I'm building this myself and treating it like a real product, not a weekend demo. I use AI tools like Cursor the way most developers do today, to move faster. **The decisions, the data and the review are mine.**
+A small static site, a public deal file, and careful checking. AI tools helped with speed. The decisions, the data and the review stayed human.
 
-| 🧠 I own | 🔁 How I work |
+| 🧠 What matters here | 🔁 How it stays honest |
 |---|---|
-| The data design and eligibility rules | Data and validation first |
-| Checking every deal on its official page | Small, reviewed pull requests |
-| Reviewing and understanding every change | Tests for the deal file, the link check, and the Monday watch |
-| The architecture: a simple static site | Weekly notes in [DEVLOG.md](DEVLOG.md) |
+| Data design and eligibility rules | Validation before publish |
+| Checking deals on official pages | Small, reviewed changes |
+| Clear country and school-email tags | Nightly link checks and a DEVLOG |
 
 <details>
 <summary><b>🧰 Tech stack</b></summary>
@@ -153,9 +145,7 @@ I'm building this myself and treating it like a real product, not a weekend demo
   <img src="https://img.shields.io/badge/YAML-CB171E?style=flat-square&logo=yaml&logoColor=white" alt="YAML">
 </p>
 
-Built today: plain HTML, CSS and JavaScript in `docs/` on GitHub Pages, Python scripts, GitHub Actions, and YAML.
-
-**Planned:** Move to Astro and Netlify when I'll add school pages and paid links.
+Plain HTML, CSS and JavaScript in `docs/` on GitHub Pages, Python scripts, GitHub Actions, and YAML.
 
 School domain data comes from [Hipo/university-domains-list](https://github.com/Hipo/university-domains-list) at commit [`603e10f51b67c6553b9bca9aecc0db4c2417ed10`](https://github.com/Hipo/university-domains-list/tree/603e10f51b67c6553b9bca9aecc0db4c2417ed10).
 
@@ -202,33 +192,15 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 
 ---
 
-## 🗺️ Roadmap
+## ✅ What shipped
 
-- [x] **Week 1:** deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
-- [x] **Hand-checked deals:** the file has 103 deals. The first goal was 30 to 50.
-- [x] **Week 2:** email check, filters, deal pages, and the live GitHub Pages site
-- [x] **Report broken deal** button. It opens a GitHub issue.
-- [ ] **Week 3, still open:** weekly review
-- [ ] **Later:** "Graduating soon?" guide, deal changelog, more countries, free listings for student-run businesses and clubs
+- [x] Deal file, validation, nightly link check, Monday source watch, Grok candidate inbox
+- [x] 103 hand-checked deals
+- [x] Email check, filters, deal pages, and the live GitHub Pages site
+- [x] Browse by category with shelves, search, filters and shareable URLs
+- [x] **Report broken deal** button that opens a GitHub issue
 
----
-
-## 💚 How this project keeps going
-
-| | |
-|---|---|
-| ⭐ **Stars and shares** | The best support if it helps you |
-| 🤝 **Contributions** | Every merged PR is credited to you and shows on your GitHub contribution graph |
-| 🏷️ **Labeled paid links** | Small commissions at no cost to you, and they never affect rankings |
-| 🎓 **Free student listings** | Later, free spots for student-run businesses, clubs and projects |
-
----
-
-## 🫣 Honest status
-
-> **Users: 0 · Stars: 0 · Contributors: 0**
->
-> I'm starting from nothing, with no audience and no followers, and building it anyway. If it takes off, great. If it flops, I still end up with a real project I designed, built, tested and shipped, plus a [DEVLOG](DEVLOG.md) of what I learned. Either way, it gets built.
+The catalog stays useful as long as the data is kept honest. Small fixes and deal updates are still welcome.
 
 ---
 
@@ -244,21 +216,6 @@ More in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-## 👋 If you're a recruiter reading this
-
-**Hi! Thanks for scrolling this far. Most people don't.** 😄
-
-I'm **Ayaan**, a new Computer Science grad from Brock University in Ontario, looking for my first full-time role in **software development, IT or business analysis**. This repo shows how I work:
-
-- 🎯 I start from a real problem and check the facts before building
-- 🧱 I design the data and system first, then build in small tested pieces
-- 📓 I document my decisions and my mistakes in public
-- 🤖 I use AI tools to move faster, and I can explain every line that ships
-
-If that sounds like someone you'd want on your team, let's chat. Find me on [GitHub](https://github.com/AyaanRathod) and I'll happily walk you through this project.
-
----
-
 <sub><b>Affiliate disclosure:</b> PerkCheck is free. Some links may be paid links, and each one is labeled. Paid links never affect which deals are listed or how they're verified. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</sub>
 
-<p align="center"><sub>MIT © 2026 Ayaan Rathod · Made with ☕ in Ontario 🇨🇦</sub></p>
+<p align="center"><sub>MIT © 2026 Ayaan Rathod · Made with care in Ontario 🇨🇦</sub></p>
