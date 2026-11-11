@@ -54,7 +54,7 @@
   </div>
   <footer>Each perk says how it was verified. The brand makes the final check.</footer>
   <script src="deals.js?v=12"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
   <script>
     var email = "";
     var schools = null;
@@ -71,16 +71,12 @@
       return text.slice(at + 1);
     }
 
-    function storedEmail() {
-      try {
-        var saved = sessionStorage.getItem("perkcheck-email");
-        if (saved) return saved.trim().toLowerCase();
-      } catch (error) {}
-      return (new URLSearchParams(location.search).get("email") || "").trim().toLowerCase();
-    }
+    var pickedCountry = "";
 
     function readVisit() {
-      email = storedEmail();
+      var visit = getVisit();
+      email = visit.email;
+      pickedCountry = visit.country;
     }
 
     // Browse without an email stays on the home page. Results need a school email.
@@ -168,13 +164,6 @@
       });
     }
 
-    function inCategory(deal, key) {
-      // GitHub Pack is a source, not only a category. Termius stays under Coding tools
-      // and also shows under GitHub Pack. Other chips still match the category field.
-      if (key === "github-pack") return deal.category === "github-pack" || deal.github_pack === true;
-      return deal.category === key;
-    }
-
     function renderCatBar(fits) {
       // fits.length is one count per deal. A deal in two sections is not counted twice.
       var buttons = ['<button type="button" class="cat-chip" data-target="catalog" aria-current="true">All ' + fits.length + "</button>"];
@@ -211,6 +200,7 @@
     window.addEventListener("resize", updateSwipeHint);
 
     function draw() {
+      readVisit();
       var domain = emailDomain(email);
       var school = schools ? findSchool(domain, schools) : null;
       var banner = document.getElementById("banner");
@@ -219,9 +209,17 @@
       var blockedBox = document.getElementById("blocked");
       var featuredBox = document.getElementById("featured");
       var bar = document.getElementById("cat-bar");
-      if (!email || !school) {
+      if (school) {
+        clearVisitCountry();
+        pickedCountry = "";
+      } else if (email && pickedCountry) {
+        setVisit(email, pickedCountry);
+      }
+      var country = school ? school.alpha_two_code : pickedCountry;
+
+      if (!email || !country) {
         banner.textContent = email
-          ? domain + " is not a school email we can find. Use the email your school gave you, like name@brocku.ca. "
+          ? domain + " is not a school email we can find. Use the email your school gave you, like name@brocku.ca, or pick Canada or the United States on the home page. "
           : "Enter your school email to see your perks. ";
         var home = document.createElement("a");
         home.href = "index.html";
@@ -238,36 +236,40 @@
         return;
       }
 
-      var country = school.alpha_two_code;
       var place = regionName(country);
-      banner.innerHTML = "<b>" + escapeHtml(domain) + "</b> matches " + escapeHtml(school.name) + " (" + escapeHtml(place) + ").";
+      var schoolName = school ? school.name : "";
+      if (school) {
+        banner.innerHTML = "<b>" + escapeHtml(domain) + "</b> matches " + escapeHtml(school.name) + " (" + escapeHtml(place) + ").";
+      } else {
+        banner.innerHTML = "<b>" + escapeHtml(domain) + "</b> is not in our school list. Showing deals for " + escapeHtml(place) + ".";
+      }
 
       var active = window.PERKCHECK_DEALS.filter(function (deal) { return deal.status === "active"; });
       var fits = [];
       var blocked = [];
       active.forEach(function (deal) {
-        if (!schoolListAllows(deal, domain)) return;
-        if (isBlocked(deal, country)) blocked.push(deal);
-        else if (fitsCountry(deal, country) && passesFilters(deal, true)) fits.push(deal);
+        var availability = dealAvailability(deal, { country: country, domain: domain });
+        if (availability === "blocked") blocked.push(deal);
+        else if (availability === "eligible" && passesFilters(deal)) fits.push(deal);
       });
-      blocked = blocked.filter(function (deal) { return passesFilters(deal, false); });
+      blocked = blocked.filter(function (deal) { return passesFilters(deal); });
       document.getElementById("count").textContent = fits.length + (fits.length === 1 ? " perk for this email" : " perks for this email");
       renderCatBar(fits);
 
       var featured = fits.filter(function (deal) { return deal.featured === true; }).sort(function (a, b) {
         return (a.featured_rank || 1000) - (b.featured_rank || 1000);
       });
+      var cardOptions = { country: country, schoolName: schoolName, blocked: false };
       if (!featured.length) {
         featuredBox.hidden = true;
         document.getElementById("featured-row").innerHTML = "";
         document.getElementById("swipe-hint").hidden = true;
       } else {
         featuredBox.hidden = false;
-        renderCards(document.getElementById("featured-row"), featured, { country: country, schoolName: school.name, blocked: false, featured: true });
+        renderCards(document.getElementById("featured-row"), featured, Object.assign({}, cardOptions, { featured: true }));
         updateSwipeHint();
       }
 
-      var cardOptions = { country: country, schoolName: school.name, blocked: false };
       if (!fits.length) fitsBox.innerHTML = '<p class="empty">No checked deal matches these filters.</p>';
       else {
         fitsBox.innerHTML = Object.keys(CATEGORY_LABELS).filter(function (key) {
@@ -283,13 +285,16 @@
         });
       }
       watchSections();
+      var wasOpen = details.open;
       if (!blocked.length) {
         details.hidden = true;
+        details.open = false;
         blockedBox.innerHTML = "";
       } else {
         details.hidden = false;
+        details.open = wasOpen;
         document.getElementById("blocked-summary").textContent = blocked.length + (blocked.length === 1 ? " deal" : " deals") + " not available in " + place;
-        renderCards(blockedBox, blocked, { country: country, schoolName: school.name, blocked: true });
+        renderCards(blockedBox, blocked, { country: country, schoolName: schoolName, blocked: true });
       }
     }
 

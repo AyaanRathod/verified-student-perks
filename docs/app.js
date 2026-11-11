@@ -159,6 +159,13 @@ var CATEGORY_LABELS = {
   shopping: "Shopping"
 };
 
+// GitHub Pack is a source as well as a category. Termius stays under Coding tools
+// and also shows under GitHub Pack. Other keys match the category field only.
+function inCategory(deal, key) {
+  if (key === "github-pack") return deal.category === "github-pack" || deal.github_pack === true;
+  return deal.category === key;
+}
+
 var verifyNames = {
   "school-email": "School email",
   "sheerid": "SheerID",
@@ -228,12 +235,62 @@ function checkedText(value) {
   return "Checked " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
 }
 
+// Visit mode: browse (no email) vs personalized (email, and maybe a hand-picked country).
+// Email and country live in sessionStorage so deal/results/home share one source of truth.
+var VISIT_EMAIL_KEY = "perkcheck-email";
+var VISIT_COUNTRY_KEY = "perkcheck-country";
+
+function getVisit() {
+  var email = "";
+  var country = "";
+  try {
+    email = (sessionStorage.getItem(VISIT_EMAIL_KEY) || "").trim().toLowerCase();
+    country = (sessionStorage.getItem(VISIT_COUNTRY_KEY) || "").trim().toUpperCase();
+  } catch (error) {}
+  var params = new URLSearchParams(location.search);
+  if (!email) email = (params.get("email") || "").trim().toLowerCase();
+  // URL country wins when present so results.html?country= is the hand-picked path.
+  var fromUrl = (params.get("country") || "").trim().toUpperCase();
+  if (fromUrl === "CA" || fromUrl === "US") country = fromUrl;
+  if (country !== "CA" && country !== "US") country = "";
+  return { email: email, country: country };
+}
+
+function setVisit(email, country) {
+  email = String(email || "").trim().toLowerCase();
+  country = String(country || "").trim().toUpperCase();
+  if (country !== "CA" && country !== "US") country = "";
+  try {
+    if (email) sessionStorage.setItem(VISIT_EMAIL_KEY, email);
+    else sessionStorage.removeItem(VISIT_EMAIL_KEY);
+    if (country) sessionStorage.setItem(VISIT_COUNTRY_KEY, country);
+    else sessionStorage.removeItem(VISIT_COUNTRY_KEY);
+  } catch (error) {}
+}
+
+function clearVisitCountry() {
+  try { sessionStorage.removeItem(VISIT_COUNTRY_KEY); } catch (error) {}
+}
+
+function perksHref() {
+  var visit = getVisit();
+  if (!visit.email) return "index.html#browse";
+  if (visit.country) return "results.html?country=" + encodeURIComponent(visit.country);
+  return "results.html";
+}
+
+function dealHref(id, country) {
+  var href = "deal.html?id=" + encodeURIComponent(id);
+  if (country === "CA" || country === "US") href += "&country=" + encodeURIComponent(country);
+  return href;
+}
+
 function cardHref(deal, options) {
   if (options.blocked) {
     var item = (deal.not_available_in || []).filter(function (entry) { return entry.country === options.country; })[0];
     if (item && typeof item.source === "string" && item.source.indexOf("https://") === 0) return item.source;
   }
-  return "deal.html?id=" + encodeURIComponent(deal.id);
+  return dealHref(deal.id, options.country);
 }
 
 function eligibilityHtml(deal, options) {
@@ -330,6 +387,18 @@ function isBlocked(deal, country) {
   return country === "CA" && deal.ca_school_email === "rejected";
 }
 
+// One place for the fits / blocked / hidden partition used on results.
+function dealAvailability(deal, options) {
+  options = options || {};
+  var country = options.country || "";
+  var domain = options.domain || "";
+  if (!schoolListAllows(deal, domain)) return "hidden";
+  if (!country) return "eligible";
+  if (isBlocked(deal, country)) return "blocked";
+  if (!fitsCountry(deal, country)) return "hidden";
+  return "eligible";
+}
+
 var FALLBACK_SCHOOLS = [
   { name: "Brock University", domains: ["brocku.ca"], alpha_two_code: "CA" },
   { name: "University of Toronto", domains: ["utoronto.ca", "toronto.edu"], alpha_two_code: "CA" },
@@ -362,11 +431,20 @@ function loadSchools() {
 (function () {
   var button = document.getElementById("theme");
   if (!button) return;
-  if (localStorage.getItem("perkcheck-theme") === "dark") document.body.classList.add("dark");
+  function applyTheme(mode) {
+    var dark = mode === "dark";
+    document.body.classList.toggle("dark", dark);
+    try { localStorage.setItem("perkcheck-theme", dark ? "dark" : "light"); } catch (error) {}
+    button.dataset.tip = dark ? "Switch to light mode" : "Switch to dark mode";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+  var saved = "";
+  try { saved = localStorage.getItem("perkcheck-theme") || ""; } catch (error) {}
+  if (saved === "dark" || saved === "light") applyTheme(saved);
+  else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+  else applyTheme("light");
   button.addEventListener("click", function () {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("perkcheck-theme", document.body.classList.contains("dark") ? "dark" : "light");
-    button.dataset.tip = document.body.classList.contains("dark") ? "Switch to light mode" : "Switch to dark mode";
+    applyTheme(document.body.classList.contains("dark") ? "light" : "dark");
   });
 })();
 
@@ -438,9 +516,13 @@ window.addEventListener("resize", function () {
   }
 
   function commands() {
+    var visit = getVisit();
     return [
-      { label: "Home", hint: "Email check", href: "index.html" },
-      { label: "Perks", hint: "Deals for your school", href: "results.html" }
+      { label: "Home", hint: "Email check and browse", href: "index.html" },
+      { label: "Browse", hint: "All deals without an email", href: "index.html#browse" },
+      visit.email
+        ? { label: "My perks", hint: "Deals for your school email", href: perksHref() }
+        : { label: "Check my perks", hint: "Enter a school email first", href: "index.html" }
     ];
   }
 
@@ -454,11 +536,12 @@ window.addEventListener("resize", function () {
 
   function renderPalette() {
     var query = input.value.trim();
+    var visit = getVisit();
     var rows = query ? matchingDeals(query).map(function (deal) {
       return {
         label: deal.brand,
         hint: deal.title,
-        href: "deal.html?id=" + encodeURIComponent(deal.id)
+        href: dealHref(deal.id, visit.country)
       };
     }) : commands();
     items = rows;

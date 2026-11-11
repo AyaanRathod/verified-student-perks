@@ -18,7 +18,7 @@
   <main class="wrap page" id="deal"></main>
   <footer>PerkCheck does not store your email.</footer>
   <script src="deals.js?v=12"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
   <script>
     var params = new URLSearchParams(location.search);
     var id = params.get("id");
@@ -33,14 +33,10 @@
         return '<a href="' + item.source + '">Not in ' + item.country + '</a>';
       }).join(" · ");
       var issue = "https://github.com/AyaanRathod/verified-student-perks/issues/new?title=" + encodeURIComponent("Broken: " + deal.id);
-      var backHref = "index.html#browse";
-      try {
-        if (sessionStorage.getItem("perkcheck-email")) {
-          backHref = "results.html" + (country ? "?country=" + encodeURIComponent(country) : "");
-        }
-      } catch (error) {}
+      var visit = getVisit();
+      var pageCountry = country || visit.country || "";
       box.innerHTML =
-        '<p><a class="back" href="' + backHref + '">Back to perks</a></p>' +
+        '<p><a class="back" href="' + perksHref() + '">Back to perks</a></p>' +
         '<article class="deal">' +
           bannerHtml(deal) +
           '<div class="brand">' + escapeHtml(deal.brand) + "</div>" +
@@ -48,7 +44,7 @@
           aboutHtml(deal) +
           '<div class="row">' + countryBadges(deal) + priceBadge(deal) + "</div>" +
           '<div class="row"><span class="badge chip">Checked ' + formatDate(deal.last_verified) + "</span></div>" +
-          (country ? '<p class="status">' + cardStatusHtml(deal, country) + "</p>" : "") +
+          (pageCountry ? '<p class="status">' + cardStatusHtml(deal, pageCountry) + "</p>" : "") +
           "<p>" + escapeHtml(deal.email_rules || "") + "</p>" +
           (excluded ? "<p>" + excluded + "</p>" : "") +
           "<h2>How to claim</h2><ol class=\"steps\">" +

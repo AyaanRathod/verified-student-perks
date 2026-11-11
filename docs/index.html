@@ -64,7 +64,7 @@
   </main>
   <footer>PerkCheck is free. A paid link is always labeled. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</footer>
   <script src="deals.js?v=12"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
   <script>
     var schools = null;
     var regionNames = new Intl.DisplayNames(["en"], { type: "region" });
@@ -110,14 +110,15 @@
       event.preventDefault();
       var email = emailInput.value.trim();
       function go() {
-        try { sessionStorage.setItem("perkcheck-email", email); } catch (error) {}
         var school = schools ? findSchool(emailDomain(email), schools) : null;
         if (school) {
+          setVisit(email, "");
           window.location.href = "results.html";
           return;
         }
         var country = countryPick.value === "US" ? "US" : "CA";
-        window.location.href = "results.html?country=" + country;
+        setVisit(email, country);
+        window.location.href = "results.html?country=" + encodeURIComponent(country);
       }
       if (schools) go();
       else loadSchools().then(function (list) { schools = list; go(); });
@@ -147,10 +148,6 @@
       cloud: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7.2 17.5h9.2a3.6 3.6 0 0 0 .4-7.2 5 5 0 0 0-9.6-1.3A3.2 3.2 0 0 0 7.2 17.5Z"/>',
       shopping: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M10.2 5.2h3.4L19.5 11l-6.6 6.6L6.5 11Z"/><circle cx="13.4" cy="8.6" r="1.15" fill="currentColor"/>'
     };
-    function inCategory(deal, key) {
-      if (key === "github-pack") return deal.category === "github-pack" || deal.github_pack === true;
-      return deal.category === key;
-    }
     function dealsIn(key) {
       return activeDeals.filter(function (deal) { return inCategory(deal, key); });
     }
@@ -171,6 +168,11 @@
       });
       return limit ? list.slice(0, limit) : list;
     }
+    function clearCatPressed() {
+      Array.prototype.forEach.call(homeCats.children, function (node) {
+        node.setAttribute("aria-pressed", "false");
+      });
+    }
     function showList(title, deals) {
       homeFilter.hidden = false;
       homeFilter.innerHTML = '<h2 class="filter-title">' + title + "</h2>";
@@ -182,12 +184,15 @@
     }
     document.getElementById("show-all").textContent = "All " + activeDeals.length + " →";
     document.getElementById("show-all").addEventListener("click", function () {
+      clearCatPressed();
       showList("All " + activeDeals.length + " deals", activeDeals);
     });
     document.getElementById("see-featured").addEventListener("click", function () {
-      showList("All " + activeDeals.length + " deals", activeDeals);
+      clearCatPressed();
+      showList("Featured", featuredDeals());
     });
     document.getElementById("see-new").addEventListener("click", function () {
+      clearCatPressed();
       showList("Newly checked this week", freshDeals());
     });
     var order = ["github-pack", "ai", "coding", "design", "notes", "learning", "cloud", "shopping"];
