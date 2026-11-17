@@ -639,3 +639,101 @@ window.addEventListener("resize", function () {
     }
   });
 })();
+
+// Subtle animated tab icon: check draws in, holds, repeats. Static SVG stays as the fallback.
+(function () {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (typeof document.hidden === "boolean" && document.hidden) {
+    // Still set up; visibilitychange will start when the tab is shown.
+  }
+  var canvas = document.createElement("canvas");
+  canvas.width = 32;
+  canvas.height = 32;
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  var link = document.querySelector('link[rel="icon"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "icon";
+    document.head.appendChild(link);
+  }
+
+  var check = new Path2D();
+  check.moveTo(9.2, 16.4);
+  check.lineTo(13.3, 20.5);
+  check.lineTo(22.8, 11);
+
+  var length = 22;
+  var start = 0;
+  var running = false;
+  var frame = 0;
+
+  function draw(progress, pulse) {
+    var scale = pulse || 1;
+    ctx.clearRect(0, 0, 32, 32);
+    ctx.save();
+    ctx.translate(16, 16);
+    ctx.scale(scale, scale);
+    ctx.translate(-16, -16);
+    ctx.fillStyle = "#3a9282";
+    if (typeof ctx.roundRect === "function") {
+      ctx.beginPath();
+      ctx.roundRect(0, 0, 32, 32, 8);
+      ctx.fill();
+    } else {
+      ctx.fillRect(0, 0, 32, 32);
+    }
+    ctx.strokeStyle = "#fff";
+    ctx.lineWidth = 3.2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.setLineDash([length]);
+    ctx.lineDashOffset = length * (1 - Math.max(0, Math.min(1, progress)));
+    ctx.stroke(check);
+    ctx.restore();
+    link.href = canvas.toDataURL("image/png");
+  }
+
+  function tick(now) {
+    if (!running) return;
+    if (document.hidden) {
+      frame = 0;
+      return;
+    }
+    if (!start) start = now;
+    var t = (now - start) % 4200;
+    if (t < 900) {
+      draw(t / 900, 1);
+    } else if (t < 1600) {
+      var p = (t - 900) / 700;
+      var pulse = 1 + 0.06 * Math.sin(Math.PI * Math.min(1, p));
+      draw(1, pulse);
+    } else {
+      draw(1, 1);
+    }
+    frame = window.requestAnimationFrame(tick);
+  }
+
+  function startAnim() {
+    if (running) return;
+    running = true;
+    start = 0;
+    frame = window.requestAnimationFrame(tick);
+  }
+
+  function stopAnim() {
+    running = false;
+    if (frame) window.cancelAnimationFrame(frame);
+    frame = 0;
+    draw(1, 1);
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) stopAnim();
+    else startAnim();
+  });
+
+  draw(0, 1);
+  startAnim();
+})();
