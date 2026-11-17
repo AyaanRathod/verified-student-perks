@@ -165,7 +165,7 @@ Deals live in `data/deals.yaml`. See [`data/deals.example.yaml`](data/deals.exam
 | `about` | no | One sentence on what the product is. Shown on each card |
 | `category` | yes | `github-pack`, `ai`, `coding`, `cloud`, `design`, `notes`, `learning`, `shopping` |
 | `github_pack` | no | `true` when the perk is part of the GitHub Student Developer Pack |
-| `featured` | no | `true` or `false`. At most 4 deals in the file may be featured |
+| `featured` | no | `true` or `false`. At most 5 deals in the file may be featured |
 | `featured_rank` | no | Positive whole number. Only when `featured` is `true` |
 | `price_type` | yes | `free` or `discount` |
 | `free_months` | no | Length of the free period in months |

@@ -164,10 +164,10 @@ class ValidateDealsTest(unittest.TestCase):
         )
         self.assertTrue(any("featured_rank" in error for error in errors))
 
-    def test_five_featured_deals_fail(self):
+    def test_six_featured_deals_fail(self):
         rows = [
             deal(id=f"sample-deal-{index}", featured=True, featured_rank=index)
-            for index in range(1, 6)
+            for index in range(1, 7)
         ]
         errors = validate_deals.validate_deals(rows, today=dt.date(2026, 10, 22))
         self.assertTrue(any("featured" in error for error in errors))

@@ -11,7 +11,7 @@
 # Other new optional fields:
 #   ca_school_email_source: page that shows a Canadian school email works
 #   schools: limit a deal to these school email domains (campus licences)
-#   featured: true or false. At most 4 deals in this file may be featured.
+#   featured: true or false. At most 5 deals in this file may be featured.
 #   featured_rank: a positive whole number, only when featured is true
 #   about: one sentence on what the product is. Shown on each card.
 
@@ -181,7 +181,8 @@
   title: Figma Education Professional + FigJam + Dev Mode
   about: "A design app for drawing website and app interfaces."
   category: design
-  featured: false
+  featured: true
+  featured_rank: 5
   price_type: free
   free_months: 12
   countries: [CA]

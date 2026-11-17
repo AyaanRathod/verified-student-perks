@@ -111,8 +111,8 @@ def validate_deals(deals, *, today: dt.date | None = None) -> list[str]:
         errors.extend(_deal_errors(deal, label, seen, today))
         if isinstance(deal, dict) and deal.get("featured") is True:
             featured_count += 1
-    if featured_count > 4:
-        errors.append("more than 4 deals have featured: true")
+    if featured_count > 5:
+        errors.append("more than 5 deals have featured: true")
     return errors
 
 

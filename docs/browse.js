@@ -122,7 +122,7 @@ function groupForShelves(deals) {
   var pool = deals || [];
   var featured = pool.filter(function (deal) { return deal.featured === true; })
     .sort(function (a, b) { return (a.featured_rank || 9) - (b.featured_rank || 9); })
-    .slice(0, 4);
+    .slice(0, 5);
   var shown = {};
   featured.forEach(function (deal) { shown[deal.id] = true; });
   var shelves = [];

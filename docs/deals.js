@@ -196,7 +196,8 @@ window.PERKCHECK_DEALS = [
     "title": "Figma Education Professional + FigJam + Dev Mode",
     "about": "A design app for drawing website and app interfaces.",
     "category": "design",
-    "featured": false,
+    "featured": true,
+    "featured_rank": 5,
     "price_type": "free",
     "free_months": 12,
     "countries": [
