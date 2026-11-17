@@ -216,6 +216,3 @@ More in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-<sub><b>Affiliate disclosure:</b> PerkCheck is free. Some links may be paid links, and each one is labeled. Paid links never affect which deals are listed or how they're verified. Logos are shown only to identify each deal and belong to their owners. No endorsement is implied.</sub>
-
-<p align="center"><sub>MIT © 2026 Ayaan Rathod · Made with care in Ontario 🇨🇦</sub></p>
