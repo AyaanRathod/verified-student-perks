@@ -127,8 +127,9 @@ window.PERKCHECK_DEALS = [
     "ca_school_email_source": "https://chatgpt.com/codex/students/",
     "last_verified": "2026-10-19",
     "status": "active",
-    "logo": null,
-    "banner_color": "#F1F5F9"
+    "logo": "openai.svg",
+    "logo_color": "#FFFFFF",
+    "banner_color": "#111827"
   },
   {
     "id": "github-copilot-student",
