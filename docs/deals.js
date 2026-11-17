@@ -2507,8 +2507,9 @@ window.PERKCHECK_DEALS = [
     "ca_school_email_source": "https://elevenreader.io/students",
     "last_verified": "2026-10-25",
     "status": "active",
-    "logo": null,
-    "banner_color": "#000000"
+    "logo": "elevenlabs.svg",
+    "banner_color": "#000000",
+    "logo_color": "#FFFFFF"
   },
   {
     "id": "craft-education",

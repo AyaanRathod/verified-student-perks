@@ -136,8 +136,11 @@ function hydrateLogoImages(root) {
   var row = rowLayout();
   Array.prototype.forEach.call((root || document).querySelectorAll("[data-src]"), function (slot) {
     var tile = slot.classList.contains("logo-tile");
-    var featured = !!slot.closest(".featured-row");
-    var want = tile ? ((row && !featured) || !!slot.closest(".is-compact")) : (!row || featured);
+    // Browse featured uses .browse-feat; results still uses .featured-row.
+    var featured = !!slot.closest(".featured-row, .browse-feat");
+    // Multicolour logos (no logo_color) always hydrate in browse slots.
+    var browse = slot.classList.contains("browse-logo-slot");
+    var want = browse || (tile ? ((row && !featured) || !!slot.closest(".is-compact")) : (!row || featured));
     if (!want || slot.querySelector("img")) return;
     var img = document.createElement("img");
     img.src = slot.getAttribute("data-src");
