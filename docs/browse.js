@@ -277,8 +277,9 @@ function browseFeatHtml(deal) {
   var shortTitle = String(deal.title || "").split(",")[0];
   var background = safeBrowseHex(deal.banner_color) || "#334155";
   var light = isLightHex(background);
-  // Brand colour stays on the logo rail; copy panel colour comes from is-light CSS.
-  return '<a class="browse-feat' + (light ? " is-light" : "") + '" href="deal.html?id=' + encodeURIComponent(deal.id) + '">' +
+  // Light brand colours only tint the logo rail. Copy stays dark so featured always reads as premium.
+  return '<a class="browse-feat' + (light ? " is-light" : "") + '" href="deal.html?id=' + encodeURIComponent(deal.id) + '"' +
+    (light ? "" : ' style="background:' + background + '"') + ">" +
     '<div class="browse-feat-logo" style="background:' + background + '"><div class="browse-logo-slot"' + browseLogoAttrs(deal) + ">" + browseLetterHtml(deal) + "</div></div>" +
     '<div class="browse-feat-copy">' +
       '<span class="browse-feat-k">Featured · ' + browseEsc(deal.brand) + "</span>" +
@@ -382,12 +383,7 @@ if (typeof document !== "undefined") {
       var html = "";
       if (grouped.featured.length) {
         html += '<section class="browse-shelf"><div class="browse-shelf-head"><h2>Featured</h2><span class="browse-blurb">Big ones most students should claim first</span></div>' +
-          '<div class="browse-row-wrap">' +
-            '<button class="browse-arrow prev" type="button" aria-label="Scroll Featured left" hidden>‹</button>' +
-            '<div class="browse-featured">' + grouped.featured.map(browseFeatHtml).join("") + "</div>" +
-            '<button class="browse-arrow next" type="button" aria-label="Scroll Featured right"' +
-              (grouped.featured.length > 3 ? "" : " hidden") + ">›</button>" +
-          "</div></section>";
+          '<div class="browse-featured">' + grouped.featured.map(browseFeatHtml).join("") + "</div></section>";
       }
       grouped.shelves.forEach(function (shelf) {
         html += '<section class="browse-shelf" aria-labelledby="browse-sh-' + shelf.key + '">' +
@@ -404,7 +400,7 @@ if (typeof document !== "undefined") {
           "</div></section>";
       });
       viewEl.innerHTML = html;
-      Array.prototype.forEach.call(viewEl.querySelectorAll(".browse-row, .browse-featured"), syncShelfArrows);
+      Array.prototype.forEach.call(viewEl.querySelectorAll(".browse-row"), syncShelfArrows);
     }
 
     function renderGridView(list, catInfo) {
@@ -503,17 +499,14 @@ if (typeof document !== "undefined") {
       }
       var arrow = event.target.closest(".browse-arrow");
       if (!arrow) return;
-      var row = arrow.parentNode.querySelector(".browse-row, .browse-featured");
+      var row = arrow.parentNode.querySelector(".browse-row");
       if (!row) return;
       var delta = (arrow.classList.contains("next") ? 1 : -1) * row.clientWidth * 0.9;
       row.scrollBy({ left: delta, behavior: reduceMotion ? "auto" : "smooth" });
     });
 
     viewEl.addEventListener("scroll", function (event) {
-      if (!event.target.classList) return;
-      if (event.target.classList.contains("browse-row") || event.target.classList.contains("browse-featured")) {
-        syncShelfArrows(event.target);
-      }
+      if (event.target.classList && event.target.classList.contains("browse-row")) syncShelfArrows(event.target);
     }, true);
 
     if (qEl) {
