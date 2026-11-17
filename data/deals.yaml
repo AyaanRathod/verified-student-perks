@@ -2770,3 +2770,807 @@
   logo: gorails.svg
   logo_color: '#334155'
   banner_color: '#F1F5F9'
+
+- id: adobe-creative-cloud-pro-students
+  brand: Adobe
+  title: Creative Cloud Pro, 71% off the first year for students
+  about: Adobe apps like Photoshop, Illustrator, Premiere Pro and Acrobat.
+  category: design
+  price_type: discount
+  discount: 71% off first year (CA$25.99 a month, regular CA$91.99)
+  free_months: null
+  countries:
+  - CA
+  ca_school_email: accepted
+  verification: other
+  email_rules: Checked on the Adobe Canada student page. Adobe asks for proof of student status at purchase.
+    The US price was not visible from Canada, so US is not listed yet.
+  how_to_claim:
+  - Open the Adobe Canada student plan page
+  - Choose Creative Cloud Pro and select Buy now
+  - Sign in or create an Adobe account
+  - Confirm your student status when Adobe asks and finish checkout
+  official_url: https://www.adobe.com/ca/creativecloud/buy/students.html
+  affiliate_url: null
+  source_note: 'sourced: https://www.adobe.com/ca/creativecloud/buy/students.html ("Students save 71%
+    on Creative Cloud Pro." "Pay CAD $25.99/mo the first year and CAD $51.99/mo after that." Regular CAD
+    $91.99/mo). Price rises to CAD $51.99/mo after year one. Offer text did not render in the page source
+    on 2026-11-12 (JavaScript page). Recheck in a browser before merging.'
+  last_verified: 2026-10-28
+  watch_text: Students save 71%
+  status: active
+  logo: adobe.svg
+  banner_color: '#FA0F00'
+  ca_school_email_source: https://www.adobe.com/ca/creativecloud/buy/students.html
+  logo_color: '#FFFFFF'
+- id: apple-education-store
+  brand: Apple
+  title: Apple Education Store, student pricing on Mac and iPad
+  about: Education pricing on Apple computers and tablets.
+  category: shopping
+  price_type: discount
+  discount: Education pricing (MacBook Air from US$1,199 vs US$1,299; from CA$1,659 vs CA$1,799)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Open to current and newly accepted university or college students and their parents in
+    Canada and the US. Apple may ask for proof of eligibility.
+  how_to_claim:
+  - Open the Apple Education Store for your country
+  - Pick a Mac or iPad and select Buy
+  - Confirm you are a current or newly accepted student
+  - Finish checkout at the education price
+  official_url: https://www.apple.com/us-edu/store
+  affiliate_url: null
+  source_note: 'sourced: https://www.apple.com/us-edu/store ("Available to current and newly accepted
+    college students and their parents", MacBook Air edu "From $1199" vs "$1299" on the regular store)
+    and https://www.apple.com/ca-edu/store ("Available to current and newly accepted university students
+    and their parents", MacBook Air "From $1659 Includes Education Savings" vs "From $1799"). AppleCare
+    and Apple Card financing are not part of this listing. Rechecked 2026-11-12: offer text still on the
+    page.'
+  last_verified: 2026-11-12
+  watch_text: current and newly accepted
+  status: active
+  logo: apple.svg
+  banner_color: '#000000'
+  ca_school_email_source: https://www.apple.com/ca-edu/store
+  logo_color: '#FFFFFF'
+- id: apple-creator-studio-students
+  brand: Apple
+  title: 'Apple Creator Studio for students: US$2.99 a month or CA$3.99 a month'
+  about: Final Cut Pro, Logic Pro and Pixelmator Pro in one subscription.
+  category: design
+  price_type: discount
+  discount: US$2.99 a month (regular US$12.99), CA$3.99 a month (regular CA$17.99)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: College students and educators only. Apple verifies student status at signup.
+  how_to_claim:
+  - Open the Apple Creator Studio page for your country
+  - Choose the student and educator plan
+  - Sign in with your Apple Account
+  - Complete the student verification and start the 1 month free trial
+  official_url: https://www.apple.com/apple-creator-studio/
+  affiliate_url: null
+  source_note: 'sourced: https://www.apple.com/apple-creator-studio/ ("Students and educators 1 month
+    free $2.99 per month or $29.99 per year" vs "$12.99 per month or $129 per year"; "College students
+    and educators only. Verification required.") and https://www.apple.com/ca/apple-creator-studio/ ($3.99
+    per month or $39 per year vs $17.99 or $179). Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: College students and educators only
+  status: active
+  logo: apple.svg
+  banner_color: '#000000'
+  ca_school_email_source: https://www.apple.com/ca/apple-creator-studio/
+  logo_color: '#FFFFFF'
+- id: headspace-student-plan
+  brand: Headspace
+  title: Headspace Student Plan, 85% off
+  about: Guided meditation, sleep and focus app.
+  category: learning
+  price_type: discount
+  discount: 85% off (US$9.99 or CA$12.99 a year)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: sheerid
+  email_rules: Students in the US, Canada and some other countries, verified through SheerID.
+  how_to_claim:
+  - Open the Headspace student plan page
+  - Select the student offer
+  - Verify your student status with SheerID
+  - Create or sign in to your Headspace account and pay the yearly price
+  official_url: https://www.headspace.com/studentplan
+  affiliate_url: null
+  source_note: 'sourced: https://www.headspace.com/studentplan ("85% off, just for students." "Currently
+    available for students within the United States, UK, Australia, Canada..." "$9.99 USD ... $12.99 CAD
+    a year.") Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: 85% off
+  status: active
+  logo: headspace.svg
+  banner_color: '#F47D31'
+  ca_school_email_source: https://www.headspace.com/studentplan
+  logo_color: '#FFFFFF'
+- id: squarespace-students
+  brand: Squarespace
+  title: Squarespace, 50% off your first year for students
+  about: Website builder with hosting and templates.
+  category: design
+  price_type: discount
+  discount: 50% off first year of an annual plan
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: student-beans
+  email_rules: Verify your student status with Student Beans to get a code. Canada and US both have Student
+    Beans pages for this offer.
+  how_to_claim:
+  - Open the Squarespace students page
+  - Select the offer to go to Student Beans
+  - Verify your student status and reveal the code
+  - Pick an annual plan and enter the code at checkout
+  official_url: https://www.squarespace.com/students
+  affiliate_url: null
+  source_note: 'sourced: https://www.squarespace.com/students ("We''re offering students 50% off your
+    first full year of Squarespace. Unlock your discount by verifying your student status with our partner
+    Student Beans.", links to connect.studentbeans.com/v4/hosted/squarespace/us) and https://connect.studentbeans.com/v4/hosted/squarespace/ca
+    ("50% Student Discount Annual Plans"). Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: We're offering students 50% off
+  status: active
+  logo: squarespace.svg
+  banner_color: '#000000'
+  ca_school_email_source: https://connect.studentbeans.com/v4/hosted/squarespace/ca
+  logo_color: '#FFFFFF'
+- id: wolfram-alpha-pro-students
+  brand: Wolfram
+  title: Wolfram|Alpha Pro for students, US$5 a month billed yearly
+  about: Step-by-step math solutions and extra computation time.
+  category: learning
+  price_type: discount
+  discount: US$5.00 a month billed US$60 a year (regular US$9.99 a month)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Students at an accredited school. Wolfram verifies with your college or university email,
+    or your school name and graduation date.
+  how_to_claim:
+  - Open the Wolfram|Alpha Pro student pricing page
+  - Choose Pro or Pro Premium for students
+  - Sign in or create a Wolfram ID
+  - Verify your student status and pay yearly
+  official_url: https://www.wolframalpha.com/pro/pricing/students
+  affiliate_url: null
+  source_note: 'sourced: https://www.wolframalpha.com/pro/pricing/students ("Pro FOR STUDENTS ... $9.99
+    $5.00 per month billed $60.00 annually"; Pro Premium for students "$12.00 $8.25 per month billed $99.00
+    annually") and https://support.wolfram.com/16413 (student discount for students "at an accredited
+    educational institution", no country limit). Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: Pro FOR STUDENTS
+  status: active
+  logo: wolfram.svg
+  banner_color: '#DD1100'
+  ca_school_email_source: https://www.wolframalpha.com/pro/pricing/students
+  logo_color: '#FFFFFF'
+- id: mathematica-student-plan
+  brand: Wolfram
+  title: Mathematica Student Plan, US$78 a year
+  about: Wolfram Mathematica desktop and cloud for coursework.
+  category: learning
+  price_type: discount
+  discount: Student Plan US$78 a year
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: id-upload
+  email_rules: Students at an accredited school. Wolfram asks for proof of student status at purchase.
+  how_to_claim:
+  - Open the Mathematica student pricing page
+  - Choose the Student Plan and select Buy Now
+  - Sign in or create a Wolfram ID
+  - Send proof of student status if Wolfram asks and finish checkout
+  official_url: https://www.wolfram.com/mathematica/pricing/students/
+  affiliate_url: null
+  source_note: 'sourced: https://www.wolfram.com/mathematica/pricing/students/ ("Student Plan $78/year
+    ... A full year of access for all of your classes") and https://support.wolfram.com/16413 ("Proof
+    of student status is required at the time of purchase", accredited institutions, no country limit).
+    The regular non-student price was not on this page. On 2026-11-12 the page still lists the Student
+    Plan, but the US$78 price did not render in the page source. Price is from the 2026-10-28 check.'
+  last_verified: 2026-10-28
+  watch_text: Student Plan
+  status: active
+  logo: wolframmathematica.svg
+  banner_color: '#DD1100'
+  ca_school_email_source: https://www.wolfram.com/mathematica/pricing/students/
+  logo_color: '#FFFFFF'
+- id: codecademy-pro-student
+  brand: Codecademy
+  title: Codecademy Pro Student, over 35% off
+  about: Interactive coding courses and career paths.
+  category: learning
+  price_type: discount
+  discount: Over 35% off Pro
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Students 16 and up at a school approved by Proxi.id. Canada and United States are on the
+    supported list.
+  how_to_claim:
+  - Open the Codecademy student center
+  - Start the Pro Student checkout
+  - Verify your student status through Proxi.id
+  - Finish checkout at the student price
+  official_url: https://www.codecademy.com/student-center
+  affiliate_url: null
+  source_note: 'sourced: https://www.codecademy.com/student-center ("eligible students get complete access
+    to our interactive curriculum for over 35% off the regular price") and https://help.codecademy.com/hc/en-us/articles/360053592013
+    (Canada and United States listed for university and high school verification). Rechecked 2026-11-12:
+    offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: over 35% off
+  status: active
+  logo: codecademy.svg
+  banner_color: '#1F4056'
+  ca_school_email_source: https://help.codecademy.com/hc/en-us/articles/360053592013-How-do-I-qualify-for-Codecademy-Pro-Student-membership
+  logo_color: '#FFFFFF'
+- id: setapp-education
+  brand: Setapp
+  title: Setapp, 20% off the annual Mac + iOS plan for students
+  about: One subscription for a large set of Mac and iPhone apps.
+  category: notes
+  price_type: discount
+  discount: 20% off annual Mac + iOS plan (US$107.88 vs US$134.88 a year)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: Sign up with an email ending in .edu or on your school domain. A Canadian school domain
+    fits the second option.
+  how_to_claim:
+  - Open the Setapp education discount page
+  - Sign up with your school email
+  - Confirm the email
+  - Choose the annual Mac + iOS plan at the student price
+  official_url: https://setapp.com/education
+  affiliate_url: null
+  source_note: 'sourced: https://setapp.com/education ("Setapp offers a 20% discount for students and
+    teachers on an annual Mac + iOS plan ... sign up with an email ending in *.edu or belonging to the
+    domain of your educational institution." "$134.88/year $107.88/year"). Rechecked 2026-11-12: offer
+    text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: 20% discount for students
+  status: active
+  logo: setapp.svg
+  banner_color: '#E6C3A5'
+  ca_school_email_source: https://setapp.com/education
+  logo_color: '#111111'
+- id: hp-education-store
+  brand: HP
+  title: HP Education Store, up to 40% extra savings for US students
+  about: Student pricing on HP laptops, printers and accessories.
+  category: shopping
+  price_type: discount
+  discount: Up to 40% off select HP products
+  free_months: null
+  countries:
+  - US
+  ca_school_email: rejected
+  verification: other
+  email_rules: US residents only. The HP Canada page did not load, so Canada is not confirmed.
+  how_to_claim:
+  - Open the HP Education Store
+  - Verify your student status when asked
+  - Pick a product with the education price
+  - Finish checkout
+  official_url: https://www.hp.com/us-en/shop/cv/hp-education
+  affiliate_url: null
+  source_note: 'sourced: https://www.hp.com/us-en/shop/cv/hp-education ("unlock additional savings of
+    up to 40% on advanced HP tech." "open to students ... who reside in the United States.") Rechecked
+    2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: up to 40%
+  status: active
+  logo: hp.svg
+  banner_color: '#0096D6'
+  logo_color: '#FFFFFF'
+- id: dell-students
+  brand: Dell
+  title: Dell, extra 10% off for students
+  about: Laptops, monitors and accessories from Dell.
+  category: shopping
+  price_type: discount
+  discount: Extra 10% off (exclusions apply)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Same student offer on the Dell Canada and Dell US pages. Exclusions apply.
+  how_to_claim:
+  - Open the Dell student page for your country
+  - Verify your student status
+  - Add products to your cart
+  - Check the extra 10% in the cart and finish checkout
+  official_url: https://www.dell.com/en-us/shop/member/lp/students
+  affiliate_url: null
+  source_note: 'sourced: https://www.dell.com/en-us/shop/member/lp/students and https://www.dell.com/en-ca/shop/member/lp/students
+    (both: "Students & teachers get an extra 10% off everything." "Save up to 10% in cart. Exclusions
+    apply.") Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: extra 10% off everything
+  status: active
+  logo: dell.svg
+  banner_color: '#007DB8'
+  ca_school_email_source: https://www.dell.com/en-ca/shop/member/lp/students
+  logo_color: '#FFFFFF'
+- id: samsung-education-offer
+  brand: Samsung
+  title: Samsung Education Offer Program, extra 5% to 15% off for US students
+  about: Student pricing on Samsung phones, tablets and watches.
+  category: shopping
+  price_type: discount
+  discount: Extra 5% to 15% off select devices
+  free_months: null
+  countries:
+  - US
+  ca_school_email: rejected
+  verification: school-email
+  email_rules: US program. Samsung Canada has a student offers page but it showed no discount size, so
+    Canada is not confirmed.
+  how_to_claim:
+  - Open the Samsung US education offer page
+  - Verify with your school email or ID.me
+  - Pick a device with the education price
+  - Finish checkout
+  official_url: https://www.samsung.com/us/shop/offer-program/education/
+  affiliate_url: null
+  source_note: 'sourced: https://www.samsung.com/us/shop/offer-program/education/ (offers on the page
+    include "Galaxy S26 FE ... Plus, get an extra 5% off", "Galaxy Tab S12 Ultra ... including an extra
+    10% off", "Galaxy Watch Ultra2 ... plus an extra 15% off"; "Verify with your school or student email
+    / Verify with ID.me"). Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: Verify with your school or student email
+  status: active
+  logo: samsung.svg
+  banner_color: '#1428A0'
+  logo_color: '#FFFFFF'
+- id: parallels-desktop-students
+  brand: Parallels
+  title: Parallels Desktop, 50% off for students
+  about: Run Windows on a Mac.
+  category: coding
+  price_type: discount
+  discount: 50% off (Pro CA$79.99 a year vs CA$159.99)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Open to current and newly accepted students at any accredited college or university.
+  how_to_claim:
+  - Open the Parallels education page
+  - Choose Standard or Pro Edition
+  - Verify your student status
+  - Finish checkout at the student price
+  official_url: https://www.parallels.com/plans/education/
+  affiliate_url: null
+  source_note: 'sourced: https://www.parallels.com/plans/education/ ("Student discount on Parallels Desktop:
+    50% off." Pro CA$79.99/yr vs CA$159.99, Standard CA$59.99 vs CA$129.99. "The program is open to current
+    and newly accepted students, faculty, and staff at any accredited college or university.") Prices
+    shown in CAD from Canada. Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: 50% off
+  status: active
+  logo: null
+  banner_color: '#E31B23'
+  ca_school_email_source: https://www.parallels.com/plans/education/
+- id: amazon-prime-young-adults-us
+  brand: Amazon
+  title: Prime for Young Adults on Amazon.com, 6-month trial then US$7.49 a month
+  about: Amazon Prime for faster delivery and streaming video.
+  category: shopping
+  price_type: discount
+  discount: 6 months for $0, then US$7.49 a month
+  free_months: null
+  countries:
+  - US
+  ca_school_email: rejected
+  verification: other
+  email_rules: Amazon.com offer for ages 18 to 24 and students. Canada has its own Amazon.ca row.
+  how_to_claim:
+  - Open the Prime for Young Adults page on Amazon.com
+  - Sign in to an Amazon.com account
+  - Start the 6-month trial
+  - Confirm eligibility if Amazon asks
+  official_url: https://www.amazon.com/primestudent
+  affiliate_url: null
+  source_note: 'sourced: https://www.amazon.com/primestudent ("We''re giving you a 6-month trial for $0.
+    18-24 year-olds and students enjoy full Prime benefits ... After trial, auto-renews at $7.49/month.")
+    Rechecked 2026-11-12: offer text still on the page. 2026-11-12 page: "18-24 year-olds and students
+    enjoy full Prime benefits" and "After trial, auto-renews at $7.49/month."'
+  last_verified: 2026-11-12
+  watch_text: 6-month trial for $0
+  status: active
+  logo: null
+  banner_color: '#232F3E'
+- id: rhino-9-students
+  brand: Rhino
+  title: Rhino 9 student license, US$195 (regular US$995)
+  about: 3D modeling software for design and architecture.
+  category: design
+  price_type: discount
+  discount: US$195 one-time (regular US$995)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: id-upload
+  email_rules: North America education pricing. One per student. Proof of student status required.
+  how_to_claim:
+  - Open the Rhino North America education page
+  - Pick the Students or faculty tab
+  - Order Rhino 9 for Windows and Mac
+  - Send proof of student status when asked
+  official_url: https://www.rhino3d.com/sales/north-america/education/
+  affiliate_url: null
+  source_note: 'sourced: https://www.rhino3d.com/sales/north-america/education/ (Students or faculty:
+    "Full - single-user Price Rhino 9 for Windows and Mac US$ 195" vs commercial "Rhino 9 - Single Concurrent
+    User US$ 995"; "One per student or faculty member." "Proof of status required.") Licenses are permanent.
+    Rechecked 2026-11-12: offer text still on the page.'
+  last_verified: 2026-11-12
+  watch_text: One per student or faculty member
+  status: active
+  logo: rhinoceros.svg
+  banner_color: '#801010'
+  ca_school_email_source: https://www.rhino3d.com/sales/north-america/education/
+  logo_color: '#FFFFFF'
+- id: sketchup-studio-students
+  brand: SketchUp
+  title: SketchUp Studio for Students, $55 a year
+  about: 3D modeling for architecture and interior design.
+  category: design
+  price_type: discount
+  discount: $55 a year student plan
+  free_months: null
+  countries:
+  - CA
+  ca_school_email: accepted
+  verification: other
+  email_rules: Education plan for individual students. The page does not state which countries qualify,
+    and the currency was not labeled, so only Canada is listed.
+  how_to_claim:
+  - Open the SketchUp higher education page
+  - Select Buy now under For students
+  - Sign in with a Trimble ID
+  - Verify your student status and pay yearly
+  official_url: https://sketchup.trimble.com/en/plans-and-pricing/sketchup-studio-for-higher-education
+  affiliate_url: null
+  source_note: 'sourced: https://sketchup.trimble.com/en/plans-and-pricing/sketchup-studio-for-higher-education
+    ("Education plans For students $55 per user/billed annually"). Fetched from Canada with the currency
+    menu set to CAD. Regular Studio Annual price not captured. On 2026-11-12 the student page loaded,
+    but the $55 price did not render in the page source. Price is from the 2026-10-28 check.'
+  last_verified: 2026-10-28
+  watch_text: For students
+  status: active
+  logo: sketchup.svg
+  banner_color: '#005F9E'
+  ca_school_email_source: https://sketchup.trimble.com/en/plans-and-pricing/sketchup-studio-for-higher-education
+  logo_color: '#FFFFFF'
+- id: evernote-students
+  brand: Evernote
+  title: Evernote, 40% off Advanced for students
+  about: Note taking app with tasks and web clipping.
+  category: notes
+  price_type: discount
+  discount: 40% off Advanced annual plan
+  free_months: null
+  countries:
+  - CA
+  ca_school_email: accepted
+  verification: unidays
+  email_rules: New Evernote subscribers only. Verified through UNiDAYS. The page does not list countries,
+    so only Canada (where it was checked) is listed.
+  how_to_claim:
+  - Open the Evernote students page
+  - Select Verify if eligible
+  - Verify with UNiDAYS
+  - Buy the Advanced annual plan at 40% off
+  official_url: https://evernote.com/students
+  affiliate_url: null
+  source_note: 'sourced: https://evernote.com/students ("40% off Advanced for students." "students who
+    are not currently subscribers to any Evernote Paid Service ... will receive 40% off Evernote Advanced
+    Annual plan." "redirected to the third-party website UNiDAYS") Rechecked 2026-11-12: offer text still
+    on the page.'
+  last_verified: 2026-11-12
+  watch_text: 40% off Advanced
+  status: active
+  logo: evernote.svg
+  banner_color: '#00A82D'
+  ca_school_email_source: https://evernote.com/students
+  logo_color: '#FFFFFF'
+- id: economist-students
+  brand: The Economist
+  title: The Economist student subscription, 75% off
+  about: Weekly news and analysis on politics, business and science.
+  category: learning
+  price_type: discount
+  discount: 75% off yearly digital (CA$94.75 vs CA$379)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: sheerid
+  email_rules: For students over 16. Verified through SheerID. Canada and United States are both in the
+    billing region list on the student page.
+  how_to_claim:
+  - Open The Economist student offer page
+  - Select your billing region
+  - Verify your student status with SheerID
+  - Pay the yearly student price
+  official_url: https://subscribenow.economist.com/student
+  affiliate_url: null
+  source_note: 'sourced: https://subscribenow.economist.com/student ("C$379 C$94.75 */year STUDENT EXCLUSIVE
+    For all students over 16." "What''s included in my 75% discounted Digital subscription?" "We verify
+    your student status instantaneously through a third-party service called SheerID."). US price not
+    captured from Canada. On 2026-11-12 the page still reads "As a student, get 75% off a Premium subscription".
+    The CA price and billing region list are from the 2026-10-28 check.'
+  last_verified: 2026-10-28
+  watch_text: get 75% off a Premium subscription
+  status: active
+  logo: null
+  banner_color: '#E3120B'
+  ca_school_email_source: https://subscribenow.economist.com/student
+- id: samsung-student-offers-ca
+  brand: Samsung
+  title: Samsung Canada student offers, up to 10% off
+  about: Student pricing on select Galaxy devices and monitors.
+  category: shopping
+  github_pack: false
+  price_type: discount
+  discount: Up to 10% off select Galaxy devices and monitors
+  free_months: null
+  countries:
+  - CA
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: Students at eligible Canadian universities. Sign up with your university email to get an
+    access code, then log in with that Samsung account to see the offers. The page says eligible universities;
+    Brock is not confirmed yet.
+  how_to_claim:
+  - Open the Samsung Canada student offers page
+  - Register with your name, school and university email
+  - Use the access code you receive to log in with your Samsung account
+  - Shop the student prices on select Galaxy devices and monitors
+  official_url: https://www.samsung.com/ca/offer/student-epp/
+  affiliate_url: null
+  source_note: 'sourced: https://www.samsung.com/ca/offer/student-epp/ ("Exclusive discounts Up to 10%
+    off on select Samsung Galaxy devices and monitors" and "signing up using your eligible university
+    email ID"). Checked on the Samsung Canada site. Rechecked 2026-11-12: offer text still on the page.'
+  ca_school_email_source: https://www.samsung.com/ca/offer/student-epp/
+  last_verified: 2026-11-12
+  watch_text: Up to 10% off on select Samsung Galaxy devices and monitors
+  status: active
+  logo: samsung.svg
+  banner_color: '#1428A0'
+  logo_color: '#FFFFFF'
+- id: brock-virtual-labs
+  brand: Brock ITS (Brock licence)
+  title: Brock Virtual Labs, course software from any computer
+  about: Remote Windows and Mac lab desktops with the apps your courses use.
+  category: learning
+  github_pack: false
+  price_type: free
+  free_months: null
+  countries:
+  - CA
+  ca_school_email: accepted
+  verification: school-email
+  email_rules: Brock University only. Sign in with your Brock account. Gives remote access to the apps
+    required for courses currently offered to students.
+  how_to_claim:
+  - Open the Brock ITS Virtual Labs page
+  - Pick Windows Virtual Desktop (Windows apps) or Splashtop (the campus Mac labs)
+  - Sign in with your Brock account and open the app you need
+  official_url: https://brocku.ca/information-technology/service-catalogue/lab-classroom-and-audio-visual-support/virtual-labs/
+  affiliate_url: null
+  source_note: 'sourced: https://brocku.ca/information-technology/service-catalogue/lab-classroom-and-audio-visual-support/virtual-labs/
+    ("Brock University Virtual Labs is an online platform that provides users with access to the various
+    apps required for courses currently offered to students"). The exact app list (SPSS, Stata and so
+    on) was not on the page I could read, so it is not claimed here.'
+  ca_school_email_source: https://brocku.ca/information-technology/service-catalogue/lab-classroom-and-audio-visual-support/virtual-labs/
+  last_verified: 2026-11-03
+  watch_text: Brock University Virtual Labs is an online platform
+  status: active
+  schools:
+  - brocku.ca
+  logo: null
+  banner_color: '#CC0000'
+- id: peloton-app-students
+  brand: Peloton
+  title: Peloton App One free for students
+  about: Workout app with strength, yoga, running and cardio classes.
+  category: learning
+  price_type: free
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: University students. Verified through ID.me on the Peloton student page. Both the US page
+    and the Canada page list App One at $0 a month for students. The page does not say how long the $0
+    price lasts.
+  how_to_claim:
+  - Open the Peloton student offers page for your country
+  - Pick App One and choose Verify
+  - Verify your student status with ID.me
+  - Create or sign in to your Peloton account
+  official_url: https://www.onepeloton.com/en-CA/offers/specialpricing/student
+  affiliate_url: null
+  source_note: 'sourced: https://www.onepeloton.com/en-CA/offers/specialpricing/student ("App One (Monthly)
+    $8 off/mo App One (Monthly) $8.99/mo $0/mo") and https://www.onepeloton.com/offers/specialpricing/student
+    ("App One (Monthly) $6 off/mo App One (Monthly) $6.99/mo $0/mo", "Students : University", verification
+    "via ID.me").'
+  ca_school_email_source: https://www.onepeloton.com/en-CA/offers/specialpricing/student
+  last_verified: 2026-11-12
+  watch_text: App One (Monthly)
+  status: active
+  logo: peloton.svg
+  logo_color: '#FFFFFF'
+  banner_color: '#181A1D'
+- id: razer-education
+  brand: Razer
+  title: Razer Education Purchase Program, up to 15% off
+  about: Laptops, keyboards, mice, headsets and chairs.
+  category: shopping
+  price_type: discount
+  discount: 15% off peripherals, gear and accessories; 10% off PC components; 5% off chairs and laptops
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: Students, parents buying for students, teachers and staff. Canada and the United States
+    are both in the program country list on the page.
+  how_to_claim:
+  - Open the Razer Education page
+  - Fill in the education form to register
+  - Sign in once approved and shop with education pricing
+  official_url: https://www.razer.com/education
+  affiliate_url: null
+  source_note: 'sourced: https://www.razer.com/education ("Enjoy Exclusive Education Pricing on Razer
+    Blade Laptops, Peripherals or Gaming Chairs", "15% OFF Razer Peripherals, Gear & Apparel, and Accessories
+    10% OFF Razer PC Components 5% OFF Razer Gaming Chairs 5% OFF Razer Laptops", "In which countries
+    is the Razer Education Purchase Program available in? ... North America Canada United States"). The
+    percentages sit next to back-to-school wording, so they may change.'
+  ca_school_email_source: https://www.razer.com/education
+  last_verified: 2026-11-12
+  watch_text: Razer Education Purchase Program
+  status: active
+  logo: razer.svg
+  logo_color: '#44D62C'
+  banner_color: '#000000'
+- id: lenovo-education
+  brand: Lenovo
+  title: 'Lenovo Education Store: extra 10% off in Canada, extra 5% in the US'
+  about: Laptops, desktops, tablets and monitors.
+  category: shopping
+  price_type: discount
+  discount: Extra 10% off in Canada, extra 5% off in the US (exclusions apply)
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: other
+  email_rules: College or university students, including incoming students with an acceptance letter.
+    Verify with ID.me in the cart. Some new and discounted products are excluded.
+  how_to_claim:
+  - Open the Lenovo student page for your country
+  - Add a laptop or other product to the cart
+  - Verify with ID.me in the cart
+  - The extra discount applies in the cart
+  official_url: https://www.lenovo.com/ca/en/student/
+  affiliate_url: null
+  source_note: 'sourced: https://www.lenovo.com/ca/en/student/ ("Students & Educators Save an Additional
+    10%", "Verified students enjoy an extra 10% off"), https://www.lenovo.com/us/en/student/ ("Students
+    & Educators Save an Additional 5%") and https://www.lenovo.com/ca/en/discount-programs/ ("College
+    or university students, teachers & including incoming students with a letter of acceptance, all get
+    exclusive extra savings by verifying with ID.me in cart", "Exclusions apply on select new & discounted
+    products").'
+  ca_school_email_source: https://www.lenovo.com/ca/en/discount-programs/
+  last_verified: 2026-11-12
+  watch_text: Save an Additional
+  status: active
+  logo: lenovo.svg
+  logo_color: '#FFFFFF'
+  banner_color: '#E2231A'
+- id: surfshark-students
+  brand: Surfshark
+  title: Surfshark VPN, extra 15% off for students
+  about: VPN for private browsing on public and campus Wi-Fi.
+  category: shopping
+  price_type: discount
+  discount: Extra 15% off, through Student Beans
+  free_months: null
+  countries:
+  - CA
+  - US
+  ca_school_email: accepted
+  verification: student-beans
+  email_rules: Verify your student status with Student Beans, then take the code to Surfshark checkout.
+    Student Beans has the offer on both its Canada and US pages.
+  how_to_claim:
+  - Open the Surfshark student discount page
+  - Follow the link to Student Beans and verify
+  - Copy the code and pick a plan at Surfshark checkout
+  official_url: https://surfshark.com/student-discount
+  affiliate_url: null
+  source_note: 'sourced: https://surfshark.com/student-discount ("Extra 15% student discount for Surfshark",
+    "Get Surfshark VPN for students with Student Beans", "Verify your student status with Student Beans")
+    plus https://www.studentbeans.com/student-discount/ca/surfshark and https://www.studentbeans.com/student-discount/us/surfshark
+    ("15% Student Discount"). Student Beans headlines a bigger "up to 88%" number that mixes in the normal
+    sale price, so only the extra 15% is claimed here.'
+  ca_school_email_source: https://www.studentbeans.com/student-discount/ca/surfshark
+  last_verified: 2026-11-12
+  watch_text: 15% student discount
+  status: active
+  logo: surfshark.svg
+  logo_color: '#FFFFFF'
+  banner_color: '#1EBFBF'
+- id: otter-students-us
+  brand: Otter.ai
+  title: Otter Pro, 20% off with a .edu email
+  about: AI note taker that records and transcribes lectures and meetings.
+  category: ai
+  price_type: discount
+  discount: 20% off Otter Pro (US$79.99 a year or US$13.59 a month)
+  free_months: null
+  countries:
+  - US
+  ca_school_email: rejected
+  verification: school-email
+  email_rules: Needs an email address ending in .edu. Most Canadian schools use other endings (Brock is
+    brocku.ca), so this is listed for the US only.
+  how_to_claim:
+  - Sign up for Otter Basic with your .edu email
+  - Click your name, then Upgrade plan
+  - Choose the Student and Teacher option and pay the student price
+  official_url: https://otter.ai/pricing
+  affiliate_url: null
+  source_note: 'sourced: https://otter.ai/pricing ("we offer a 20% discount on Otter Pro Monthly and Otter
+    Pro Annual plans for individual students and teachers using an email address ending with .edu", "Otter
+    Pro Annual: $6.67 USD per month (billed $79.99 annually) Otter Pro Monthly: $13.59 USD per month").'
+  last_verified: 2026-11-12
+  watch_text: 20% discount on Otter Pro
+  status: active
+  logo: null
+  banner_color: '#1F3A8A'
+
