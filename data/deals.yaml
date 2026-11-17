@@ -64,11 +64,11 @@
   - Select the student offer
   - Verify with SheerID using a school email
   - Add a qualifying payment method and finish signup
-  official_url: https://support.google.com/googleone/answer/17422238
+  official_url: https://gemini.google/students/
   affiliate_url: null
-  source_note: 'sourced: https://support.google.com/googleone/answer/17422238 lists Canada among excluded countries and limits the free 12-month AI Pro trial to higher education in the US'
-  last_verified: 2026-10-22
-  watch_text: excluding Albania, Bolivia, Canada
+  source_note: 'sourced: https://gemini.google/students/ ("The free Google AI Pro student offer is available to eligible U.S. college students ages 18+... Redeem until December 31, 2026."). Canada remains excluded on https://support.google.com/googleone/answer/17422238.'
+  last_verified: 2026-11-17
+  watch_text: eligible U.S. college students
   status: active
   logo: google-g.svg
   banner_color: '#FFFFFF'
@@ -104,6 +104,8 @@
   title: 'Codex student credits: US$100 (2,500 credits)'
   about: "OpenAI's coding agent that writes and edits code."
   category: ai
+  featured: true
+  featured_rank: 3
   price_type: free
   free_months: 12
   countries: [CA, US]
@@ -178,8 +180,7 @@
   title: Figma Education Professional + FigJam + Dev Mode
   about: "A design app for drawing website and app interfaces."
   category: design
-  featured: true
-  featured_rank: 2
+  featured: false
   price_type: free
   free_months: 12
   countries: [CA]
@@ -205,8 +206,7 @@
   title: Notion Education Plus
   about: "A workspace for notes, documents, wikis, and tasks."
   category: notes
-  featured: true
-  featured_rank: 3
+  featured: false
   price_type: free
   free_months: null
   countries: [CA, US]
@@ -2107,6 +2107,8 @@
   title: 'ElevenReader Ultra free for 1 year'
   about: "An app that reads textbooks and notes out loud."
   category: ai
+  featured: true
+  featured_rank: 4
   price_type: free
   free_months: 12
   countries: [CA]
@@ -2687,6 +2689,8 @@
   title: 'Google AI Plus free for 12 months for students'
   about: 'Gemini AI features plus 400 GB of Google storage.'
   category: ai
+  featured: true
+  featured_rank: 2
   price_type: free
   free_months: 12
   countries: [CA]
