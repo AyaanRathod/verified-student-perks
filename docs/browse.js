@@ -243,8 +243,9 @@ function browseCardHtml(deal, options) {
   options = options || {};
   var background = safeBrowseHex(deal.banner_color) || "#F1F5F9";
   var fresh = options.fresh ? '<span class="browse-new">NEW</span>' : "";
-  var about = options.withAbout && deal.about
-    ? '<span class="browse-about">' + browseEsc(deal.about) + "</span>"
+  var aboutText = String(deal.about || "").trim();
+  var about = aboutText
+    ? '<span class="browse-about">' + browseEsc(aboutText) + "</span>"
     : "";
   // Logo slot is separate so paintColoredLogos does not wipe the NEW badge.
   return '<a class="browse-card" href="deal.html?id=' + encodeURIComponent(deal.id) + '">' +
@@ -418,7 +419,7 @@ if (typeof document !== "undefined") {
           '<span class="browse-fact">' + bothCount + " work in CA and US</span></div></section>";
       }
       viewEl.innerHTML = head + '<div class="browse-grid">' + sortDeals(list, state.sort).map(function (deal) {
-        return browseCardHtml(deal, { withAbout: true, fresh: isFreshDeal(deal, freshCut) });
+        return browseCardHtml(deal, { fresh: isFreshDeal(deal, freshCut) });
       }).join("") + "</div>";
     }
 
